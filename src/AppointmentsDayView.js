@@ -5,7 +5,9 @@ const appointmentTimeOfDay = startsAt => {
   return `${h}:${m}`;
 }
 
-export const Appointment = ({customer}) => <div>{customer.firstName}</div>;
+export const Appointment = ({customer}) => (
+  <div>{customer.firstName}</div>
+)
 
 export const AppointmentsDayView = ({appointments}) => {
   // add state to the component
@@ -28,8 +30,8 @@ export const AppointmentsDayView = ({appointments}) => {
       {appointments.length === 0 ? (
         <p>There are no appointments scheduled for today.</p>
       ) : (
-        <Appointment {...appointments[selectedAppointment]} />
+        <Appointment customer={appointments[selectedAppointment].customer} />
       )}
     </div>
   );
-}
+};

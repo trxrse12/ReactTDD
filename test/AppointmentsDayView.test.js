@@ -1,11 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+// import { sampleAppointments as appointments } from '../src/sampleData';
 
 import {
-  Appointment,
   AppointmentsDayView,
-} from '../src/Appointment';
+  Appointment,
+} from '../src/AppointmentsDayView';
+
+const today = new Date();
+const at = hours => today.setHours(hours, 0)
 
 let container;
 let customer;
@@ -18,14 +22,14 @@ describe('Appointment', function () {
   const render = component => ReactDOM.render(component, container);
 
   it('renders the customer first name ', function () {
-    customer = { firstName: 'Ashley'};
-    render(<Appointment customer={customer} />);
+    customer = {firstName: 'Ashley'};
+    render(<Appointment customer={customer}/>);
     expect(container.textContent).toMatch('Ashley');
   });
 
   it('renders another customer first name ', function () {
-    customer = { firstName: 'Jordan'};
-    render(<Appointment customer={customer} />);
+    customer = {firstName: 'Jordan'};
+    render(<Appointment customer={customer}/>);
     expect(container.textContent).toMatch('Jordan');
   });
 });
@@ -35,13 +39,27 @@ describe('AppointmentsDayView', () => {
   const today = new Date();
   const appointments = [
     {
-      startsAt: today.setHours(12,0),
-      customer: {firstName: 'Ashley'},
+      startsAt: at(12),
+      customer: {
+        firstName: 'Ashley',
+        lastname: 'Johnson',
+        phoneNumber: '123333242314',
+        stylist: 'John McEnroe',
+        service: 'The Primrose',
+        notes: 'He is bald',
+      }
     },
     {
-      startsAt: today.setHours(13,0),
-      customer: {firstName: 'Jordan'},
-    },
+      startsAt: at(13),
+      customer: {
+        firstName: 'Jordan',
+        lastname: 'Doubtfire',
+        phoneNumber: '999288828882',
+        stylist: 'John McEnroe',
+        service: 'Apollo',
+        notes: 'None',
+      },
+    }
   ];
   const render = component => ReactDOM.render(component, container);
 
@@ -50,7 +68,7 @@ describe('AppointmentsDayView', () => {
   });
 
   it('renders a div with the right id', function () {
-    render(<AppointmentsDayView  appointments={[]}/>);
+    render(<AppointmentsDayView appointments={[]}/>);
     expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
   });
   it('renders multiple appointments in an ol element', () => {
@@ -75,7 +93,7 @@ describe('AppointmentsDayView', () => {
     expect(container.textContent).toMatch('Ashley');
   });
   it('has a button element in each li', () => {
-    render(<AppointmentsDayView appointments={appointments} />);
+    render(<AppointmentsDayView appointments={appointments}/>);
     expect(
       container.querySelectorAll('li > button')
     ).toHaveLength(2);
@@ -84,7 +102,7 @@ describe('AppointmentsDayView', () => {
     ).toEqual('button');
   });
   it('renders another appointment when selected', () => {
-    render(<AppointmentsDayView appointments={appointments} />);
+    render(<AppointmentsDayView appointments={appointments}/>);
     const button = container.querySelectorAll('button')[1];
     ReactTestUtils.Simulate.click(button);
     expect(container.textContent).toMatch('Jordan');
