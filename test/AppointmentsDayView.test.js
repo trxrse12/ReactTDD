@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-// import { sampleAppointments as appointments } from '../src/sampleData';
+import { sampleAppointments as appointments } from '../src/sampleData';
 
 import {
   AppointmentsDayView,
@@ -71,16 +71,16 @@ describe('AppointmentsDayView', () => {
     render(<AppointmentsDayView appointments={[]}/>);
     expect(container.querySelector('div#appointmentsDayView')).not.toBeNull();
   });
-  it('renders multiple appointments in an ol element', () => {
+  it('renders multiple appointments in an table element', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
-    expect(container.querySelector('ol')).not.toBeNull();
-    expect(container.querySelector('ol').children).toHaveLength(2);
+    expect(container.querySelector('table')).not.toBeNull();
+    expect(container.querySelector('table > tbody').children).toHaveLength(appointments.length);
   });
-  it('renders each appointment in an li', () => {
+  it('renders each appointment in an <tr>', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
-    expect(container.querySelectorAll('li')).toHaveLength(2);
-    expect(container.querySelectorAll('li')[0].textContent).toEqual('12:00');
-    expect(container.querySelectorAll('li')[1].textContent).toEqual('13:00');
+    expect(container.querySelectorAll('tr')).toHaveLength(appointments.length);
+    expect(container.querySelectorAll('tr')[0].textContent).toEqual('12:00');
+    expect(container.querySelectorAll('tr')[1].textContent).toEqual('13:00');
   });
   it('initially shows a message saying there are no appointments today', () => {
     render(<AppointmentsDayView appointments={[]}/>);
@@ -92,13 +92,13 @@ describe('AppointmentsDayView', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
     expect(container.textContent).toMatch('Ashley');
   });
-  it('has a button element in each li', () => {
+  it('has a button element in each td', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
     expect(
-      container.querySelectorAll('li > button')
-    ).toHaveLength(2);
+      container.querySelectorAll('td > button')
+    ).toHaveLength(appointments.length);
     expect(
-      container.querySelectorAll('li > button')[0].type
+      container.querySelectorAll('td > button')[0].type
     ).toEqual('button');
   });
   it('renders another appointment when selected', () => {

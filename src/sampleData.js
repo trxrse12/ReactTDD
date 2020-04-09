@@ -4,9 +4,9 @@ const at = hours => today.setHours(hours, 0);
 
 export const sampleAppointments = [
   {
-    startsAt: at(9),
+    startsAt: at(12),
     customer: {
-      firstName: 'Charlie',
+      firstName: 'Ashley',
       lastname: 'Johnson',
       phoneNumber: '123333242314',
       stylist: 'John McEnroe',
@@ -15,7 +15,7 @@ export const sampleAppointments = [
     }
   },
   {
-    startsAt: at(9),
+    startsAt: at(13),
     customer: {
       firstName: 'Frankie',
       lastname: 'Doubtfire',
@@ -26,7 +26,7 @@ export const sampleAppointments = [
     }
   },
   {startsAt: at(9), customer: {firstName: 'Casey'}},
-  {startsAt: at(9), customer: {firstName: 'Ashley'}},
+  {startsAt: at(9), customer: {firstName: 'Charles'}},
   {startsAt: at(9), customer: {firstName: 'Jordan'}},
   {startsAt: at(9), customer: {firstName: 'Jay'}},
   {startsAt: at(9), customer: {firstName: 'Alex'}},
