@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ctex</title>
+    <style>
+        body {
+            font: 12pt Verdana, Arial, Georgia, sans-serif;
+        }
+        #logo {
+            float: left;
+        }
+        header nav ul {
+            list-style: none;
+            display: inline;
+        }
+        header nav ul li {
+            display: inline;
+        }
+        nav {
+            width: 150px;
+            float: end;
+            margin-right: 18px;
+            marging-top: 12px;
+            display: block;
+        }
+        nav ul {
+            list-style: none;
+            margin: 12px 0px 0px 0px;
+        }
+        nav li {
+            border-bottom: 1px solid #ffffff;
+        }
+        nav li a:link, nav li a:visited {
+            font-size: 10pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 3px;
+            background-color: #628794;
+            color: #ffffff;
+        }
+        nav li a:hover, nav li a:active {
+            font-size: 10pt;
+            font-weight: bold;
+            display:block;
+            padding: 3px 0px 3px 3px;
+            color: #000000;
+        }
+        nav ul ul {
+            margin: 0px;
+            padding: 0px;
+        }
+        nav ul ul li {
+            border-bottom: none;
+        }
+        nav ul ul li a:link, nav ul ul li a:visited {
+            font-size:8pt;
+            font-weight: bold;
+            display:block;
+            padding: 3px 0px 3px 18px;
+            background-color: #628794;
+            color: #ffffff;
+        }
+        nav ul ul li a:hover, nav ul ul li:active {
+            font-size: 8pt;
+            font-weight: bold;
+            display: block;
+            padding: 3px 0px 3px 18px;
+            background-color: #c1a02e;
+            color: #000000;
+        }
+        section {
+            width: 500px;
+            float: left;
+            display: block;
+        }
+        section a {
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="logo">
+            <img src="Capacitex_logo.png" alt=Capacitex Ltd.>
+        </div>
+        <nav id="horizMenu">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Press</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Mission</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Executives</a></li>
+                <ul>
+                    <li><a href="#">&raquo; CEO</a></li>
+                    <li><a href="#">&raquo; CFO</a></li>
+                    <li><a href="#">&raquo; COO</a></li>
+                    <li><a href="#">&raquo; Other Minions</a></li>
+                </ul>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+    <section>
+        <header>
+            <h1>About Us</h1>
+        </header>
+        <p> On the introductory pages of the main sections, it can be useful
+        to repeat the secondary navigations and provide more context,
+        such as:</p>
+        <ul>
+            <li><a href="#">Mission</a> Learn more about our company mission and
+                philantorpic actions</li>
+            <li><a href="#">History</a> Learn more about our company history and
+                how we grew to become the largest widget maker in the country.</li>
+            <li><a href="#">Executives</a> Our team of executives makes the company
+                run likle a well-oiled machine (also useful for making widgets)</li>
+            <li><a href="#">Contact Us</a> Here you can find multiple methods to
+                contact us</li>
+        </ul>
+    </section>
+</body>
+</html>
