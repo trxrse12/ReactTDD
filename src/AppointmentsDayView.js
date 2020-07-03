@@ -8,7 +8,7 @@ const appointmentTimeOfDay = startsAt => {
 export const Appointment = ({customer, startsAt}) => (
   <div id="appointmentView">
     <h3>Today&rsquo;s appointment is at {appointmentTimeOfDay(startsAt)}</h3>
-    <table class="customer-table">
+    <table className="customer-table">
       <tbody>
         <tr>
           <td>Customer</td>

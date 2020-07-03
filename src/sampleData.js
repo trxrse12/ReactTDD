@@ -31,7 +31,7 @@ export const sampleAppointments = [
       notes: chance.paragraph(),
   }},
   {startsAt: at(12), customer: {
-    firstName: 'Ashl',
+    firstName: 'Ashley',
     lastName: 'Dupont',
     phoneNumber: chance.phone({country: 'us'}),
       stylist: 'Laura',
