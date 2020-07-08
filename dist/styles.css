@@ -32,3 +32,21 @@ table {
 h3 {
     margin-left: 10px;
 }
+
+form {
+    display :grid;
+    grid-template-columns: 175px 150px 300px 175px;
+    vertical-align: middle;
+}
+input {
+    box-sizing: border-box;
+    grid-column: 3;
+    padding: 3px;
+    width: 100%;
+    font-size: 1em;
+    height: 30px;
+}
+label {
+    grid-column: 2;
+    margin: 10px 0 10px 0;
+}
