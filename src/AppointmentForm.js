@@ -89,7 +89,7 @@ const TimeSlotTable = ({
             {dates.map(date =>
                 <td key={date}>
                   {
-                    toShortDate(date) === 'Mon 13' && toTimeValue(startsAt)==="09:00"
+                    toShortDate(date) === 'Mon 13' && toTimeValue(timeSlot)==="09:00"
                       ? <div>MMM</div>
                     : <div>RRR</div>
                   }
