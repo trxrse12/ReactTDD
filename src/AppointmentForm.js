@@ -45,39 +45,16 @@ const RadioButtonIfAvailable = ({
   timeSlot,
 }) => {
   const startsAt = mergeDateAndTime(date, timeSlot);
-
   if (
-    availableTimeSlots.some(availableTimeSlot =>{
-      return availableTimeSlot.startsAt === startsAt
-    }) ){
-      return (
-        <input
-          name="startsAt"
-          type="radio"
-          value={startsAt}
-        />
-      )
+    availableTimeSlots.some(
+      timeSlot => timeSlot.startsAt === startsAt
+    )
+  ){
+      return <input name="startsAt" type="radio"  value={startsAt}/>
   }
   return null;
 };
 
-const RadioButtonIfAvailable2 = ({
-  availableTimeSlots,
-  date,
-  timeSlot,
-}) => {
-  const startsAt = mergeDateAndTime(date, timeSlot);
-  console.log('SSS availableTimeSlots[0].startsAt=', availableTimeSlots[0].startsAt);
-  console.log('DDD startsAt=', startsAt)
-  console.log('ALPHA', availableTimeSlots.some(availableTimeSlot => availableTimeSlot.startsAt === startsAt))
-  return availableTimeSlots.some(availableTimeSlot => availableTimeSlot.startsAt === 1594627200000)
-    ? "KOKO"
-    : "MOMO"
-    // : <div>yyy</div>)
-  // return toShortDate(date) === 'Mon 13' && toTimeValue(timeSlot)==="09:00"
-  //   ? <div>MMM</div>
-  //   : <div>RRR</div>
-}
 
 const TimeSlotTable = ({
   salonOpensAt,
@@ -90,7 +67,6 @@ const TimeSlotTable = ({
     salonOpensAt,
     salonClosesAt,
   );
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', availableTimeSlots)
   return (
     <table id="time-slots">
       <thead>
@@ -102,25 +78,20 @@ const TimeSlotTable = ({
         </tr>
       </thead>
       <tbody>
-        {
-          timeSlots.map(timeSlot =>
-            (
+        {timeSlots.map(timeSlot => (
               <tr key={timeSlot}>
                 <th>{toTimeValue(timeSlot)}</th>
-                {dates.map(date =>
+                {dates.map(date => (
                     <td key={date}>
-                      <RadioButtonIfAvailable2
+                      <RadioButtonIfAvailable
                         availableTimeSlots={availableTimeSlots}
                         date={date}
                         timeSlot={timeSlot}
                       />
                     </td>
-                  )
-                }
+                  ))}
               </tr>
-            )
-          )
-        }
+        ))}
       </tbody>
     </table>
   )
@@ -135,7 +106,6 @@ export const AppointmentForm = ({
      today,
      availableTimeSlots,
     }) => {
-  console.log('JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ availableTimeSlots=', availableTimeSlots)
   const [appointment, setAppointment] = useState({
     service
   });
@@ -168,7 +138,7 @@ export const AppointmentForm = ({
 AppointmentForm.defaultProps = {
   today: new Date(),
   salonOpensAt: 9,
-  salonClosesAt: 10,
+  salonClosesAt: 19,
   selectableServices: [
     'Cut',
     'Blow-dry',
@@ -177,5 +147,5 @@ AppointmentForm.defaultProps = {
     'Cut & beard-trim',
     'Extensions'
   ],
-  availableTimeSlots: ['y'],
+  availableTimeSlots: [],
 };

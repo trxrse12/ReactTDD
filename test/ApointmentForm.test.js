@@ -178,11 +178,11 @@ describe('AppointmentForm', () => {
       const startsAtField = index =>
         container.querySelectorAll(`input[name="startsAt"]`)[index];
 
-      it.only('sets radio button to the index of the corresponding appointment', () => {
+      it('sets radio button to the index of the corresponding appointment', () => {
         const today=new Date();
         const availableTimeSlots = [
           {startsAt: today.setHours(9, 0,0,0,)},
-          //{startsAt: today.setHours(9, 30, 0, 0,)},
+          {startsAt: today.setHours(9, 30, 0, 0,)},
         ];
         render(
           <AppointmentForm
@@ -190,10 +190,10 @@ describe('AppointmentForm', () => {
             today={today}
           />
         );
-        expect(startsAtField[0].value).toEqual(
+        expect(startsAtField(0).value).toEqual(
           availableTimeSlots[0].startsAt.toString()
         );
-        expect(startsAtField[1].value).toEqual(
+        expect(startsAtField(1).value).toEqual(
           availableTimeSlots[1].startsAt.toString()
         );
       });
