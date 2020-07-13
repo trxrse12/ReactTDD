@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AppointmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppointmentForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,38 +18,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6333732">
+    <splitter split-orientation="horizontal" split-proportion="0.6076555">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.6698718">
+        <splitter split-orientation="vertical" split-proportion="0.52846974">
           <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.46325877">
-              <split-first>
-                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-                  <file pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="140">
-                          <caret line="16" column="17" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="17" />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                </leaf>
-              </split-first>
-              <split-second>
-                <leaf>
-                  <file pinned="false" current-in-tab="true">
-                    <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="53">
-                          <caret line="85" column="36" lean-forward="true" selection-start-line="85" selection-start-column="36" selection-end-line="85" selection-end-column="36" />
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                </leaf>
-              </split-second>
-            </splitter>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="138">
+                      <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -76,11 +60,20 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="119">
-                      <caret line="185" column="10" lean-forward="true" selection-start-line="185" selection-start-column="10" selection-end-line="185" selection-end-column="10" />
+                    <state relative-caret-position="414">
+                      <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/package.json">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="237">
+                      <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
                     </state>
                   </provider>
                 </entry>
@@ -117,8 +110,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="70">
-                      <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+                    <state relative-caret-position="15">
+                      <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
                     </state>
                   </provider>
                 </entry>
@@ -229,7 +222,6 @@
         <option value="$PROJECT_DIR$/.babelrc" />
         <option value="$PROJECT_DIR$/src/Appointment.js" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/test/Appointment.test.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/dist/blocks.html" />
@@ -251,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/dist/styles.css" />
         <option value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/AppointmentForm.js" />
       </list>
     </option>
@@ -299,8 +292,10 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -326,6 +321,53 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Jest.AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment">
+    <configuration name="All Tests" type="JavaScriptTestRunnerJest" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <jest-options value="--watch-all" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
+      <test-names>
+        <test-name value="AppointmentForm" />
+        <test-name value="service field" />
+        <test-name value="time slot table" />
+        <test-name value="sets radio button to the index of the corresponding appointment" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.All Tests" />
+      <item itemvalue="Jest.AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="" />
@@ -341,12 +383,32 @@
       <workItem from="1593520210356" duration="43443000" />
       <workItem from="1594061976665" duration="7198000" />
       <workItem from="1594119375286" duration="21353000" />
-      <workItem from="1594292423110" duration="27273000" />
+      <workItem from="1594292423110" duration="35966000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="All_Tests - 2020.07.13 at 15h 54m 43s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2020.07.13 at 15h 55m 22s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2020.07.13 at 15h 56m 17s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="All_Tests - 2020.07.13 at 15h 57m 03s.xml">
+      <configuration name="All Tests" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="AppointmentForm_service_field_time_slot_table_sets_radio_button_to_the_index_of_the_corresponding_appointment - 2020.07.13 at 16h 00m 36s.xml">
+      <configuration name="AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+    <history-entry file="AppointmentForm_service_field_time_slot_table_sets_radio_button_to_the_index_of_the_corresponding_appointment - 2020.07.13 at 16h 13m 56s.xml">
+      <configuration name="AppointmentForm.service field.time slot table.sets radio button to the index of the corresponding appointment" configurationId="JavaScriptTestRunnerJest" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181705000" />
+    <option name="totallyTimeSpent" value="190398000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
@@ -358,8 +420,8 @@
       <window_info id="npm" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32990867" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39957264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -399,9 +461,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/AppointmentForm.js</url>
-          <line>48</line>
+          <line>49</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/AppointmentForm.js</url>
+          <line>72</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -516,13 +584,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -573,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="15">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -602,13 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -616,10 +670,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="185" column="10" lean-forward="true" selection-start-line="185" selection-start-column="10" selection-end-line="185" selection-end-column="10" />
+        <state relative-caret-position="414">
+          <caret line="190" column="12" selection-start-line="190" selection-start-column="12" selection-end-line="190" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -628,8 +696,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="138">
+          <caret line="60" column="14" lean-forward="true" selection-start-line="60" selection-start-column="14" selection-end-line="60" selection-end-column="14" />
         </state>
       </provider>
     </entry>

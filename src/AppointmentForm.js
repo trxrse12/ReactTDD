@@ -45,6 +45,7 @@ const RadioButtonIfAvailable = ({
   timeSlot,
 }) => {
   const startsAt = mergeDateAndTime(date, timeSlot);
+
   if (
     availableTimeSlots.some(availableTimeSlot =>{
       return availableTimeSlot.startsAt === startsAt
@@ -59,6 +60,24 @@ const RadioButtonIfAvailable = ({
   }
   return null;
 };
+
+const RadioButtonIfAvailable2 = ({
+  availableTimeSlots,
+  date,
+  timeSlot,
+}) => {
+  const startsAt = mergeDateAndTime(date, timeSlot);
+  console.log('SSS availableTimeSlots[0].startsAt=', availableTimeSlots[0].startsAt);
+  console.log('DDD startsAt=', startsAt)
+  console.log('ALPHA', availableTimeSlots.some(availableTimeSlot => availableTimeSlot.startsAt === startsAt))
+  return availableTimeSlots.some(availableTimeSlot => availableTimeSlot.startsAt === 1594627200000)
+    ? "KOKO"
+    : "MOMO"
+    // : <div>yyy</div>)
+  // return toShortDate(date) === 'Mon 13' && toTimeValue(timeSlot)==="09:00"
+  //   ? <div>MMM</div>
+  //   : <div>RRR</div>
+}
 
 const TimeSlotTable = ({
   salonOpensAt,
@@ -83,21 +102,25 @@ const TimeSlotTable = ({
         </tr>
       </thead>
       <tbody>
-        {timeSlots.map(timeSlot => (
-          <tr key={timeSlot}>
-            <th>{toTimeValue(timeSlot)}</th>
-            {dates.map(date =>
-                <td key={date}>
-                  {
-                    toShortDate(date) === 'Mon 13' && toTimeValue(timeSlot)==="09:00"
-                      ? <div>MMM</div>
-                    : <div>RRR</div>
-                  }
-                </td>
-              )
-            }
-          </tr>
-        ))}
+        {
+          timeSlots.map(timeSlot =>
+            (
+              <tr key={timeSlot}>
+                <th>{toTimeValue(timeSlot)}</th>
+                {dates.map(date =>
+                    <td key={date}>
+                      <RadioButtonIfAvailable2
+                        availableTimeSlots={availableTimeSlots}
+                        date={date}
+                        timeSlot={timeSlot}
+                      />
+                    </td>
+                  )
+                }
+              </tr>
+            )
+          )
+        }
       </tbody>
     </table>
   )
