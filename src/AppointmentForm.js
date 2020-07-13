@@ -26,17 +26,52 @@ const toShortDate = timestamp => {
     .split(' ');
   return `${day} ${dayOfMonth}`;
 };
+// transform table cells into unixtime
+// (e.g. 'Sat 11' && '09:30' >>> unixtime)
+const mergeDateAndTime = (date, timeSlot) => {
+  const time = new Date(timeSlot);
+  return new Date(date).setHours(
+    time.getHours(),
+    time.getMinutes(),
+    time.getSeconds(),
+    time.getMilliseconds(),
+  );
+};
+
+
+const RadioButtonIfAvailable = ({
+  availableTimeSlots,
+  date,
+  timeSlot,
+}) => {
+  const startsAt = mergeDateAndTime(date, timeSlot);
+  if (
+    availableTimeSlots.some(availableTimeSlot =>{
+      return availableTimeSlot.startsAt === startsAt
+    }) ){
+      return (
+        <input
+          name="startsAt"
+          type="radio"
+          value={startsAt}
+        />
+      )
+  }
+  return null;
+};
 
 const TimeSlotTable = ({
   salonOpensAt,
   salonClosesAt,
-  today
+  today,
+  availableTimeSlots,
                        }) => {
   const dates = weeklyDateValues(today);
   const timeSlots = dailyTimeSlots(
     salonOpensAt,
     salonClosesAt,
   );
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', availableTimeSlots)
   return (
     <table id="time-slots">
       <thead>
@@ -51,6 +86,16 @@ const TimeSlotTable = ({
         {timeSlots.map(timeSlot => (
           <tr key={timeSlot}>
             <th>{toTimeValue(timeSlot)}</th>
+            {dates.map(date =>
+                <td key={date}>
+                  {
+                    toShortDate(date) === 'Mon 13'
+                      ? <div>MMM</div>
+                    : <div>RRR</div>
+                  }
+                </td>
+              )
+            }
           </tr>
         ))}
       </tbody>
@@ -65,7 +110,9 @@ export const AppointmentForm = ({
      salonOpensAt,
      salonClosesAt,
      today,
+     availableTimeSlots,
     }) => {
+  console.log('JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ availableTimeSlots=', availableTimeSlots)
   const [appointment, setAppointment] = useState({
     service
   });
@@ -90,6 +137,7 @@ export const AppointmentForm = ({
       salonOpensAt={salonOpensAt}
       salonClosesAt={salonClosesAt}
       today={today}
+      availableTimeSlots={availableTimeSlots}
     />
   </form>;
 }
@@ -97,7 +145,7 @@ export const AppointmentForm = ({
 AppointmentForm.defaultProps = {
   today: new Date(),
   salonOpensAt: 9,
-  salonClosesAt: 19,
+  salonClosesAt: 10,
   selectableServices: [
     'Cut',
     'Blow-dry',
@@ -105,5 +153,6 @@ AppointmentForm.defaultProps = {
     'Beard trim',
     'Cut & beard-trim',
     'Extensions'
-  ]
+  ],
+  availableTimeSlots: ['y'],
 };
