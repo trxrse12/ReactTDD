@@ -43,6 +43,7 @@ const RadioButtonIfAvailable = ({
   availableTimeSlots,
   date,
   timeSlot,
+  checkedTimeSlot,
 }) => {
   const startsAt = mergeDateAndTime(date, timeSlot);
   if (
@@ -50,7 +51,14 @@ const RadioButtonIfAvailable = ({
       timeSlot => timeSlot.startsAt === startsAt
     )
   ){
-      return <input name="startsAt" type="radio"  value={startsAt}/>
+     const isChecked = startsAt === checkedTimeSlot;
+     return <input
+       name="startsAt"
+       type="radio"
+       value={startsAt}
+       checked={isChecked}
+       readOnly
+     />
   }
   return null;
 };
@@ -61,6 +69,7 @@ const TimeSlotTable = ({
   salonClosesAt,
   today,
   availableTimeSlots,
+  checkedTimeSlot,
                        }) => {
   const dates = weeklyDateValues(today);
   const timeSlots = dailyTimeSlots(
@@ -87,6 +96,7 @@ const TimeSlotTable = ({
                         availableTimeSlots={availableTimeSlots}
                         date={date}
                         timeSlot={timeSlot}
+                        checkedTimeSlot={checkedTimeSlot}
                       />
                     </td>
                   ))}
@@ -105,9 +115,11 @@ export const AppointmentForm = ({
      salonClosesAt,
      today,
      availableTimeSlots,
+     startsAt,
     }) => {
   const [appointment, setAppointment] = useState({
-    service
+    service,
+    startsAt,
   });
   const handleServiceChange = ({target: { value }}) =>
     setAppointment(appointment => ({
@@ -131,6 +143,7 @@ export const AppointmentForm = ({
       salonClosesAt={salonClosesAt}
       today={today}
       availableTimeSlots={availableTimeSlots}
+      checkedTimeSlot={appointment.startsAt}
     />
   </form>;
 }

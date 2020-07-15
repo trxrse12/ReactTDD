@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import {AppointmentsDayView} from "./AppointmentsDayView";
 import {sampleAppointments} from "./sampleData";
 import { AppointmentForm } from "./AppointmentForm";
-import {CustomerForm} from "./CustomerForm"; CustomerForm
+import {CustomerForm} from "./CustomerForm";
+import { sampleAvailableTimeSlots } from './sampleData';
 
 ReactDOM.render(
-  <AppointmentForm />,
+  <AppointmentForm
+    availableTimeSlots={}
+  />,
   document.getElementById('root')
 );

@@ -5,6 +5,35 @@ const today = new Date();
 
 const at = hours => today.setHours(hours, 0);
 
+Array.prototype.pickRandom = function() {
+  return this[Math.floor(Math.random() * this.length)];
+};
+
+const pickMany = (items, number) =>
+  Array(number)
+    .fill(1)
+    .map(() => items.pickRandom());
+
+const buildTimeSlots = () => {
+  const today = new Date();
+  const startTime = today.setHours(9, 0, 0, 0);
+  const times = [...Array(7).keys()].map(day => {
+    const daysToAdd = day * 24 * 60 * 60 * 1000;
+    return [...Array(20).keys()].map(halfHour => {
+      const halfHoursToAdd = halfHour * 30 * 60 * 1000;
+      return {
+        startsAt: startTime + daysToAdd + halfHoursToAdd
+      };
+    });
+  });
+  return [].concat(...times);
+};
+
+export const sampleAvailableTimeSlots = pickMany(
+  buildTimeSlots(),
+  50
+);
+
 export const sampleAppointments = [
   {startsAt: at(9), customer: {
     firstName: 'Charlie',
