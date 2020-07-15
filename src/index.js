@@ -8,7 +8,7 @@ import { sampleAvailableTimeSlots } from './sampleData';
 
 ReactDOM.render(
   <AppointmentForm
-    availableTimeSlots={}
+    availableTimeSlots={sampleAvailableTimeSlots}
   />,
   document.getElementById('root')
 );

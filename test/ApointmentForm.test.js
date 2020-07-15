@@ -222,6 +222,23 @@ describe('AppointmentForm', () => {
         );
         ReactTestUtils.Simulate.submit(form('appointment'));
       });
+      it('saves a new value when submitted', () => {
+        expect.hasAssertions();
+        render(<AppointmentForm
+          availableTimeSlots={availableTimeSlots}
+          today={today}
+          startsAt={availableTimeSlots[0].startsAt}
+          onSubmit={({startsAt}) =>
+            expect(startsAt).toEqual(availableTimeSlots[1].startsAt)
+          }
+          />
+        );
+        ReactTestUtils.Simulate.change(startsAtField(1), {
+          value: availableTimeSlots[1].startsAt.toString(),
+          name: 'startsAt'
+        });
+        ReactTestUtils.Simulate.submit(form('appointment'));
+      });
     });
   });
 });
