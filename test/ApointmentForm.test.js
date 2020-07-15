@@ -10,13 +10,14 @@ describe('AppointmentForm', () => {
     ({render, container} = createContainer());
   });
 
+  // TDD utilities
   const form = id => container.querySelector(`form[id="${id}"]`);
-
-  it('renders a form', () => {
-    render(<AppointmentForm />);
-    expect(form('appointment')).not.toBeNull();
-  });
-
+  const field = name => form('appointment').elements[name];
+  // retrieve a label by the form element it attaches to:
+  const labelFor = formElement =>
+    container.querySelector(`label[for="${formElement}`);
+  const startsAtField = index =>
+    container.querySelectorAll(`input[name="startsAt"]`)[index];
   const findOption = (dropdownNode, textContent) => {
     const options = Array.from(dropdownNode.childNodes);
     return options.find(
@@ -24,9 +25,18 @@ describe('AppointmentForm', () => {
     )
   };
 
+  it('renders a form', () => {
+    render(<AppointmentForm />);
+    expect(form('appointment')).not.toBeNull();
+  });
+  it('has a submit button', () => {
+    render(<AppointmentForm />);
+    const submitButton = container.querySelector(
+      'input[type="submit"]'
+    );
+    expect(submitButton).not.toBeNull();
+  });
   describe('service field', () => {
-    const field = name => form('appointment').elements[name];
-
     it('renders as a select box', () => {
       render(<AppointmentForm />);
       expect(field('service')).not.toBeNull();
@@ -66,10 +76,6 @@ describe('AppointmentForm', () => {
       );
       expect(option.selected).toBeTruthy();
     });
-
-    // retrieve a label by the form element it attaches to:
-    const labelFor = formElement =>
-      container.querySelector(`label[for="${formElement}`);
     it('renders a label', () => {
       render(<AppointmentForm />);
       expect(labelFor('service', 'Service name')).not.toBeNull();
@@ -174,9 +180,6 @@ describe('AppointmentForm', () => {
         const timesOfDay = timeSlotTable().querySelectorAll('input');
         expect(timesOfDay).toHaveLength(0);
       });
-
-      const startsAtField = index =>
-        container.querySelectorAll(`input[name="startsAt"]`)[index];
       const today=new Date();
       const availableTimeSlots = [
         {startsAt: today.setHours(9, 0,0,0,)},
@@ -240,5 +243,9 @@ describe('AppointmentForm', () => {
         ReactTestUtils.Simulate.submit(form('appointment'));
       });
     });
+  });
+
+  describe('stylist field', () => {
+
   });
 });
