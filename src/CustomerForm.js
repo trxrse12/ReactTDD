@@ -18,7 +18,7 @@ export const CustomerForm = ({
     }));
 
   const handleSubmit = () => {
-    fetch('/customers', {
+    window.fetch('/customers', {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json'},
@@ -54,7 +54,3 @@ export const CustomerForm = ({
     <input type="submit" value="Add" />
   </form>
 };
-
-CustomerForm.defaultProps = {
-  fetch: async () => {}
-}
