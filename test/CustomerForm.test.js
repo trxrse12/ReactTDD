@@ -61,7 +61,6 @@ describe('CustomerForm', () => {
 
   const itSubmitsExistingValue = fieldName =>
     it('saves existing value when submitted',  async() => {
-      const fetchSpy = spy();
       expect.extend({
         toHaveBeenCalled(received){
           if(received.receivedArguments() === undefined) {
@@ -86,7 +85,6 @@ describe('CustomerForm', () => {
 
   const itSavesNewValueWhenSubmitted = (fieldName, value) =>
     it('saves new value when submitted',  async() => {
-     const fetchSpy = spy();
       render(
         <CustomerForm
           {...{[fieldName]: 'existingValue' }}
@@ -101,9 +99,18 @@ describe('CustomerForm', () => {
       expect(JSON.parse(fetchOpts.body)[fieldName]).toEqual('newValue');
     });
 
+  const originalFetch = window.fetch;
+  let fetchSpy;
+
   beforeEach(() => {
     ({ render, container } = createContainer());
+    fetchSpy = spy();
+    window.fetch = fetchSpy.fn;
   });
+
+  afterEach(() => {
+    window.fetch = originalFetch;
+  })
 
   it('renders a form', () => {
     render(<CustomerForm/>);
@@ -146,7 +153,6 @@ describe('CustomerForm', () => {
   })
 
   it('calls fetch with the right properties when submitting data', () => {
-    const fetchSpy = spy();
     render(
       <CustomerForm fetch={fetchSpy.fn} />
     );
