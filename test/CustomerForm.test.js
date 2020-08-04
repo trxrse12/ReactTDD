@@ -7,14 +7,7 @@ import { CustomerForm } from '../src/CustomerForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('CustomerForm', () => {
-  let render, container;
-
-  // retrieve a form by its id:
-  const form = id => container.querySelector(`form[id="${id}"]`);
-  // retrieve a label by the form element it attaches to:
-  const labelFor = formElement =>
-    container.querySelector(`label[for="${formElement}`);
-
+  let render, container, form, field, labelFor, element, elements;
 
   const expectToBeInputFieldOftextType = formElement => {
     expect(formElement).not.toBeNull();
@@ -22,11 +15,19 @@ describe('CustomerForm', () => {
     expect(formElement.type).toEqual('text');
   };
 
-  // generic TDD helper that returns the attached form'e element for any element:
-  const field = name => form('customer').elements[name];
+  // // generic TDD helper that returns the attached form'e element for any element:
+  // const field = (formId, name) => form(formId).elements[name];
 
   beforeEach(() => {
-    ({ render, container } = createContainer());
+    ({
+      render,
+      container,
+      form,
+      field,
+      labelFor,
+      element,
+      elements,
+    } = createContainer());
     jest
       .spyOn(window,'fetch')
       .mockReturnValue(fetchResponseOk({}))
@@ -44,7 +45,7 @@ describe('CustomerForm', () => {
 
   it('has a submit button',() => {
     render(<CustomerForm />);
-    const submitButton = container.querySelector(
+    const submitButton = element(
       'input[type="submit"]'
     );
     expect(submitButton).not.toBeNull();
@@ -105,9 +106,8 @@ describe('CustomerForm', () => {
       ReactTestUtils.Simulate.submit(form('customer'));
     });
 
-    const errorElement = container.querySelector('.error');
-    expect(errorElement).not.toBeNull();
-    expect(errorElement.textContent).toMatch('error occurred');
+    expect(element('.error')).not.toBeNull();
+    expect(element('.error').textContent).toMatch('error occurred');
   });
 
   const itRendersALabel = (fieldName, text) =>
@@ -120,7 +120,7 @@ describe('CustomerForm', () => {
   const itAssignsAnIdThatMatchesTheLabelId = (fieldName) =>
     it('assigns an id that matches the label id', () => {
       render(<CustomerForm />);
-      expect(field(fieldName).id).toEqual(fieldName);
+      expect(field('customer', fieldName).id).toEqual(fieldName);
     });
 
   const itSubmitsExistingValue = fieldName =>
@@ -143,7 +143,7 @@ describe('CustomerForm', () => {
           {...{[fieldName]: 'existingValue' }}
         />
       );
-      await ReactTestUtils.Simulate.change(field(fieldName), {
+      await ReactTestUtils.Simulate.change(field('customer', fieldName), {
         target: { value, name: fieldName}
       });
       await ReactTestUtils.Simulate.submit(form('customer'));
@@ -156,14 +156,14 @@ describe('CustomerForm', () => {
   const itRendersAsTextBox = (fieldName) =>
     it('renders as a text box', () => {
       render(<CustomerForm/>);
-      expectToBeInputFieldOftextType(field(fieldName));
+      expectToBeInputFieldOftextType(field('customer', fieldName));
     });
 
   // test to see if the form field has an initial value:
   const itIncludesTheExistingValue = (fieldName) =>
     it('includes the existing value', () => {
       render(<CustomerForm { ...{[fieldName]: 'value'} } />);
-      expect(field(fieldName).value).toEqual('value');
+      expect(field('customer', fieldName).value).toEqual('value');
     });
 
 
