@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Error = () => (
-  <div className="error">An error occured during the save.</div>
+  <div className="error">An error occurred during the save.</div>
 );
 
 export const CustomerForm = ({
@@ -24,14 +24,16 @@ export const CustomerForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await window.fetch('/customers', {
+    const result1 = await window.fetch('/customers', {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(customer),
     });
-    if (result.ok){
-      const customerWithId = await result.json();
+    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC result1=', result1)
+    if (result1.ok){
+      setError(false);
+      const customerWithId = await result1.json();
       onSave(customerWithId)
     } else {
       setError(true);
