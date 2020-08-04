@@ -3,24 +3,10 @@ import ReactTestUtils, {act} from 'react-dom/test-utils';
 
 import { createContainer } from "./domManipulator";;
 import { CustomerForm } from '../src/CustomerForm';
+import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 const originalFetch = window.fetch;
 let fetchSpy;
-
-
-// Test helper
-const fetchResponseOk = body => Promise.resolve({
-  ok: true,
-  json: () => Promise.resolve(body)
-});
-
-// Test helper
-const fetchResponseError = () =>
-  Promise.resolve({ok: false});
-
-const fetchRequestBody = () =>
-  JSON.parse(fetchSpy.mock.calls[0][1].body);
-
 
 
 describe('CustomerForm', () => {
@@ -77,7 +63,7 @@ describe('CustomerForm', () => {
         />
       );
       await ReactTestUtils.Simulate.submit(form('customer'));
-      expect(fetchRequestBody()).toMatchObject({
+      expect(requestBodyOf(fetchSpy)).toMatchObject({
         [fieldName]: 'value'
       })
     });
@@ -93,7 +79,7 @@ describe('CustomerForm', () => {
         target: { value, name: fieldName}
       });
       await ReactTestUtils.Simulate.submit(form('customer'));
-      expect(fetchRequestBody()).toMatchObject({
+      expect(requestBodyOf(fetchSpy)).toMatchObject({
         [fieldName]: 'newValue'
       })
     });
