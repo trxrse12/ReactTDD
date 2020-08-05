@@ -71,9 +71,7 @@ describe('CustomerForm', () => {
     const saveSpy = jest.fn();
 
     render(<CustomerForm onSave={saveSpy} />);
-    await act(async () => {
-      submit(form('customer'));
-    });
+    await submit(form('customer'));
 
     expect(saveSpy).toHaveBeenCalledWith(customer);
     // expect(saveSpy.receivedArgument(0)).toEqual(customer);
@@ -83,24 +81,20 @@ describe('CustomerForm', () => {
     window.fetch.mockReturnValue(fetchResponseError());
     const saveSpy = jest.fn();
     render(<CustomerForm onSave={saveSpy} />);
-    await act(async () => {
-      submit(form('customer'))
-    });
+    await submit(form('customer'));
     expect(saveSpy).not.toHaveBeenCalled();
   });
 
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
     render(<CustomerForm />);
-    await act(async () => {
-      submit(form('customer'), {
+    await submit(form('customer'), {
         preventDefault: preventDefaultSpy
       });
-    });
     expect(preventDefaultSpy).toHaveBeenCalled();
   });
 
-  it.only('renders error message when fetch call fails', async () => {
+  it('renders error message when fetch call fails', async () => {
     window.fetch.mockReturnValue(fetchResponseError());
     render(<CustomerForm/>);
     await submit(form('customer'));
@@ -109,11 +103,12 @@ describe('CustomerForm', () => {
     expect(element('.error').textContent).toMatch('error occurred');
   });
 
-  it('clears the error message when fetch call succeeds', () => {
+  it.skip('clears the error message when fetch call succeeds', async() => {
+    window.fetch.mockReturnValue(fetchResponseError());
     const customer = {id: 123};
     window.fetch.mockReturnValue(fetchResponseOk(customer));
     render(<CustomerForm/>);
-    submit(form('customer'));
+    await submit(form('customer'));
     expect(element('.error')).toBeNull();
   });
 
