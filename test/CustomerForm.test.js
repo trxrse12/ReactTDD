@@ -103,11 +103,13 @@ describe('CustomerForm', () => {
     expect(element('.error').textContent).toMatch('error occurred');
   });
 
-  it.skip('clears the error message when fetch call succeeds', async() => {
+  it('clears the error message when fetch call succeeds', async() => {
+    render(<CustomerForm/>);
     window.fetch.mockReturnValue(fetchResponseError());
+    await submit(form('customer'));
+
     const customer = {id: 123};
     window.fetch.mockReturnValue(fetchResponseOk(customer));
-    render(<CustomerForm/>);
     await submit(form('customer'));
     expect(element('.error')).toBeNull();
   });
