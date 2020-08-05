@@ -68,8 +68,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="364">
-                      <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+                    <state relative-caret-position="-488">
+                      <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
                     </state>
                   </provider>
                 </entry>
@@ -93,8 +93,11 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="28">
-                      <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+                    <state relative-caret-position="-249">
+                      <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+                      <folding>
+                        <element signature="e#0#33#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -102,11 +105,10 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="124">
-                      <caret line="107" column="16" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
+                    <state relative-caret-position="181">
+                      <caret line="109" column="5" lean-forward="true" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
-                        <element signature="e#139#190#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -135,8 +137,11 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="336">
-                      <caret line="24" column="11" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="11" />
+                    <state relative-caret-position="196">
+                      <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+                      <folding>
+                        <element signature="e#0#33#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -145,7 +150,7 @@
                 <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="357">
-                      <caret line="166" column="7" selection-start-line="166" selection-start-column="7" selection-end-line="166" selection-end-column="7" />
+                      <caret line="165" column="7" selection-start-line="165" selection-start-column="7" selection-end-line="165" selection-end-column="7" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                         <element signature="e#139#190#0" expanded="true" />
@@ -252,6 +257,16 @@
       <find>fetchSpy</find>
       <find>field</find>
       <find>errorElement</find>
+      <find>ReactTestUtils</find>
+      <find>act</find>
+      <find>change</find>
+      <find>spyOn</find>
+      <find>calls</find>
+      <find>objectMatching</find>
+      <find>fetchResponseOk</find>
+      <find>requestBodyOf</find>
+      <find>createContainer</find>
+      <find>container</find>
     </findStrings>
     <replaceStrings>
       <replace>requestBodyOf</replace>
@@ -438,7 +453,7 @@
       <workItem from="1594810141225" duration="43005000" />
       <workItem from="1595689411922" duration="10256000" />
       <workItem from="1596108351880" duration="2516000" />
-      <workItem from="1596272817950" duration="21613000" />
+      <workItem from="1596272817950" duration="34206000" />
     </task>
     <servers />
   </component>
@@ -463,13 +478,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272710000" />
+    <option name="totallyTimeSpent" value="285303000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1077748" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1077748" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -718,8 +733,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+        <state relative-caret-position="-488">
+          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -732,18 +747,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="-249">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="107" column="16" lean-forward="true" selection-start-line="107" selection-start-column="16" selection-end-line="107" selection-end-column="16" />
+        <state relative-caret-position="181">
+          <caret line="109" column="5" lean-forward="true" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#139#190#0" expanded="true" />
           </folding>
         </state>
       </provider>

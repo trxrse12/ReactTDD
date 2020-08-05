@@ -24,15 +24,16 @@ export const CustomerForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result1 = await window.fetch('/customers', {
+    const result = await window.fetch('/customers', {
       method: 'POST',
       credentials: 'same-origin',
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(customer),
     });
-    if (result1.ok){
+    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC result=', result)
+    if (result.ok){
       setError(false);
-      const customerWithId = await result1.json();
+      const customerWithId = await result.json();
       onSave(customerWithId)
     } else {
       setError(true);
