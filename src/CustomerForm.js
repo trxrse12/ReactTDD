@@ -30,7 +30,6 @@ export const CustomerForm = ({
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(customer),
     });
-    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC result=', result)
     if (result.ok){
       setError(false);
       const customerWithId = await result.json();

@@ -101,9 +101,9 @@ describe('CustomerForm', () => {
   });
 
   it.only('renders error message when fetch call fails', async () => {
-    window.fetch.mockReturnValue(Promise.resolve({ok:false}));
+    window.fetch.mockReturnValue(fetchResponseError());
     render(<CustomerForm/>);
-    submit(form('customer'));
+    await submit(form('customer'));
 
     expect(element('.error')).not.toBeNull();
     expect(element('.error').textContent).toMatch('error occurred');
