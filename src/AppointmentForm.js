@@ -116,7 +116,7 @@ export const AppointmentForm = ({
      selectableStylists,
      stylist,
      serviceStylists,
-     onSubmit,
+     onSave,
      salonOpensAt,
      salonClosesAt,
      today,
@@ -144,6 +144,17 @@ export const AppointmentForm = ({
     []
   );
 
+  const handleSubmit = async () => {
+    const result = await window.fetch('/appointments', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(appointment),
+    });
+    const appointmentWithId = await result.json();
+    onSave(appointmentWithId);
+  };
+
   const stylistsForService = appointment.service
     ? serviceStylists[appointment.service]
     : selectableStylists;
@@ -155,7 +166,7 @@ export const AppointmentForm = ({
     : availableTimeSlots
 
   return (
-    <form id="appointment" onSubmit={() => onSubmit(appointment)}>
+    <form id="appointment" onSubmit={handleSubmit}>
       <label htmlFor="service">Service name</label>
       <select
         name="service"
@@ -212,5 +223,6 @@ AppointmentForm.defaultProps = {
     'Beard trim': ['Pat', 'Sam'],
     'Cut & beard trim': ['Pat', 'Sam'],
     Extensions: ['Ashley', 'Pat']
-  }
+  },
+  onSave: () => {},
 };

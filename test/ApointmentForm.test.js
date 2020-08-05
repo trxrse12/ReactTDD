@@ -6,10 +6,14 @@ import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
-  let render, container;
+  let render, container, submit;
 
   beforeEach(() => {
-    ({render, container} = createContainer());
+    ({
+      render,
+      container,
+      submit,
+    } = createContainer());
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk({}));
@@ -80,16 +84,17 @@ describe('AppointmentForm', () => {
       expect(field(fieldName).id).toEqual(fieldName)
     });
   const itSubmitsExistingValue = (fieldName, props) =>
-    it('saves existing value when submitted', async () => {
-      expect.hasAssertions();
+    it.only('saves existing value when submitted', async () => {
       render(
         <AppointmentForm
           {...props}
           {...{[fieldName]:'value'}}
-          onSubmit={props => expect(props[fieldName]).toEqual('value')}
         />
       );
-      await ReactTestUtils.Simulate.submit(form('appointment'))
+      await submit(form('appointment'));
+      expect(requestBodyOf(window.fetch)).toMatchObject({
+        [fieldName]: 'value',
+      })
     });
   const itSubmitsNewValue = (fieldName, props) =>
     it('saves new value when submitted', async () => {
