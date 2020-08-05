@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
+import 'whatwg-fetch';
 import { createContainer } from "./domManipulator";
 import { AppointmentForm } from '../src/AppointmentForm';
+import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
   let render, container;
 
   beforeEach(() => {
     ({render, container} = createContainer());
+    jest
+      .spyOn(window, 'fetch')
+      .mockReturnValue(fetchResponseOk({}));
   });
 
   // TDD utilities
