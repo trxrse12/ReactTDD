@@ -169,7 +169,7 @@ describe('AppointmentForm', () => {
     });
   });
 
-  describe.only('stylist field', () => {
+  describe('stylist field', () => {
     itRendersAsASelectBox('stylist');
     itInitiallyHasABlankValueChosen('stylist');
     itPreselectExistingValue( // to make this pass be sure you add a default value
@@ -182,7 +182,7 @@ describe('AppointmentForm', () => {
     itSubmitsExistingValue('stylist'); // to make it pass just add the "stylist" to the useState hook
     itSubmitsNewValue('stylist'); // to make it pass just add a change handler that takes a target value
           // as param and calls the state changer with the target value
-    it.only('lists only stylists that can perform the selected service', () => {
+    it('lists only stylists that can perform the selected service', () => {
       const selectableServices = ['1', '2'];
       const selectableStylists = ['A', 'B', 'C'];
       const serviceStylists = {
@@ -343,7 +343,7 @@ describe('AppointmentForm', () => {
       const timesOfDay = timeSlotTable().querySelectorAll('input');
       expect(timesOfDay).toHaveLength(0);
     });
-    it('filters appointments by selected stylist', () => {
+    it.only('filters appointments by selected stylist', () => {
       const availableTimeSlots = [
         {
           startsAt: today.setHours(9,0,0,0),
@@ -360,9 +360,13 @@ describe('AppointmentForm', () => {
           today={today}
           />
       );
-      ReactTestUtils.Simulate.change(field('stylist'), {
-        target: {value: 'B', name: 'stylist'}
-      });
+      change(
+        field('appointment', 'stylist'),
+        withEvent('stylist','B')
+      )
+      // ReactTestUtils.Simulate.change(field('stylist'), {
+      //   target: {value: 'B', name: 'stylist'}
+      // });
       const cells = timeSlotTable().querySelectorAll('td');
       expect(
         cells[0].querySelector('input[type="radio"]')

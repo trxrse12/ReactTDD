@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/test/ApointmentForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApointmentForm.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/domManipulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/domManipulator.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +28,8 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-151">
-                          <caret line="30" column="37" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="30" selection-end-column="37" />
+                        <state relative-caret-position="87">
+                          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
                         </state>
                       </provider>
                     </entry>
@@ -75,8 +74,8 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="168">
-                          <caret line="201" column="46" selection-start-line="201" selection-start-column="46" selection-end-line="201" selection-end-column="46" />
+                        <state relative-caret-position="349">
+                          <caret line="370" column="35" selection-start-line="370" selection-start-column="35" selection-end-line="370" selection-end-column="35" />
                           <folding>
                             <element signature="e#0#26#0" expanded="true" />
                           </folding>
@@ -97,7 +96,7 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="560">
+                    <state relative-caret-position="461">
                       <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
                       <folding>
                         <element signature="e#0#33#0" expanded="true" />
@@ -338,7 +337,7 @@
       <workItem from="1595689411922" duration="10256000" />
       <workItem from="1596108351880" duration="2516000" />
       <workItem from="1596272817950" duration="34206000" />
-      <workItem from="1596654255244" duration="11867000" />
+      <workItem from="1596654255244" duration="12864000" />
     </task>
     <servers />
   </component>
@@ -363,7 +362,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300632000" />
+    <option name="totallyTimeSpent" value="301629000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
@@ -600,8 +599,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-151">
-          <caret line="30" column="37" lean-forward="true" selection-start-line="27" selection-start-column="6" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="87">
+          <caret line="47" column="24" lean-forward="true" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -624,7 +623,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
+        <state relative-caret-position="461">
           <caret line="46" column="8" lean-forward="true" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
@@ -634,8 +633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="201" column="46" selection-start-line="201" selection-start-column="46" selection-end-line="201" selection-end-column="46" />
+        <state relative-caret-position="349">
+          <caret line="370" column="35" selection-start-line="370" selection-start-column="35" selection-end-line="370" selection-end-column="35" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
