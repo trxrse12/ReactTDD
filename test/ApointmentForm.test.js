@@ -305,20 +305,18 @@ describe('AppointmentForm', () => {
       );
       expect(startsAtField(0).checked).toEqual(true);
     });
-    it('saves existing values when submitted', async() => {
-      expect.hasAssertions();
+    it('saves existing values when submitted', async () => {
       render(<AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
-          onSubmit={({startsAt}) =>
-            expect(startsAt).toEqual(
-              availableTimeSlots[0].startsAt
-            )
-          }
         />
       );
-      ReactTestUtils.Simulate.submit(form('appointment'));
+      // ReactTestUtils.Simulate.submit(form('appointment'));
+      await submit(form('appointment'));
+      expect(requestBodyOf(window.fetch)).toMatchObject({
+        startsAt: availableTimeSlots[0].startsAt
+      })
     });
     it('saves a new value when submitted', async () => {
       render(<AppointmentForm
