@@ -320,22 +320,25 @@ describe('AppointmentForm', () => {
       );
       ReactTestUtils.Simulate.submit(form('appointment'));
     });
-    it('saves a new value when submitted', () => {
-      expect.hasAssertions();
+    it('saves a new value when submitted', async () => {
       render(<AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
-          onSubmit={({startsAt}) =>
-            expect(startsAt).toEqual(availableTimeSlots[1].startsAt)
-          }
         />
       );
-      ReactTestUtils.Simulate.change(startsAtField(1), {
-        value: availableTimeSlots[1].startsAt.toString(),
-        name: 'startsAt'
-      });
-      ReactTestUtils.Simulate.submit(form('appointment'));
+
+      change(
+        startsAtField(1),
+        withEvent(
+          'startsAt',
+          availableTimeSlots[1].startsAt.toString()
+        )
+      );
+      await submit(form('appointment'));
+      expect(requestBodyOf(window.fetch)).toMatchObject({
+        'startsAt': availableTimeSlots[1].startsAt
+      })
     });
 
     it('does not render radio buttons for unavailable time slots', () => {
@@ -343,7 +346,7 @@ describe('AppointmentForm', () => {
       const timesOfDay = timeSlotTable().querySelectorAll('input');
       expect(timesOfDay).toHaveLength(0);
     });
-    it.only('filters appointments by selected stylist', () => {
+    it('filters appointments by selected stylist', () => {
       const availableTimeSlots = [
         {
           startsAt: today.setHours(9,0,0,0),
