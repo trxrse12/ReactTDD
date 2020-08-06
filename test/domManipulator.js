@@ -39,6 +39,8 @@ export const createContainer = () => {
       ReactTestUtils.Simulate[eventName](element, eventData)
     );
 
+  const children = element => Array.from(element.childNodes);
+
   return {
     render: component => ReactDOM.render(component, container),
     container,
@@ -47,6 +49,7 @@ export const createContainer = () => {
     labelFor,
     element,
     elements,
+    children,
     click: simulateEvent('click'),
     change: simulateEvent('change'),
     submit: simulateEventAndWait('submit'),

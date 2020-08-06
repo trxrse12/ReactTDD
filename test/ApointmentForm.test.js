@@ -6,13 +6,15 @@ import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
-  let render, container, submit, field, change;
+  let render, container, submit, field, form, children, change;
 
   beforeEach(() => {
     ({
       render,
       container,
+      form,
       field,
+      children,
       submit,
       change,
     } = createContainer());
@@ -20,9 +22,12 @@ describe('AppointmentForm', () => {
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk({}));
   });
+  afterEach(() => {
+    window.fetch.mockRestore();
+  });
 
   // TDD utilities
-  const form = id => container.querySelector(`form[id="${id}"]`);
+  // const form = id => container.querySelector(`form[id="${id}"]`);
   // const field = name => form('appointment').elements[name];
   // retrieve a label by the form element it attaches to:
   const labelFor = formElement =>
@@ -177,7 +182,7 @@ describe('AppointmentForm', () => {
     itSubmitsExistingValue('stylist'); // to make it pass just add the "stylist" to the useState hook
     itSubmitsNewValue('stylist'); // to make it pass just add a change handler that takes a target value
           // as param and calls the state changer with the target value
-    it('lists only stylists that can perform the selected service', () => {
+    it.only('lists only stylists that can perform the selected service', () => {
       const selectableServices = ['1', '2'];
       const selectableStylists = ['A', 'B', 'C'];
       const serviceStylists = {
@@ -190,11 +195,11 @@ describe('AppointmentForm', () => {
             serviceStylists={serviceStylists}
             />
       );
-      ReactTestUtils.Simulate.change(field('service'), {
-        target: {value: '1', name: 'service'}
-      });
-      const optionNodes = Array.from(field('stylist').childNodes);
-      const renderedServices = optionNodes.map(
+      change(
+        field('appointment', 'service'),
+        withEvent('service', '1')
+      );
+      const renderedServices = children(field('appointment','stylist')).map(
         node => node.textContent
       );
       expect(renderedServices).toEqual(
