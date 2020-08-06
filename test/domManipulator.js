@@ -12,7 +12,9 @@ export const createContainer = () => {
   const form = id => container.querySelector(`form[id="${id}"]`);
 
   // generic TDD helper that returns the attached form'e element for any element:
-  const field = (formId, name) => form(formId).elements[name];
+  const field = (formId, name) => {
+    return form(formId).elements[name];
+  }
 
   // generic TDD helpe that searches for a label given its attached HTML element
   const labelFor = formElement =>
@@ -24,8 +26,10 @@ export const createContainer = () => {
   const elements = selector =>
     Array.from(container.querySelectorAll(selector));
 
-  const simulateEvent = eventName => (element, eventData) =>
+  const simulateEvent = eventName => (element, eventData) =>{
     ReactTestUtils.Simulate[eventName](element, eventData);
+  }
+
 
   const simulateEventAndWait = eventName => async (
     element,

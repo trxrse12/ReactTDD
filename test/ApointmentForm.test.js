@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import 'whatwg-fetch';
-import { createContainer } from "./domManipulator";
+import { createContainer, withEvent } from "./domManipulator";
 import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
-  let render, container, submit;
+  let render, container, submit, field, change;
 
   beforeEach(() => {
     ({
       render,
       container,
+      field,
       submit,
+      change,
     } = createContainer());
     jest
       .spyOn(window, 'fetch')
@@ -21,7 +23,7 @@ describe('AppointmentForm', () => {
 
   // TDD utilities
   const form = id => container.querySelector(`form[id="${id}"]`);
-  const field = name => form('appointment').elements[name];
+  // const field = name => form('appointment').elements[name];
   // retrieve a label by the form element it attaches to:
   const labelFor = formElement =>
     container.querySelector(`label[for="${formElement}`);
@@ -84,7 +86,7 @@ describe('AppointmentForm', () => {
       expect(field(fieldName).id).toEqual(fieldName)
     });
   const itSubmitsExistingValue = (fieldName, props) =>
-    it.only('saves existing value when submitted', async () => {
+    it('saves existing value when submitted', async () => {
       render(
         <AppointmentForm
           {...props}
@@ -98,19 +100,19 @@ describe('AppointmentForm', () => {
     });
   const itSubmitsNewValue = (fieldName, props) =>
     it('saves new value when submitted', async () => {
-      expect.hasAssertions();
       render(
         <AppointmentForm
           {...props}
           {...{[fieldName]: 'existingValue'}}
-          onSubmit={props =>
-            expect(props[fieldName]).toEqual('newValue')}
         />
       );
-      await ReactTestUtils.Simulate.change(field(fieldName), {
-        target: {value: 'newValue', name: fieldName}
-      });
-      await ReactTestUtils.Simulate.submit(form('appointment'));
+      change(
+        field('appointment',fieldName),
+        withEvent(fieldName, 'newValue'));
+      await submit(form('appointment'));
+      expect(requestBodyOf(window.fetch)).toMatchObject({
+        [fieldName]: 'newValue'
+      })
     });
   describe('service field', () => {
     itRendersAsASelectBox('service');
@@ -146,9 +148,6 @@ describe('AppointmentForm', () => {
       );
       await ReactTestUtils.Simulate.submit(form('appointment'))
     });
-    // itSubmitsNewValue('service',
-    //
-    //   )
     it('saves new value when submitted', async () => {
       expect.hasAssertions();
       render(
@@ -165,7 +164,7 @@ describe('AppointmentForm', () => {
     });
   });
 
-  describe('stylist field', () => {
+  describe.only('stylist field', () => {
     itRendersAsASelectBox('stylist');
     itInitiallyHasABlankValueChosen('stylist');
     itPreselectExistingValue( // to make this pass be sure you add a default value
