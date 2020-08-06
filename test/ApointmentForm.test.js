@@ -74,7 +74,7 @@ describe('AppointmentForm', () => {
         />
       );
       const option = findOption(
-        field(fieldName),
+        field('appointment', fieldName),
         existingValue,
       );
       expect(option.selected).toBeTruthy();
