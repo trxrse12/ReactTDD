@@ -88,7 +88,7 @@ describe('AppointmentForm', () => {
   const itAssignsAnIdThatMatchesTheLabelId = (fieldName) =>
     it('assigns an id that matches the label id', () => {
       render(<AppointmentForm/>);
-      expect(field(fieldName).id).toEqual(fieldName)
+      expect(field('appointment', fieldName).id).toEqual(fieldName)
     });
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
