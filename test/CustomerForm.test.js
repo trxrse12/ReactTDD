@@ -9,7 +9,7 @@ import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers
 describe('CustomerForm', () => {
   let render, container, form, field, labelFor, element, change, submit;
 
-  const expectToBeInputFieldOftextType = formElement => {
+  const   expectToBeInputFieldOftextType = formElement => {
     expect(formElement).not.toBeNull();
     expect(formElement.tagName).toEqual('INPUT');
     expect(formElement.type).toEqual('text');

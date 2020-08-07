@@ -160,20 +160,14 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           service='Blow-dry'
-          // onSubmit={({service}) =>
-          //   expect(service).toEqual('Cut')}
         />
       );
-      // await ReactTestUtils.Simulate.change(field('service'), {
-      //   target: {value: 'Cut', name: 'service'}
-      // });
       change(
         field('appointment', 'service'),
         withEvent(
           'service', 'Cut'
         )
       );
-      // await ReactTestUtils.Simulate.submit(form('appointment'));
       await submit(form('appointment'));
     });
   });
@@ -241,7 +235,7 @@ describe('AppointmentForm', () => {
       expect(timesOfDay[3].textContent).toEqual('10:30');
     });
 
-    it('renders an emppty cell at the start of the header row', () => {
+    it('renders an empty cell at the start of the header row', () => {
       render(<AppointmentForm />);
       const headerRow = timeSlotTable().querySelector(
         'thead > tr'
@@ -373,10 +367,7 @@ describe('AppointmentForm', () => {
       change(
         field('appointment', 'stylist'),
         withEvent('stylist','B')
-      )
-      // ReactTestUtils.Simulate.change(field('stylist'), {
-      //   target: {value: 'B', name: 'stylist'}
-      // });
+      );
       const cells = timeSlotTable().querySelectorAll('td');
       expect(
         cells[0].querySelector('input[type="radio"]')
@@ -385,6 +376,5 @@ describe('AppointmentForm', () => {
         cells[7].querySelector('input[type="radio"]')
       ).toBeNull();
     });
-
   });
 });
