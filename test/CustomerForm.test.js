@@ -74,7 +74,6 @@ describe('CustomerForm', () => {
     await submit(form('customer'));
 
     expect(saveSpy).toHaveBeenCalledWith(customer);
-    // expect(saveSpy.receivedArgument(0)).toEqual(customer);
   });
 
   it('does not notify onSave if the POST request returns an error', async () => {

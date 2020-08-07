@@ -102,6 +102,15 @@ describe('AppointmentForm', () => {
        })
       )
   });
+  it('prevents the default action when submitting the form', async () => {
+    const preventDefaultSpy = jest.fn();
+    render(<AppointmentForm />);
+    await submit(form('appointment'), {
+      preventDefault: preventDefaultSpy
+    });
+    expect(preventDefaultSpy).toHaveBeenCalled();
+  });
+
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
       render(
