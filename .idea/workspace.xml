@@ -2,12 +2,10 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/dist/layout.css" line="22" />
-    <bookmark url="file://$PROJECT_DIR$/test/ApointmentForm.test.js" line="152" />
+    <bookmark url="file://$PROJECT_DIR$/test/ApointmentForm.test.js" line="154" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/test/ApointmentForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApointmentForm.test.js" afterDir="false" />
-    </list>
+    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -58,8 +56,8 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="-52">
-                          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+                        <state relative-caret-position="46">
+                          <caret line="122" column="42" selection-start-line="122" selection-start-column="8" selection-end-line="122" selection-end-column="42" />
                           <folding>
                             <element signature="e#0#26#0" expanded="true" />
                           </folding>
@@ -74,8 +72,8 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="168">
-                          <caret line="124" column="10" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
+                        <state relative-caret-position="42">
+                          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
                           <folding>
                             <element signature="e#0#26#0" expanded="true" />
                           </folding>
@@ -139,12 +137,12 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
                 </entry>
@@ -349,7 +347,7 @@
       <workItem from="1596108351880" duration="2516000" />
       <workItem from="1596272817950" duration="34206000" />
       <workItem from="1596654255244" duration="23724000" />
-      <workItem from="1596792646705" duration="7818000" />
+      <workItem from="1596792646705" duration="8875000" />
     </task>
     <servers />
   </component>
@@ -374,7 +372,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="320307000" />
+    <option name="totallyTimeSpent" value="321364000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
@@ -417,7 +415,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test/ApointmentForm.test.js</url>
-          <line>217</line>
+          <line>219</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -638,16 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
-          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -671,8 +659,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="124" column="10" selection-start-line="124" selection-start-column="10" selection-end-line="124" selection-end-column="10" />
+        <state relative-caret-position="42">
+          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="122" column="42" selection-start-line="122" selection-start-column="8" selection-end-line="122" selection-end-column="42" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
