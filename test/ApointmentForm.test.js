@@ -118,6 +118,14 @@ describe('AppointmentForm', () => {
     expect(element('.error')).not.toBeNull();
     expect(element('.error').textContent).toMatch('error occurred');
   });
+  it('clears the error message when fetch call succeeds', async () => {
+    window.fetch.mockReturnValueOnce(fetchResponseError());
+    window.fetch.mockReturnValue(fetchResponseOk());
+    render(<AppointmentForm />);
+    await(submit(form('appointment')));
+    await(submit(form('appointment')));
+    expect(element('.error')).toBeNull();
+  });
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
       render(
