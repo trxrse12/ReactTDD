@@ -1,5 +1,8 @@
 import React, { useState, useCallback } from 'react';
 
+const Error = () => (
+  <div className="error">An error occurred during the save.</div>
+);
 
 const timeIncrements = (numTimes, startTime, increment) =>
   Array(numTimes)
@@ -123,6 +126,7 @@ export const AppointmentForm = ({
      availableTimeSlots,
      startsAt,
     }) => {
+  const [error, setError] = useState(false);
   const [appointment, setAppointment] = useState({
     service,
     startsAt,
@@ -152,7 +156,12 @@ export const AppointmentForm = ({
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(appointment),
     });
-    onSave();
+    if (result.ok){
+      setError(false);
+      onSave();
+    } else {
+      setError(true);
+    }
   };
 
   const stylistsForService = appointment.service
@@ -167,6 +176,7 @@ export const AppointmentForm = ({
 
   return (
     <form id="appointment" onSubmit={handleSubmit}>
+      { error ? <Error /> : null }
       <label htmlFor="service">Service name</label>
       <select
         name="service"

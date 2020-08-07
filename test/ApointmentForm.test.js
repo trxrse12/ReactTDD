@@ -6,7 +6,7 @@ import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
-  let render, container, submit, field, form, children, change;
+  let render, container, submit, field, form, children, change, element;
 
   beforeEach(() => {
     ({
@@ -17,6 +17,7 @@ describe('AppointmentForm', () => {
       children,
       submit,
       change,
+      element,
     } = createContainer());
     jest
       .spyOn(window, 'fetch')
@@ -110,7 +111,13 @@ describe('AppointmentForm', () => {
     });
     expect(preventDefaultSpy).toHaveBeenCalled();
   });
-
+  it('renders error message when fetch call fails', async () => {
+    window.fetch.mockReturnValue(fetchResponseError());
+    render(<AppointmentForm />);
+    await submit(form('appointment'));
+    expect(element('.error')).not.toBeNull();
+    expect(element('.error').textContent).toMatch('error occurred');
+  });
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
       render(
