@@ -7,8 +7,9 @@ import {CustomerForm} from "./CustomerForm";
 import { sampleAvailableTimeSlots } from './sampleData';
 
 ReactDOM.render(
-  <AppointmentForm
-    availableTimeSlots={sampleAvailableTimeSlots}
-  />,
+  // <AppointmentForm
+  //  availableTimeSlots={sampleAvailableTimeSlots}
+  // />,
+  <AppointmentsDayView appointments={sampleAppointments}/>,
   document.getElementById('root')
 );
