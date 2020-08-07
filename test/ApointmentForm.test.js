@@ -90,6 +90,18 @@ describe('AppointmentForm', () => {
       render(<AppointmentForm/>);
       expect(field('appointment', fieldName).id).toEqual(fieldName)
     });
+  it('calls fetch with the right properties when submitting data', async() => {
+    render(<AppointmentForm />);
+    await submit(form('appointment'));
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/appointments',
+       expect.objectContaining({
+         method: 'POST',
+         credentials: 'same-origin',
+         headers: {'Content-Type': 'application/json'}
+       })
+      )
+  });
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
       render(

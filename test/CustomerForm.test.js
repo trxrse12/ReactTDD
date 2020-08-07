@@ -52,11 +52,11 @@ describe('CustomerForm', () => {
     expect(submitButton).not.toBeNull();
   });
 
-  it('calls fetch with the right properties when submitting data', () => {
+  it('calls fetch with the right properties when submitting data', async () => {
     render(
       <CustomerForm />
     );
-    submit(form('customer'));
+    await submit(form('customer'));
     expect(window.fetch).toHaveBeenCalledWith('/customers',
       expect.objectContaining({
         method: 'POST',

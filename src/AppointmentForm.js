@@ -151,8 +151,7 @@ export const AppointmentForm = ({
       headers: { 'Content-Type': 'application/json'},
       body: JSON.stringify(appointment),
     });
-    const appointmentWithId = await result.json();
-    onSave(appointmentWithId);
+    onSave();
   };
 
   const stylistsForService = appointment.service
