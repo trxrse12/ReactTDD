@@ -1,16 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Appointment, AppointmentsDayView } from '../src/AppointmentsDayView';
+import {createContainer} from "./domManipulator";
 import ReactTestUtils from 'react-dom/test-utils'
 
 describe('Appointment', () => {
-  let container;
-  let customer;
+  let container, render, element;
+  let customer = {};
   beforeEach(()=>{
-    container = document.createElement('div');
+    ({
+      render,
+      container,
+      element,
+    } = createContainer());
   });
 
-  const render = component => ReactDOM.render(component, container);
+  const appointmentTable = () =>
+    element('#appointmentView > table');
+
+  it('renders a table', () => {
+    render(<Appointment customer={customer} />);
+    expect(appointmentTable()).not.toBeNull();
+  })
 
   it('renders the customer first name', () => {
     customer = { firstName: 'Ashley'};
