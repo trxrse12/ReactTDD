@@ -42,7 +42,11 @@ export const createContainer = () => {
   const children = element => Array.from(element.childNodes);
 
   return {
-    render: component => ReactDOM.render(component, container),
+    render: component => {
+      act(() => {
+        ReactDOM.render(component, container)
+      })
+    },
     container,
     form,
     field,
@@ -53,6 +57,8 @@ export const createContainer = () => {
     click: simulateEvent('click'),
     change: simulateEvent('change'),
     submit: simulateEventAndWait('submit'),
+    renderAndWait: async component =>
+      await act(async () => ReactDOM.render(component, container)),
   };
 };
 
