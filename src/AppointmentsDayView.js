@@ -59,6 +59,9 @@ export const AppointmentsDayView = ({appointments}) => {
         {appointments.map((appointment, i) => (
           <li key={appointment.startsAt}>
             <button
+              className={
+                i === selectedAppointment ? 'toggled' : ''
+              }
               type="button"
               onClick={() => setSelectedAppointment(i)}>
               {appointmentTimeOfDay(appointment.startsAt)}
