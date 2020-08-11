@@ -7,7 +7,7 @@ import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers
 
 describe('AppointmentForm', () => {
   let render, container, submit, field, form, children, change, element;
-
+  const customer={id: 123};
   beforeEach(() => {
     ({
       render,
@@ -92,7 +92,7 @@ describe('AppointmentForm', () => {
       expect(field('appointment', fieldName).id).toEqual(fieldName)
     });
   it('calls fetch with the right properties when submitting data', async() => {
-    render(<AppointmentForm />);
+    render(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'));
     expect(window.fetch).toHaveBeenCalledWith(
       '/appointments',
@@ -105,7 +105,7 @@ describe('AppointmentForm', () => {
   });
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
-    render(<AppointmentForm />);
+    render(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'), {
       preventDefault: preventDefaultSpy
     });
@@ -113,7 +113,7 @@ describe('AppointmentForm', () => {
   });
   it('renders error message when fetch call fails', async () => {
     window.fetch.mockReturnValue(fetchResponseError());
-    render(<AppointmentForm />);
+    render(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'));
     expect(element('.error')).not.toBeNull();
     expect(element('.error').textContent).toMatch('error occurred');
@@ -121,7 +121,7 @@ describe('AppointmentForm', () => {
   it('clears the error message when fetch call succeeds', async () => {
     window.fetch.mockReturnValueOnce(fetchResponseError());
     window.fetch.mockReturnValue(fetchResponseOk());
-    render(<AppointmentForm />);
+    render(<AppointmentForm customer={customer}/>);
     await(submit(form('appointment')));
     await(submit(form('appointment')));
     expect(element('.error')).toBeNull();
@@ -132,6 +132,7 @@ describe('AppointmentForm', () => {
         <AppointmentForm
           {...props}
           {...{[fieldName]:'value'}}
+          customer={ customer}
         />
       );
       await submit(form('appointment'));
@@ -145,6 +146,7 @@ describe('AppointmentForm', () => {
         <AppointmentForm
           {...props}
           {...{[fieldName]: 'existingValue'}}
+          customer={ customer}
         />
       );
       change(
@@ -155,6 +157,15 @@ describe('AppointmentForm', () => {
         [fieldName]: 'newValue'
       })
     });
+
+  it('passes the customer id to fetch when submitting', async() => {
+      render(<AppointmentForm customer={customer} />);
+      await submit(form('appointment'));
+      expect(requestBodyOf(window.fetch)).toMatchObject({
+        customer: customer.id
+      })
+  });
+
   describe('service field', () => {
     itRendersAsASelectBox('service');
     itInitiallyHasABlankValueChosen('service');
@@ -183,7 +194,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           service='Blow-dry'
-          // onSubmit={({service}) => expect(service).toEqual('Blow-dry')}
+          customer={customer}
         />
       );
       // await ReactTestUtils.Simulate.submit(form('appointment'))
@@ -196,6 +207,7 @@ describe('AppointmentForm', () => {
       render(
         <AppointmentForm
           service='Blow-dry'
+          customer={customer}
         />
       );
       change(
@@ -349,6 +361,7 @@ describe('AppointmentForm', () => {
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
+          customer={customer}
         />
       );
       // ReactTestUtils.Simulate.submit(form('appointment'));
@@ -362,6 +375,7 @@ describe('AppointmentForm', () => {
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
+          customer={customer}
         />
       );
 
