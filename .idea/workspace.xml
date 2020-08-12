@@ -7,17 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AppointmentsDayViewLoader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/AppointmentsDayViewLoader.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/shallowHelpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/shallowHelpers.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppointmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppointmentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AppointmentFormLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppointmentFormLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ApointmentForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApointmentForm.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/AppointmentFormLoader.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/AppointmentFormLoader.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/shallowHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/shallowHelpers.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.51668805">
+    <splitter split-orientation="horizontal" split-proportion="0.5982028">
       <split-first>
         <splitter split-orientation="vertical" split-proportion="0.4946581">
           <split-first>
@@ -46,17 +39,20 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/AppointmentFormLoader.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="98">
-                      <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+                    <state relative-caret-position="70">
+                      <caret line="5" column="57" lean-forward="true" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+                      <folding>
+                        <element signature="e#0#51#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
               </file>
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/test/shallowHelpers.js">
+                <entry file="file://$PROJECT_DIR$/src/App.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="174">
-                      <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+                    <state relative-caret-position="224">
+                      <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -69,12 +65,12 @@
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/test/shallowHelpers.test.js">
+                <entry file="file://$PROJECT_DIR$/test/App.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="395">
-                      <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+                    <state relative-caret-position="199">
+                      <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
                       <folding>
-                        <element signature="e#0#26#0" expanded="true" />
+                        <element signature="e#0#51#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -89,40 +85,13 @@
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
+                <entry file="file://$PROJECT_DIR$/test/shallowHelpers.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="125">
-                      <caret line="40" selection-start-line="40" selection-end-line="40" />
+                    <state relative-caret-position="126">
+                      <caret line="9" selection-start-line="9" selection-end-line="9" />
                       <folding>
-                        <element signature="e#0#33#0" expanded="true" />
+                        <element signature="e#0#26#0" expanded="true" />
                       </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/node_modules/react-dom/cjs/react-dom.development.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="104146">
-                      <caret line="7921" column="17" selection-start-line="7921" selection-start-column="17" selection-end-line="7921" selection-end-column="17" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="182">
-                      <caret line="13" selection-start-line="13" selection-end-line="13" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/AppointmentFormLoader.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="182">
-                      <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
                     </state>
                   </provider>
                 </entry>
@@ -242,13 +211,15 @@
         <option value="$PROJECT_DIR$/src/AppoointmentsDayViewLoader.js" />
         <option value="$PROJECT_DIR$/src/AppointmentsDayViewLoader.js" />
         <option value="$PROJECT_DIR$/test/AppointmentsDayViewLoader.test.js" />
-        <option value="$PROJECT_DIR$/src/AppointmentFormLoader.js" />
         <option value="$PROJECT_DIR$/test/AppointmentFormLoader.test.js" />
         <option value="$PROJECT_DIR$/src/AppointmentForm.js" />
         <option value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
         <option value="$PROJECT_DIR$/test/CustomerForm.test.js" />
-        <option value="$PROJECT_DIR$/test/shallowHelpers.js" />
         <option value="$PROJECT_DIR$/test/shallowHelpers.test.js" />
+        <option value="$PROJECT_DIR$/src/AppointmentFormLoader.js" />
+        <option value="$PROJECT_DIR$/test/shallowHelpers.js" />
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/test/App.test.js" />
       </list>
     </option>
   </component>
@@ -352,7 +323,7 @@
       <workItem from="1596272817950" duration="34206000" />
       <workItem from="1596654255244" duration="23724000" />
       <workItem from="1596792646705" duration="28940000" />
-      <workItem from="1597052897921" duration="15267000" />
+      <workItem from="1597052897921" duration="26037000" />
     </task>
     <servers />
   </component>
@@ -377,7 +348,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356696000" />
+    <option name="totallyTimeSpent" value="367466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
@@ -386,7 +357,7 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16461127" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16461127" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
@@ -439,6 +410,12 @@
           <line>192</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/App.test.js</url>
+          <line>45</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -644,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppointmentFormLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/AppointmentFormLoader.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -715,22 +685,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/shallowHelpers.js">
+    <entry file="file://$PROJECT_DIR$/test/shallowHelpers.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="-168">
+          <caret line="15" column="18" lean-forward="true" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/shallowHelpers.test.js">
+    <entry file="file://$PROJECT_DIR$/src/AppointmentFormLoader.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
+        <state relative-caret-position="70">
+          <caret line="5" column="57" lean-forward="true" selection-start-line="5" selection-start-column="57" selection-end-line="5" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/shallowHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="19" column="17" lean-forward="true" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
