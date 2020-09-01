@@ -4,11 +4,22 @@ const Error = () => (
   <div className="error">An error occurred during the save.</div>
 );
 
+// a validator
 const required = description => value =>
   !value || value.trim() === ''
   ? description
   : undefined;
 
+// another validator
+const match = (re, description) => value =>
+  !value.match(re) ? description : undefined;
+
+// function that is composing the validators
+const list = (...validators) => value =>
+  validators.reduce(
+    (result, validator) => result || validator(value),
+    undefined
+  );
 
 export const CustomerForm = ({
     firstName,
@@ -52,7 +63,13 @@ export const CustomerForm = ({
     const validators = {
       firstName: required('First name is required'),
       lastName: required('Last name is required'),
-      phoneNumber: required('Phone number is required'),
+      phoneNumber: list(
+        required('Phone number is required'),
+        match(
+          /^[0-9+()\- ]*$/,
+          'Only numbers, spaces and these symbols are allowed: ( ) + -'
+        )
+      ),
     };
     const result = validators[target.name](target.value);
     setValidationErrors({
