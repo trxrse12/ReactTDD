@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactTestUtils from 'react-dom/test-utils';
+import ReactTestUtils, {act} from 'react-dom/test-utils';
 import 'whatwg-fetch';
 
 import {createContainer, withEvent} from "./domManipulator";
@@ -7,7 +7,9 @@ import { CustomerForm } from '../src/CustomerForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('CustomerForm', () => {
-  let render, container, form, field, labelFor, element, change, submit;
+  let
+    render, container, form, field, labelFor, element, change, submit,
+    blur;
 
   const   expectToBeInputFieldOftextType = formElement => {
     expect(formElement).not.toBeNull();
@@ -28,6 +30,7 @@ describe('CustomerForm', () => {
       element,
       change,
       submit,
+      blur,
     } = createContainer());
     jest
       .spyOn(window,'fetch')
@@ -197,5 +200,42 @@ describe('CustomerForm', () => {
     itSavesNewValueWhenSubmitted('phoneNumber', 'newValue');
   });
 
+  describe('validation', () => {
+    const itInvalidatesFieldWithValue = (
+      fieldName,
+      value,
+      description,
+    ) => {
+      it(`displays error after blur when ${fieldName} field is '${value}'`, () => {
+        act(() => {
+          render(<CustomerForm/>);
+          blur(
+            field('customer', fieldName),
+            withEvent(fieldName, value))
+        });
+        expect(element('.error')).not.toBeNull();
+        expect(element('.error').textContent).toMatch(
+          description
+        );
+      });
+    };
 
+    itInvalidatesFieldWithValue(
+      'firstName',
+      '',
+      'First name is required'
+    );
+
+    itInvalidatesFieldWithValue(
+      'lastName',
+      '',
+      'Last name is required'
+    );
+
+    itInvalidatesFieldWithValue(
+      'phoneNumber',
+      '',
+      'Phone number is required'
+    );
+  });
 });

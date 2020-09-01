@@ -59,6 +59,7 @@ export const createContainer = () => {
     submit: simulateEventAndWait('submit'),
     renderAndWait: async component =>
       await act(async () => ReactDOM.render(component, container)),
+    blur: simulateEvent('blur'),
   };
 };
 
