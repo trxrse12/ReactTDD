@@ -5,8 +5,12 @@ export const fetchResponseOk = body => Promise.resolve({
 });
 
 // Test helper
-export const fetchResponseError = () =>
-  Promise.resolve({ok: false});
+export const fetchResponseError = (status=500, body={}) =>
+  Promise.resolve({
+    ok: false,
+    status,
+    json: () => Promise.resolve(body)
+  });
 
 
 export const requestBodyOf = fetchSpy =>

@@ -4,11 +4,15 @@
     <bookmark url="file://$PROJECT_DIR$/dist/layout.css" line="22" />
     <bookmark url="file://$PROJECT_DIR$/test/ApointmentForm.test.js" line="156" />
     <bookmark url="file://$PROJECT_DIR$/src/AppointmentsDayViewLoader.js" line="11" />
+    <bookmark url="file://$PROJECT_DIR$/test/CustomerForm.test.js" line="293" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/formValidation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomerForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/CustomerForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CustomerForm.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/spyHelpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/spyHelpers.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,14 +26,17 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.4971061">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.45833334">
+        <splitter split-orientation="vertical" split-proportion="0.5901857">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+                    <state relative-caret-position="96">
+                      <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+                      <folding>
+                        <element signature="e#0#38#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -37,12 +44,12 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <leaf>
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="388">
-                      <caret line="244" column="5" lean-forward="true" selection-start-line="244" selection-start-column="5" selection-end-line="244" selection-end-column="5" />
+                    <state relative-caret-position="825">
+                      <caret line="295" column="3" lean-forward="true" selection-start-line="295" selection-start-column="3" selection-end-line="295" selection-end-column="3" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -61,8 +68,29 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="14">
-                      <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="57" />
+                    <state relative-caret-position="209">
+                      <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+                      <folding>
+                        <element signature="e#0#33#0" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/formValidation.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="167">
+                      <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="238">
+                      <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
                     </state>
                   </provider>
                 </entry>
@@ -95,12 +123,12 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
                 </entry>
@@ -122,9 +150,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>act</find>
-      <find>change</find>
-      <find>spyOn</find>
       <find>calls</find>
       <find>fetchResponseOk</find>
       <find>requestBodyOf</find>
@@ -152,6 +177,9 @@
       <find>clears the error message when fetch call succeeds</find>
       <find>.only</find>
       <find>render</find>
+      <find>window.fetch</find>
+      <find>mockReturnValue</find>
+      <find>jest</find>
     </findStrings>
     <replaceStrings>
       <replace>requestBodyOf</replace>
@@ -184,7 +212,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/sampleData.js" />
         <option value="$PROJECT_DIR$/dist/styles.css" />
-        <option value="$PROJECT_DIR$/test/spyHelpers.js" />
         <option value="$PROJECT_DIR$/src/AppointmentsDayView.js" />
         <option value="$PROJECT_DIR$/test/AppointmentsDayView.test.js" />
         <option value="$PROJECT_DIR$/test/AppointmentFormLoader.js" />
@@ -201,8 +228,10 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/AppointmentsDayViewLoader.js" />
         <option value="$PROJECT_DIR$/test/domManipulator.js" />
-        <option value="$PROJECT_DIR$/test/CustomerForm.test.js" />
+        <option value="$PROJECT_DIR$/src/formValidation.js" />
+        <option value="$PROJECT_DIR$/test/spyHelpers.js" />
         <option value="$PROJECT_DIR$/src/CustomerForm.js" />
+        <option value="$PROJECT_DIR$/test/CustomerForm.test.js" />
       </list>
     </option>
   </component>
@@ -255,7 +284,7 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/formValidation.js" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/jest" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="" />
@@ -265,10 +294,13 @@
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/formValidation.js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
@@ -307,7 +339,7 @@
       <workItem from="1596654255244" duration="23724000" />
       <workItem from="1596792646705" duration="28940000" />
       <workItem from="1597052897921" duration="33884000" />
-      <workItem from="1598949626684" duration="8137000" />
+      <workItem from="1598949626684" duration="20441000" />
     </task>
     <servers />
   </component>
@@ -332,7 +364,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383450000" />
+    <option name="totallyTimeSpent" value="395754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
@@ -341,7 +373,7 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16621985" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16621985" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
@@ -375,12 +407,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test/CustomerForm.test.js</url>
-          <line>44</line>
+          <line>50</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test/CustomerForm.test.js</url>
-          <line>49</line>
+          <line>55</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -397,6 +429,18 @@
           <url>file://$PROJECT_DIR$/test/App.test.js</url>
           <line>46</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/CustomerForm.js</url>
+          <line>7</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/test/CustomerForm.test.js</url>
+          <line>229</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -575,13 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -686,27 +723,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
+    <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" selection-end-column="57" />
+        <state relative-caret-position="238">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
+    <entry file="file://$PROJECT_DIR$/src/formValidation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="244" column="5" lean-forward="true" selection-start-line="244" selection-start-column="5" selection-end-line="244" selection-end-column="5" />
+        <state relative-caret-position="167">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="96">
+          <caret line="43" column="38" lean-forward="true" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CustomerForm.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="295" column="3" lean-forward="true" selection-start-line="295" selection-start-column="3" selection-end-line="295" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
