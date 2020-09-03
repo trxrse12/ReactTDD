@@ -1,12 +1,17 @@
-// a validator
+// a validator that accepts as input a string
 export const required = description => value =>
   !value || value.trim() === ''
     ? description
     : undefined;
 
 // another validator
-export const match = (re, description) => value =>
-  !value.match(re) ? description : undefined;
+export const match = (re, description) => value => {
+  if (!value) {
+    return description;
+  }
+  return !value.match(re) ? description : undefined;
+};
+
 
 // function that is composing the validators
 export const list = (...validators) => value =>

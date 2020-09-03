@@ -153,6 +153,14 @@ describe('CustomerForm', () => {
       })
     });
 
+  // it('disables the submit button after the form has been submitted', () => {
+  //   render(
+  //     <CustomerForm {...validCustomer} />
+  //   );
+  //   await submit(form('customer'));
+  //   expect()
+  // });
+
   const itSavesNewValueWhenSubmitted = (fieldName, value) =>
     it('saves new value when submitted',  async() => {
       render(
@@ -316,21 +324,24 @@ describe('CustomerForm', () => {
       expect(element('.error')).toBeNull();
     });
 
-    it('clears any validation error message when the user corrects the field', async () => {
-      render(<CustomerForm {...validCustomer} />);
-      act(() => {
-        ReactTestUtils.Simulate.change(
-          element("[name='phoneNumber']"),
-          withEvent('phoneNumber','AAA'),
-        )
-      });
-      act(() => {
-        ReactTestUtils.Simulate.change(
-          element("[name='phoneNumber']"),
-          withEvent('phoneNumber','123'),
-        )
-      });
-      await act(async() => expect(element('.error')).toBeNull());
-    });
+    const itClearsAnyValidationErrorMessageWhenTheUserCorrectsTheField =
+      (fieldName, fieldValue) => {
+      it('clears any validation error message when the user corrects the field', async () => {
+          render(<CustomerForm {...validCustomer} />);
+          blur(
+            field('customer', fieldName),
+            withEvent(fieldName,''),
+          )
+          change(
+            field('customer', fieldName),
+            withEvent(fieldName,fieldValue),
+          )
+          expect(element('.error')).toBeNull();
+        });
+      };
+
+    itClearsAnyValidationErrorMessageWhenTheUserCorrectsTheField('firstName', 'name');
+    itClearsAnyValidationErrorMessageWhenTheUserCorrectsTheField('lastName', 'name');
+    itClearsAnyValidationErrorMessageWhenTheUserCorrectsTheField('phoneNumber', '123');
   });
 });
