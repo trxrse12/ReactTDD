@@ -1,4 +1,4 @@
-import { required, match, list } from '../src/formValidation';
+import { required, match, list, hasError } from '../src/formValidation';
 
 describe('the required validator', () => {
   const validationMessage = 'The field cannot be empty';
@@ -76,3 +76,15 @@ describe('the list validator composer', () => {
   });
 });
 
+describe('the hasError', () => {
+  it('returns undefined if the validationErrors object is missing for a specific field', () => {
+    const validationErrors = {};
+    expect(hasError(validationErrors, 'myField')).toEqual(false);
+  });
+  it('returns true if the validationErrors object is not undefined for a specific field', () => {
+    const validationErrors = {
+      myField: '',
+    };
+    expect(hasError(validationErrors, 'myField')).toEqual(true);
+  });
+});

@@ -20,6 +20,7 @@ export const list = (...validators) => value =>
     undefined
   );
 
+// returns true if there is a value inserted for the field name in discussion
 export const hasError = (validationErrors, fieldName) =>
   validationErrors[fieldName] !== undefined;
 
