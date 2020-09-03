@@ -39,28 +39,32 @@ export const CustomerForm = ({
       [target.name]: target.value
     }));
 
+  async function performSubmit() {
+    setSubmitting(true);
+    const result = await window.fetch('/customers', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(customer),
+    });
+    setSubmitting(false);
+    if (result.ok) {
+      setError(false);
+      const customerWithId = await result.json();
+      onSave(customerWithId)
+    } else if (result.status === 422) {
+      const response = await result.json();
+      setValidationErrors(response.errors);
+    } else {
+      setError(true);
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationResult = validateMany(validators, customer);
     if (!anyErrors(validationResult)){
-      setSubmitting(true);
-      const result = await window.fetch('/customers', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: { 'Content-Type': 'application/json'},
-        body: JSON.stringify(customer),
-      });
-      setSubmitting(false);
-      if (result.ok){
-        setError(false);
-        const customerWithId = await result.json();
-        onSave(customerWithId)
-      } else if (result.status === 422) {
-        const response = await result.json();
-        setValidationErrors(response.errors);
-      } else {
-        setError(true);
-      }
+      await performSubmit();
     } else {
       setValidationErrors(validationResult);
     }
