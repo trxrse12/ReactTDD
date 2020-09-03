@@ -33,13 +33,26 @@ export const CustomerForm = ({
   });
 
 
-  const handleChange = ({target}) =>
+  function validateSingleField(fieldName, fieldValue) {
+    const result = validateMany(validators, {
+      [fieldName]: fieldValue,
+    });
+    setValidationErrors({
+      ...validationErrors, ...result,
+    });
+  }
+
+  const handleChange = ({target}) => {
     setCustomer(customer => ({
       ...customer,
       [target.name]: target.value
     }));
+    if (hasError(validationErrors, target.name)){
+      validateSingleField(target.name, target.value);
+    }
+  };
 
-  async function performSubmit() {
+  const performSubmit = async () => {
     setSubmitting(true);
     const result = await window.fetch('/customers', {
       method: 'POST',
@@ -58,7 +71,7 @@ export const CustomerForm = ({
     } else {
       setError(true);
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();

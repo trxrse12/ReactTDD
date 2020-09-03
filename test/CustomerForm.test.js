@@ -315,5 +315,22 @@ describe('CustomerForm', () => {
       );
       expect(element('.error')).toBeNull();
     });
+
+    it('clears any validation error message when the user corrects the field', async () => {
+      render(<CustomerForm {...validCustomer} />);
+      act(() => {
+        ReactTestUtils.Simulate.change(
+          element("[name='phoneNumber']"),
+          withEvent('phoneNumber','AAA'),
+        )
+      });
+      act(() => {
+        ReactTestUtils.Simulate.change(
+          element("[name='phoneNumber']"),
+          withEvent('phoneNumber','123'),
+        )
+      });
+      await act(async() => expect(element('.error')).toBeNull());
+    });
   });
 });
