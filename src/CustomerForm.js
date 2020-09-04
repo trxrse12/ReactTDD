@@ -52,7 +52,7 @@ export const CustomerForm = ({
     }
   };
 
-  const performSubmit = async () => {
+  const doSave = async () => {
     setSubmitting(true);
     const result = await window.fetch('/customers', {
       method: 'POST',
@@ -77,7 +77,7 @@ export const CustomerForm = ({
     e.preventDefault();
     const validationResult = validateMany(validators, customer);
     if (!anyErrors(validationResult)){
-      await performSubmit();
+      await doSave();
     } else {
       setValidationErrors(validationResult);
     }
