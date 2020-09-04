@@ -1,4 +1,4 @@
-import { required, match, list, hasError, validateMany } from '../src/formValidation';
+import { required, match, list, hasError, validateMany, anyErrors } from '../src/formValidation';
 
 describe('the required validator', () => {
   const validationMessage = 'The field cannot be empty';
@@ -154,4 +154,21 @@ describe('the validateMany() function', () => {
       phoneNumber: matchValidationMessage,
     })
   });
+});
+
+describe('anyError()', () => {
+  const requiredValidationMessage = 'Field is required'
+  it('returns false if no errors present in the input object', () => {
+    const errorObject = {};
+    const res = anyErrors(errorObject);
+    expect(res).toBe(false);
+  });
+  it('returns true if at least one error present in the input object', () => {
+    const errorObject = {
+      lastName: requiredValidationMessage,
+    };
+    const res = anyErrors(errorObject);
+    expect(res).toBe(true);
+  })
+
 });
