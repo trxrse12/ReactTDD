@@ -1,4 +1,4 @@
-import { required, match, list, hasError } from '../src/formValidation';
+import { required, match, list, hasError, validateMany } from '../src/formValidation';
 
 describe('the required validator', () => {
   const validationMessage = 'The field cannot be empty';
@@ -86,5 +86,72 @@ describe('the hasError', () => {
       myField: '',
     };
     expect(hasError(validationErrors, 'myField')).toEqual(true);
+  });
+});
+
+describe('the validateMany() function', () => {
+  const requiredValidationMessage = 'The field is required';
+  const matchValidationMessage = 'Only numbers, spaces and these symbols are allowed: ( ) + -';
+  const re = new RegExp(/^[0-9+()\- ]*$/);
+  const requiredValidator = required(requiredValidationMessage);
+  const matchValidator = match(re, matchValidationMessage);
+  const validators = {
+    firstName: requiredValidator,
+    lastName: requiredValidator,
+    phoneNumber: list(
+      required('Phone number is required'),
+      match(
+        /^[0-9+()\- ]*$/,
+        matchValidationMessage
+      )
+    )
+  };
+
+  const validFields = {
+    firstName: 'Remus',
+    lastName: 'Sepp',
+    phoneNumber: '123456'
+  };
+
+  const partiallyValidFields = {
+    firstName: '',
+    lastName: 'Sepp',
+    phoneNumber: '123456'
+  };
+
+  const invalidFields = {
+    firstName: '',
+    lastName: '',
+    phoneNumber: '...'
+  };
+
+  it('returns undefined if the set of fields is valid', () => {
+    const res = validateMany(validators, validFields);
+    expect(res).toBeDefined();
+    expect(res).toEqual({
+      firstName: undefined,
+      lastName: undefined,
+      phoneNumber: undefined,
+    })
+  });
+
+  it('returns the validation message for the corresponding missing field', () => {
+    const res = validateMany(validators, partiallyValidFields);
+    expect(res).toBeDefined();
+    expect(res).toEqual({
+      firstName: requiredValidationMessage,
+      lastName: undefined,
+      phoneNumber: undefined,
+    })
+  });
+
+  it('returns the validation message for the corresponding missing field', () => {
+    const res = validateMany(validators, invalidFields);
+    expect(res).toBeDefined();
+    expect(res).toEqual({
+      firstName: requiredValidationMessage,
+      lastName: requiredValidationMessage,
+      phoneNumber: matchValidationMessage,
+    })
   });
 });

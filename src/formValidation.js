@@ -25,11 +25,14 @@ export const hasError = (validationErrors, fieldName) =>
   validationErrors[fieldName] !== undefined;
 
 // function that validates many fields in one go
+// it accepts a "validators" object, one that has a separate entry
+//    for each form's field, entry that has a corresponding validator function
+//
 export const validateMany = (validators, fields) =>
   Object.entries(fields).reduce(
     (result, [name, value]) => ({
-      ...result,
-      [name]: validators[name](value)
+        ...result,
+        [name]: validators[name](value)
     }),
     {}
   );
