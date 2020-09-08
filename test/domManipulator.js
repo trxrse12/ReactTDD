@@ -55,6 +55,7 @@ export const createContainer = () => {
     elements,
     children,
     click: simulateEvent('click'),
+    clickAndWait: simulateEventAndWait('click'),
     change: simulateEvent('change'),
     submit: simulateEventAndWait('submit'),
     renderAndWait: async component =>
