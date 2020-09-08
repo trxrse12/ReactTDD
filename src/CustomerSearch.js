@@ -34,9 +34,10 @@ export const CustomerSearch = () => {
         </tr>
       </thead>
       <tbody>
-        {customers[0] ? (
-          <CustomerRow customer={customers[0]} />
-        ) : null}
+        {customers.map(customer => (
+            <CustomerRow customer={customer} key={customer.id} />
+          )
+        )}
       </tbody>
     </table>
   )
