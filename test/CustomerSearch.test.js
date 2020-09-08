@@ -15,6 +15,8 @@ const twoCustomers = [
 
 const tenCustomers = Array.from('0123456789', id=> ({id}));
 
+const anotherTenCustomers = Array.from('ABCDEFGHIJ', id => ({id}));
+
 describe('CustomerSearch form', () => {
   let renderAndWait, element, elements, container, clickAndWait;
   beforeEach(() => {
@@ -85,6 +87,47 @@ describe('CustomerSearch form', () => {
     await clickAndWait(element('button#next-page'));
     expect(elements('tbody tr').length).toEqual(1);
     expect(elements('td')[0].textContent).toEqual('Next');
+  });
+  it('has a previous button', async () => {
+    await renderAndWait(<CustomerSearch/>);
+    expect(element('button#previous-page')).not.toBeNull();
+  });
+  it('moves back to first page when previous button is clicked', async () => {
+    window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
+    await renderAndWait(<CustomerSearch/>);
+    await clickAndWait(element('button#next-page'));
+    await clickAndWait(element('button#previous-page'));
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      '/customers',
+      expect.anything()
+    )
+  });
+  it('moves back one page when clicking previous after multiple clicks of the next button', async () => {
+    window.fetch
+      .mockReturnValueOnce(fetchResponseOk(tenCustomers))
+      .mockReturnValue(fetchResponseOk(anotherTenCustomers));
+    await renderAndWait(<CustomerSearch/>);
+    await clickAndWait(element('button#next-page'));
+    await clickAndWait(element('button#next-page'));
+    await clickAndWait(element('button#previous-page'));
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      '/customers?after=9',
+      expect.anything()
+    )
+  });
+  it('moves back multiple pages', async() => {
+    window.fetch
+      .mockReturnValueOnce(fetchResponseOk(tenCustomers))
+      .mockReturnValue(fetchResponseOk(anotherTenCustomers));
+    await renderAndWait(<CustomerSearch/>);
+    await clickAndWait(element('button#next-page'));
+    await clickAndWait(element('button#next-page'));
+    await clickAndWait(element('button#previous-page'));
+    await clickAndWait(element('button#previous-page'));
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      '/customers',
+      expect.anything()
+    )
   });
 });
 
