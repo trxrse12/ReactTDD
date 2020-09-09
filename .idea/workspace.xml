@@ -8,10 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomerSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerSearch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/CustomerSearch.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CustomerSearch.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/domManipulator.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/domManipulator.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,14 +23,14 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5573454">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.5590129">
+        <splitter split-orientation="vertical" split-proportion="0.6738197">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="124">
-                      <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+                    <state relative-caret-position="140">
+                      <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="34" />
                     </state>
                   </provider>
                 </entry>
@@ -44,8 +42,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="109">
-                      <caret line="138" column="70" lean-forward="true" selection-start-line="138" selection-start-column="70" selection-end-line="138" selection-end-column="70" />
+                    <state relative-caret-position="25">
+                      <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -64,8 +62,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="294">
-                      <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+                    <state relative-caret-position="266">
+                      <caret line="56" column="34" lean-forward="true" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
                       <folding>
                         <element signature="e#0#33#0" expanded="true" />
                       </folding>
@@ -330,7 +328,7 @@
       <workItem from="1597052897921" duration="33884000" />
       <workItem from="1598949626684" duration="29998000" />
       <workItem from="1599128250403" duration="41753000" />
-      <workItem from="1599642493974" duration="1071000" />
+      <workItem from="1599642493974" duration="5242000" />
     </task>
     <servers />
   </component>
@@ -355,7 +353,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="448135000" />
+    <option name="totallyTimeSpent" value="452306000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -757,16 +755,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
@@ -774,20 +762,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
+    <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="31" column="19" lean-forward="true" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+        <state relative-caret-position="266">
+          <caret line="56" column="34" lean-forward="true" selection-start-line="56" selection-start-column="34" selection-end-line="56" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="138" column="70" lean-forward="true" selection-start-line="138" selection-start-column="70" selection-end-line="138" selection-end-column="70" />
+        <state relative-caret-position="25">
+          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="34" />
         </state>
       </provider>
     </entry>

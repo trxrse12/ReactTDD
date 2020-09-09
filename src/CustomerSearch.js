@@ -24,6 +24,16 @@ const SearchButtons = ({handleNext, handlePrevious}) => (
   </div>
   );
 
+const searchParams = (after, searchTerm) => {
+  let pairs = [];
+  if (after) { pairs.push(`after=${after}`);}
+  if (searchTerm) {pairs.push(`searchTerm=${searchTerm}`)};
+  if (pairs.length >0){
+    return `?${pairs.join('&')}`;
+  }
+  return '';
+};
+
 export const CustomerSearch = () => {
   // const [lastRowIds, setQueryStrings] = useState([]);
   const [lastRowIds, setLastRowIds] = useState([]);
@@ -32,14 +42,11 @@ export const CustomerSearch = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      let queryString = '';
-      if (lastRowIds.length > 0 && searchTerm !== ''){
-        queryString = lastRowIds[lastRowIds.length-1]
-          + '&searchTerm=' + searchTerm
-      } else if (searchTerm !== '') {
-        queryString = '?searchTerm=' + searchTerm
-      } else if (lastRowIds.length > 0)
-        queryString = lastRowIds[lastRowIds.length - 1];
+      let after ;
+      if (lastRowIds.length > 0 )
+        after = lastRowIds[lastRowIds.length-1];
+      const queryString = searchParams(after, searchTerm);
+
       const result = await window.fetch(
         `/customers${queryString}`, {
           method: 'GET',
@@ -52,16 +59,17 @@ export const CustomerSearch = () => {
   }, [lastRowIds, searchTerm]);
 
   const handleNext = useCallback(() => {
-    const after = customers[customers.length -1].id;
-    const queryString = `?after=${after}`;
-    setLastRowIds([...lastRowIds, queryString]);
+    const currentLastRowId = customers[customers.length -1].id;
+    setLastRowIds([...lastRowIds, currentLastRowId]);
   }, [customers, lastRowIds]);
 
   const handlePrevious = useCallback(() =>
       setLastRowIds(lastRowIds.slice(0,-1))
       , [lastRowIds]);
 
-  const handleSearchTextChanged = ({target: {value}}) => setSearchTerm(value);
+  const handleSearchTextChanged = ({target: {value}}) => {
+    setSearchTerm(value);
+  };
 
   return (
     <React.Fragment>
