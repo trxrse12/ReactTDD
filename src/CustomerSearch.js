@@ -25,20 +25,21 @@ const SearchButtons = ({handleNext, handlePrevious}) => (
   );
 
 export const CustomerSearch = () => {
-  const [queryStrings, setQueryStrings] = useState([]);
+  // const [lastRowIds, setQueryStrings] = useState([]);
+  const [lastRowIds, setLastRowIds] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       let queryString = '';
-      if (queryStrings.length > 0 && searchTerm !== ''){
-        queryString = queryStrings[queryStrings.length-1]
+      if (lastRowIds.length > 0 && searchTerm !== ''){
+        queryString = lastRowIds[lastRowIds.length-1]
           + '&searchTerm=' + searchTerm
       } else if (searchTerm !== '') {
         queryString = '?searchTerm=' + searchTerm
-      } else if (queryStrings.length > 0)
-        queryString = queryStrings[queryStrings.length - 1];
+      } else if (lastRowIds.length > 0)
+        queryString = lastRowIds[lastRowIds.length - 1];
       const result = await window.fetch(
         `/customers${queryString}`, {
           method: 'GET',
@@ -48,17 +49,17 @@ export const CustomerSearch = () => {
       setCustomers(await result.json());
     };
     fetchData();
-  }, [queryStrings, searchTerm]);
+  }, [lastRowIds, searchTerm]);
 
   const handleNext = useCallback(() => {
     const after = customers[customers.length -1].id;
     const queryString = `?after=${after}`;
-    setQueryStrings([...queryStrings, queryString]);
-  }, [customers, queryStrings]);
+    setLastRowIds([...lastRowIds, queryString]);
+  }, [customers, lastRowIds]);
 
   const handlePrevious = useCallback(() =>
-    setQueryStrings(queryStrings.slice(0,-1))
-      , [queryStrings]);
+      setLastRowIds(lastRowIds.slice(0,-1))
+      , [lastRowIds]);
 
   const handleSearchTextChanged = ({target: {value}}) => setSearchTerm(value);
 
