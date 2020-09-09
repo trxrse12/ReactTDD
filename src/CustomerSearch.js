@@ -1,12 +1,15 @@
 import React, {useEffect, useState, useCallback} from 'react';
 
-const CustomerRow = ({customer}) => (
-  <tr>
-    <td>{customer.firstName}</td>
-    <td>{customer.lastName}</td>
-    <td>{customer.phoneNumber}</td>
-  </tr>
-);
+const CustomerRow = ({customer, renderCustomerActions}) => {
+  return (
+    <tr>
+      <td>{customer.firstName}</td>
+      <td>{customer.lastName}</td>
+      <td>{customer.phoneNumber}</td>
+      <td>{renderCustomerActions()}</td>
+    </tr>
+  );
+};
 
 const SearchButtons = ({handleNext, handlePrevious}) => (
   <div className="button-bar">
@@ -34,7 +37,7 @@ const searchParams = (after, searchTerm) => {
   return '';
 };
 
-export const CustomerSearch = () => {
+export const CustomerSearch = ({renderCustomerActions}) => {
   const [lastRowIds, setLastRowIds] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -92,11 +95,19 @@ export const CustomerSearch = () => {
         </thead>
         <tbody>
         {customers.map(customer => (
-            <CustomerRow customer={customer} key={customer.id} />
+            <CustomerRow
+              customer={customer}
+              key={customer.id}
+              renderCustomerActions={renderCustomerActions}
+            />
           )
         )}
         </tbody>
       </table>
     </React.Fragment>
   )
+};
+
+CustomerSearch.defaultProps = {
+  renderCustomerActions: () => {}
 };
