@@ -1,5 +1,5 @@
 import React from 'react';
-import {createContainer} from "./domManipulator";
+import {createContainer, withEvent} from "./domManipulator";
 import {CustomerSearch} from "../src/CustomerSearch";
 import 'whatwg-fetch';
 import {fetchResponseOk} from "./spyHelpers";
@@ -18,7 +18,7 @@ const tenCustomers = Array.from('0123456789', id=> ({id}));
 const anotherTenCustomers = Array.from('ABCDEFGHIJ', id => ({id}));
 
 describe('CustomerSearch form', () => {
-  let renderAndWait, element, elements, container, clickAndWait;
+  let renderAndWait, element, elements, container, clickAndWait, changeAndWait;
   beforeEach(() => {
     ({
       container,
@@ -26,6 +26,7 @@ describe('CustomerSearch form', () => {
       element,
       elements,
       clickAndWait,
+      changeAndWait,
     } = createContainer());
     jest
       .spyOn(window, 'fetch')
@@ -128,6 +129,36 @@ describe('CustomerSearch form', () => {
       '/customers',
       expect.anything()
     )
+  });
+  it('has a search input field with a placholder', async () => {
+    await renderAndWait(<CustomerSearch/>);
+    expect(element('input')).not.toBeNull();
+    expect(element('input').getAttribute('placeholder')).toEqual('' +
+      'Enter filter text')
+  });
+  it('performs search when search term is changed', async () => {
+    await renderAndWait(<CustomerSearch/>);
+    await changeAndWait(
+      element('input'),
+      withEvent('input', 'name')
+    );
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      '/customers?searchTerm=name',
+      expect.anything()
+    );
+  });
+  it('includes search term when moving to the next page', async() => {
+    window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
+    await renderAndWait(<CustomerSearch/>);
+    await changeAndWait(
+      element('input'),
+      withEvent('input','name')
+    );
+    await clickAndWait(element('button#next-page'));
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      '/customers?after=9&searchTerm=name',
+      expect.anything()
+    );
   });
 });
 
