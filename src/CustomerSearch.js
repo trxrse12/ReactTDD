@@ -35,7 +35,6 @@ const searchParams = (after, searchTerm) => {
 };
 
 export const CustomerSearch = () => {
-  // const [lastRowIds, setQueryStrings] = useState([]);
   const [lastRowIds, setLastRowIds] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');

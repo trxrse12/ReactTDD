@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/CustomerSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerSearch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CustomerSearch.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CustomerSearch.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +28,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="140">
-                      <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="34" />
+                    <state relative-caret-position="129">
+                      <caret line="46" column="58" lean-forward="true" selection-start-line="46" selection-start-column="58" selection-end-line="47" />
                     </state>
                   </provider>
                 </entry>
@@ -43,7 +42,7 @@
                 <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="25">
-                      <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+                      <caret line="138" column="4" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="4" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -328,7 +327,7 @@
       <workItem from="1597052897921" duration="33884000" />
       <workItem from="1598949626684" duration="29998000" />
       <workItem from="1599128250403" duration="41753000" />
-      <workItem from="1599642493974" duration="5242000" />
+      <workItem from="1599642493974" duration="7216000" />
     </task>
     <servers />
   </component>
@@ -353,7 +352,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="452306000" />
+    <option name="totallyTimeSpent" value="454280000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -775,7 +774,7 @@
     <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
-          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+          <caret line="138" column="4" selection-start-line="138" selection-start-column="4" selection-end-line="138" selection-end-column="4" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -784,8 +783,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="49" column="34" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="34" />
+        <state relative-caret-position="129">
+          <caret line="46" column="58" lean-forward="true" selection-start-line="46" selection-start-column="58" selection-end-line="47" />
         </state>
       </provider>
     </entry>
