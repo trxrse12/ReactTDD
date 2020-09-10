@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {AppointmentsDayViewLoader} from "./AppointmentsDayViewLoader";
 import {CustomerForm} from "./CustomerForm";
 import {AppointmentFormLoader} from "./AppointmentFormLoader";
+import {CustomerSearch} from "./CustomerSearch";
 
 export const App = () => {
   const [customer, setCustomer] = useState();
@@ -25,9 +26,26 @@ export const App = () => {
     []
   );
 
+  const transitionToSearchCustomers = useCallback(
+    () => setView('searchCustomers'),
+    []
+  );
+
+  const searchActions = (customer) => (
+    <React.Fragment>
+      <button
+        role="button"
+        onClick={() => transitionToAddAppointment(customer)}>
+          Create appointment
+      </button>
+    </React.Fragment>
+  );
+
   switch (view) {
     case 'addCustomer':
       return <CustomerForm onSave={transitionToAddAppointment}/>;
+    case 'searchCustomers':
+      return <CustomerSearch renderCustomerActions={searchActions}/>;
     case 'addAppointment':
       return (<AppointmentFormLoader
         customer={customer}
@@ -39,9 +57,14 @@ export const App = () => {
           <button
             type="button"
             id="addCustomer"
-            onClick={transitionToAddCustomer}
-          >
+            onClick={transitionToAddCustomer}>
             Add customer and appointment
+          </button>
+          <button
+            type="buton"
+            id="searchCustomers"
+            onClick={transitionToSearchCustomers}>
+            Search customers
           </button>
         </div>
         <AppointmentsDayViewLoader/>

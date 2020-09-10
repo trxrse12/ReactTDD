@@ -6,7 +6,7 @@ const CustomerRow = ({customer, renderCustomerActions}) => {
       <td>{customer.firstName}</td>
       <td>{customer.lastName}</td>
       <td>{customer.phoneNumber}</td>
-      <td>{renderCustomerActions()}</td>
+      <td>{renderCustomerActions(customer)}</td>
     </tr>
   );
 };

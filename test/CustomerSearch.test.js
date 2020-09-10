@@ -169,5 +169,13 @@ describe('CustomerSearch form', () => {
     const rows = elements('table tbody td');
     expect(rows[rows.length-1].textContent).toEqual('actions');
   });
+  it('pases customer to the renderCustomerActions prop', async() => {
+    const actionSpy = jest.fn();
+    actionSpy.mockReturnValue('actions');
+    window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
+    await renderAndWait(<CustomerSearch
+      renderCustomerActions={actionSpy} />);
+    expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
+  });
 });
 

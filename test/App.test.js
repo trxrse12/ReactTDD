@@ -10,6 +10,7 @@ import {AppointmentsDayViewLoader} from "../src/AppointmentsDayViewLoader";
 import {AppointmentFormLoader} from "../src/AppointmentFormLoader";
 import {AppointmentForm} from "../src/AppointmentForm";
 import {CustomerForm} from "../src/CustomerForm";
+import {CustomerSearch} from "../src/CustomerSearch";
 
 describe('App', () => {
   let render, elementMatching, child;
@@ -84,5 +85,64 @@ describe('App', () => {
     saveCustomer();
     saveAppointment();
     expect(type(AppointmentsDayViewLoader)).toBeDefined();
+  });
+
+  describe('search customers', () => {
+    it('has a button to initiate searching customers', () => {
+      render(<App />);
+      const buttons = childrenOf(
+        elementMatching(className('button-bar'))
+      );
+      expect(buttons[1].type).toEqual('button');
+      expect(buttons[1].props.children).toEqual(
+        'Search customers'
+      );
+    });
+
+    const beginSearchCustomer = async () => {
+      render(<App />);
+      click(elementMatching(id('searchCustomers')));
+    };
+    it('displays the CustomerSearch when button is clicked', async() => {
+      beginSearchCustomer();
+      expect(elementMatching(type(CustomerSearch))).toBeDefined();
+    });
+
+    it('hides the AppointmentDayViewLoader when button is clicked', async() => {
+      beginSearchCustomer();
+      expect(elementMatching(type(AppointmentsDayViewLoader))).not.toBeDefined();
+    });
+
+    it('hides the button bar when CustomerSearch is being displayed', async () => {
+      beginSearchCustomer();
+      expect(elementMatching(className('button-bar'))).not.toBeTruthy();
+    });
+
+    const renderSearchActionsForCustomer = customer => {
+      beginSearchCustomer();
+      const customerSearch = elementMatching(type(CustomerSearch));
+      const searchActionsComponent = customerSearch.props.renderCustomerActions;
+      return searchActionsComponent(customer);
+    };
+
+    it('pases a button to the CustomerSearch named Create appointment', async() => {
+      const button = childrenOf(
+        renderSearchActionsForCustomer()
+      )[0];
+      expect(button).toBeDefined();
+      expect(button.type).toEqual('button');
+      expect(button.props.role).toEqual('button');
+      expect(button.props.children).toEqual('Create appointment');
+    });
+
+    it('clicking appointment button shows the appointment form for that customer', async () => {
+      const customer={id: 123};
+      const button = childrenOf(
+        renderSearchActionsForCustomer()
+      )[0];
+      click(button);
+      // expect(elementMatching(AppointmentFormLoader)).not.toBeNull();
+      // expect(elementMatching(AppointmentFormLoader).props.customer).toBe(customer);
+    });
   });
 });
