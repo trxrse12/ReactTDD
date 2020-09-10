@@ -141,6 +141,7 @@ describe('App', () => {
         renderSearchActionsForCustomer()
       )[0];
       click(button);
+      // The two lines below produce an "Invalid Hook" error, which I don't know how to solve (yet)
       // expect(elementMatching(AppointmentFormLoader)).not.toBeNull();
       // expect(elementMatching(AppointmentFormLoader).props.customer).toBe(customer);
     });

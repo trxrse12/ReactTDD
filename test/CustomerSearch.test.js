@@ -17,6 +17,8 @@ const tenCustomers = Array.from('0123456789', id=> ({id}));
 
 const anotherTenCustomers = Array.from('ABCDEFGHIJ', id => ({id}));
 
+const lessThanTenCustomers = Array.from('0123456', (id) => ({id}))
+
 describe('CustomerSearch form', () => {
   let renderAndWait, element, elements, container, clickAndWait, changeAndWait;
   beforeEach(() => {
@@ -176,6 +178,19 @@ describe('CustomerSearch form', () => {
     await renderAndWait(<CustomerSearch
       renderCustomerActions={actionSpy} />);
     expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
+  });
+
+  it('initially disables the previous page',  async() => {
+    await renderAndWait(<CustomerSearch/>);
+    expect(
+      element('button#previous-page').getAttribute('disabled')
+    ).not.toBeNull();
+  });
+
+  it('disables next page button if there are less than ten results on the page', async() => {
+    window.fetch.mockReturnValue(fetchResponseOk(lessThanTenCustomers));
+    await renderAndWait(<CustomerSearch />);
+    expect(element('button#next-page').getAttribute('disabled')).not.toBeNull();
   });
 });
 

@@ -9,7 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomerSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerSearch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/App.test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/CustomerSearch.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CustomerSearch.test.js" afterDir="false" />
@@ -29,16 +28,16 @@
         <splitter split-orientation="vertical" split-proportion="0.4753219">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="252">
-                      <caret line="18" column="30" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="41" />
+                    <state relative-caret-position="280">
+                      <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
                     </state>
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/App.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="308">
@@ -84,11 +83,11 @@
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="131">
-                      <caret line="165" column="46" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
+                    <state relative-caret-position="313">
+                      <caret line="192" column="80" selection-start-line="192" selection-start-column="80" selection-end-line="192" selection-end-column="80" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -96,11 +95,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/test/App.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="272">
-                      <caret line="144" column="20" selection-start-line="144" selection-start-column="20" selection-end-line="144" selection-end-column="20" />
+                    <state relative-caret-position="286">
+                      <caret line="146" column="7" selection-start-line="146" selection-start-column="7" selection-end-line="146" selection-end-column="7" />
                       <folding>
                         <element signature="e#0#51#0" expanded="true" />
                       </folding>
@@ -244,8 +243,8 @@
       <find>validateMany</find>
       <find>PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP</find>
       <find>type</find>
-      <find>searchCustomers</find>
       <find>pairs</find>
+      <find>searchCustomers</find>
     </findStrings>
     <replaceStrings>
       <replace>requestBodyOf</replace>
@@ -297,10 +296,10 @@
         <option value="$PROJECT_DIR$/src/CustomerForm.js" />
         <option value="$PROJECT_DIR$/test/spyHelpers.js" />
         <option value="$PROJECT_DIR$/test/domManipulator.js" />
-        <option value="$PROJECT_DIR$/src/CustomerSearch.js" />
-        <option value="$PROJECT_DIR$/test/CustomerSearch.test.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/test/App.test.js" />
+        <option value="$PROJECT_DIR$/src/CustomerSearch.js" />
+        <option value="$PROJECT_DIR$/test/CustomerSearch.test.js" />
       </list>
     </option>
   </component>
@@ -409,7 +408,7 @@
       <workItem from="1597052897921" duration="33884000" />
       <workItem from="1598949626684" duration="29998000" />
       <workItem from="1599128250403" duration="41753000" />
-      <workItem from="1599642493974" duration="26105000" />
+      <workItem from="1599642493974" duration="28479000" />
     </task>
     <servers />
   </component>
@@ -434,7 +433,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="473169000" />
+    <option name="totallyTimeSpent" value="475543000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -817,34 +816,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="18" column="30" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="165" column="46" selection-start-line="165" selection-start-column="46" selection-end-line="165" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/App.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -865,6 +840,30 @@
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/App.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="192" column="80" selection-start-line="192" selection-start-column="80" selection-end-line="192" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="28" column="27" lean-forward="true" selection-start-line="28" selection-start-column="27" selection-end-line="28" selection-end-column="27" />
         </state>
       </provider>
     </entry>

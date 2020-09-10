@@ -11,16 +11,23 @@ const CustomerRow = ({customer, renderCustomerActions}) => {
   );
 };
 
-const SearchButtons = ({handleNext, handlePrevious}) => (
+const SearchButtons = ({
+   handleNext,
+   handlePrevious,
+   hasPrevious,
+   hasNext,
+}) => (
   <div className="button-bar">
     <button
       role="button"
       id="previous-page"
+      disabled={!hasPrevious}
       onClick={handlePrevious}
     >Previous</button>
     <button
       role="button"
       id="next-page"
+      disabled={!hasNext}
       onClick={handleNext}>
       Next
     </button>
@@ -73,6 +80,9 @@ export const CustomerSearch = ({renderCustomerActions}) => {
     setSearchTerm(value);
   };
 
+  const hasPrevious = lastRowIds.length > 0;
+  const hasNext = customers.length === 10;
+
   return (
     <React.Fragment>
       <input
@@ -83,6 +93,8 @@ export const CustomerSearch = ({renderCustomerActions}) => {
       <SearchButtons
         handleNext={handleNext}
         handlePrevious={handlePrevious}
+        hasPrevious={hasPrevious}
+        hasNext={hasNext}
       />
       <table>
         <thead>
