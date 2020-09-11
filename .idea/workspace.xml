@@ -10,8 +10,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/CustomerSearch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerSearch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objectToQueryString.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/objectToQueryString.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CustomerSearch.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/CustomerSearch.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,8 +29,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="102" column="37" lean-forward="true" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
+                    <state relative-caret-position="84">
+                      <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
                       <folding>
                         <element signature="e#0#62#0" expanded="true" />
                       </folding>
@@ -89,8 +87,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="257">
-                      <caret line="217" column="20" selection-start-line="217" selection-start-column="20" selection-end-line="217" selection-end-column="20" />
+                    <state relative-caret-position="215">
+                      <caret line="214" column="6" lean-forward="true" selection-start-line="214" selection-start-column="6" selection-end-line="214" selection-end-column="6" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -166,8 +164,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/objectToQueryString.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="84">
-                      <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+                    <state relative-caret-position="70">
+                      <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
                     </state>
                   </provider>
                 </entry>
@@ -310,9 +308,9 @@
         <option value="$PROJECT_DIR$/test/domManipulator.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/test/App.test.js" />
-        <option value="$PROJECT_DIR$/src/CustomerSearch.js" />
         <option value="$PROJECT_DIR$/src/objectToQueryString.js" />
         <option value="$PROJECT_DIR$/test/CustomerSearch.test.js" />
+        <option value="$PROJECT_DIR$/src/CustomerSearch.js" />
       </list>
     </option>
   </component>
@@ -421,7 +419,7 @@
       <workItem from="1597052897921" duration="33884000" />
       <workItem from="1598949626684" duration="29998000" />
       <workItem from="1599128250403" duration="41753000" />
-      <workItem from="1599642493974" duration="37032000" />
+      <workItem from="1599642493974" duration="39826000" />
     </task>
     <servers />
   </component>
@@ -446,7 +444,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="484096000" />
+    <option name="totallyTimeSpent" value="486890000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -851,11 +849,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="146" column="7" selection-start-line="146" selection-start-column="7" selection-end-line="146" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-28">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -866,29 +861,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="102" column="37" lean-forward="true" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/objectToQueryString.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="62" selection-start-line="6" selection-start-column="62" selection-end-line="6" selection-end-column="62" />
+        <state relative-caret-position="70">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/CustomerSearch.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="217" column="20" selection-start-line="217" selection-start-column="20" selection-end-line="217" selection-end-column="20" />
+        <state relative-caret-position="215">
+          <caret line="214" column="6" lean-forward="true" selection-start-line="214" selection-start-column="6" selection-end-line="214" selection-end-column="6" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomerSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="93" column="6" selection-start-line="93" selection-start-column="6" selection-end-line="93" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
