@@ -192,5 +192,43 @@ describe('CustomerSearch form', () => {
     await renderAndWait(<CustomerSearch />);
     expect(element('button#next-page').getAttribute('disabled')).not.toBeNull();
   });
+
+  it('has a button with a label of 10 that is initially toggled', async() => {
+    await renderAndWait(<CustomerSearch />);
+    const button = element('a#limit-10');
+    expect(button.className).toContain('toggle-button');
+    expect(button.className).toContain('toggled');
+    expect(button.textContent).toEqual('10');
+  });
+
+  [20, 50, 100].forEach(limitSize => {
+    it(`has a button with a label of ${limitSize} that is initially not toggled`, async() => {
+      await renderAndWait(<CustomerSearch/>);
+      const button = element(`a#limit-${limitSize}`);
+      expect(button.className).toContain('toggle-button');
+      expect(button.className).not.toContain('toggled');
+      expect(button.textContent).toEqual(`${limitSize.toString()}`);
+    });
+
+    it(`searches by ${limitSize} records when clicking on ${limitSize}`, async() => {
+      await renderAndWait(<CustomerSearch/>);
+      await clickAndWait(element('a#limit-10'));
+      await clickAndWait(element(`a#limit-${limitSize}`));
+      expect(window.fetch).toHaveBeenLastCalledWith(
+        `/customers?limit=${limitSize}`,
+        expect.anything(),
+      )
+    })
+  });
+
+  it('searches by 10 records when clicking on 10', async() => {
+    await renderAndWait(<CustomerSearch/>);
+    await clickAndWait(element('a#limit-20'));
+    await clickAndWait(element('a#limit-10'));
+    expect(window.fetch).toHaveBeenLastCalledWith(
+      `/customers`,
+      expect.anything(),
+    );
+  });
 });
 
