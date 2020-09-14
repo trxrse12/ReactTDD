@@ -1,10 +1,10 @@
 import React, {useState, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Switch} from 'react-router-dom';
 import {
   click,
   className,
   createShallowRenderer,
-  type, childrenOf, id
+  type, childrenOf, id, prop
 } from "./shallowHelpers";
 import {App, MainScreen} from '../src/App';
 import {AppointmentsDayViewLoader} from "../src/AppointmentsDayViewLoader";
@@ -13,11 +13,77 @@ import {AppointmentForm} from "../src/AppointmentForm";
 import {CustomerForm} from "../src/CustomerForm";
 import {CustomerSearch} from "../src/CustomerSearch";
 
+describe('Main screen', () => {
+  let render, child, elementMatching;
+
+  beforeEach(() => {
+    ({render, child, elementMatching} = createShallowRenderer())
+  });
+
+  it('renders a button bas as the first child', () => {
+    render(<MainScreen />);
+    expect(child(0).type).toEqual('div');
+    expect(child(0).props.className).toEqual('button-bar');
+  });
+
+  it('renders an AppointmentsDayViewLoader', () => {
+    render(<MainScreen/>);
+    expect(
+      elementMatching(type(AppointmentsDayViewLoader))
+    ).toBeDefined();
+  });
+
+  it('renders a link to /addCustomer', () => {
+    render(<MainScreen/>);
+    const links = childrenOf(
+      elementMatching(className('button-bar'))
+    );
+    expect(links[0].type).toEqual(Link);
+    expect(links[0].props.to).toEqual('/addCustomer');
+    expect(links[0].props.className).toContain('button');
+    expect(links[0].props.children).toEqual(
+      'Add customer and appointment'
+    )
+  });
+
+  it('renders a link to /searchCustomer', () => {
+    render(<MainScreen/>);
+    const links = childrenOf(
+      elementMatching(className('button-bar'))
+    );
+    expect(links[1].type).toEqual(Link);
+    expect(links[1].props.to).toEqual('/searchCustomer');
+    expect(links[1].props.className).toContain('button');
+    expect(links[1].props.children).toEqual(
+      'Search customers'
+    )
+  });
+});
+
 describe('App', () => {
   let render, elementMatching, child;
 
   beforeEach(() => {
     ({render, elementMatching, child} = createShallowRenderer());
+  });
+
+  const childRoutes = () =>
+    childrenOf(elementMatching(type(Switch)));
+
+  const routeFor = path => childRoutes().find(prop('path', path));
+
+  it.only('renders the MainScreen as the default route', () => {
+    render(<App/>);
+    const routes = childRoutes();
+    const lastRoute = routes[routes.length - 1];
+    expect(lastRoute.props.component).toEqual(MainScreen);
+  });
+
+  it.only('renders AppointmentFormLoader at /addAppointment', () => {
+    render(<App/>);
+    expect(
+      routeFor('/addAppointment').props.render().type
+    ).toEqual(AppointmentFormLoader);
   });
 
   it('initially shows the AppointmentDayViewLoader', () => {
@@ -149,48 +215,3 @@ describe('App', () => {
   });
 });
 
-describe('Main screen', () => {
-  let render, child, elementMatching;
-  beforeEach(() => {
-    ({render, elementMatching, child} = createShallowRenderer());
-  });
-
-  it('renders a button bas as the first child', () => {
-    render(<MainScreen />);
-    expect(child(0).type).toEqual('div');
-    expect(child(0).props.className).toEqual('button-bar');
-  });
-
-  it('renders an AppointmentsDayViewLoader', () => {
-    render(<MainScreen/>);
-    expect(
-      elementMatching(type(AppointmentsDayViewLoader))
-    ).toBeDefined();
-  });
-
-  it('renders a link to /addCustomer', () => {
-    render(<MainScreen/>);
-    const links = childrenOf(
-      elementMatching(className('button-bar'))
-    );
-    expect(links[0].type).toEqual(Link);
-    expect(links[0].props.to).toEqual('/addCustomer');
-    expect(links[0].props.className).toContain('button');
-    expect(links[0].props.children).toEqual(
-      'Add customer and appointment'
-    )
-  });
-
-  it('renders a link to /searchCustomer', () => {
-    render(<MainScreen/>);
-    const links = childrenOf(
-      elementMatching(className('button-bar'))
-    );
-    expect(links[1].type).toEqual(Link);
-    expect(links[1].props.to).toEqual('/searchCustomer');
-    expect(links[1].props.className).toContain('button');
-    expect(links[1].props.children).toEqual(
-      'Search customers'
-    )
-  });
-});

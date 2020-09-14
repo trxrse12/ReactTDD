@@ -1,15 +1,16 @@
 import React from 'react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
-
-export const type = typeName => element => element.type === typeName;
-
-
 export const id = id => element =>
   element.props && element.props.id === id;
 
+export const type = typeName => element => element.type === typeName;
+
 export const className = className => element =>
   element.props.className === className;
+
+export const prop = (pathName, value) => element =>
+  element.props[pathName] === value;
 
 export const click = element => element.props.onClick();
 
