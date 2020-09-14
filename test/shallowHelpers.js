@@ -49,6 +49,7 @@ export const createShallowRenderer = () => {
   let renderer = new ShallowRenderer();
   return {
     render: component => renderer.render(component),
+    root: () => renderer.getRenderOutput(),
     elementMatching: matcherFn =>
       elementsMatching(renderer.getRenderOutput(), matcherFn)[0],
     elementsMatching: matcherFn =>

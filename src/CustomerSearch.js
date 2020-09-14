@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
-import {searchParams} from "./objectToQueryString";
+import {objectToQueryString} from "./objectToQueryString";
 
 const CustomerRow = ({customer, renderCustomerActions}) => {
   return (
@@ -90,7 +90,7 @@ export const CustomerSearch = ({renderCustomerActions}) => {
       let after ;
       if (lastRowIds.length > 0 )
         after = lastRowIds[lastRowIds.length-1];
-      const queryString = searchParams({
+      const queryString = objectToQueryString({
         after,
         searchTerm,
         limit: limit === 10 ? '' : limit
