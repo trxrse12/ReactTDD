@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import {Link} from 'react-router-dom';
 import { AppointmentFormLoader } from './AppointmentFormLoader';
 import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
@@ -6,7 +7,14 @@ import { CustomerSearch } from './CustomerSearch';
 
 export const MainScreen = () => (
   <React.Fragment>
-    <div className="button-bar"></div>
+    <div className="button-bar">
+      <Link to={'/addCustomer'} className="button">
+        Add customer and appointment
+      </Link>
+      <Link to={'/searchCustomer'} className="button">
+        Search customers
+      </Link>
+    </div>
     <AppointmentsDayViewLoader/>
   </React.Fragment>
 );

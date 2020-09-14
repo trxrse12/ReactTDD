@@ -1,4 +1,5 @@
 import React, {useState, useCallback} from 'react';
+import {Link} from 'react-router-dom';
 import {
   click,
   className,
@@ -165,5 +166,31 @@ describe('Main screen', () => {
     expect(
       elementMatching(type(AppointmentsDayViewLoader))
     ).toBeDefined();
+  });
+
+  it('renders a link to /addCustomer', () => {
+    render(<MainScreen/>);
+    const links = childrenOf(
+      elementMatching(className('button-bar'))
+    );
+    expect(links[0].type).toEqual(Link);
+    expect(links[0].props.to).toEqual('/addCustomer');
+    expect(links[0].props.className).toContain('button');
+    expect(links[0].props.children).toEqual(
+      'Add customer and appointment'
+    )
+  });
+
+  it('renders a link to /searchCustomer', () => {
+    render(<MainScreen/>);
+    const links = childrenOf(
+      elementMatching(className('button-bar'))
+    );
+    expect(links[1].type).toEqual(Link);
+    expect(links[1].props.to).toEqual('/searchCustomer');
+    expect(links[1].props.className).toContain('button');
+    expect(links[1].props.children).toEqual(
+      'Search customers'
+    )
   });
 });
