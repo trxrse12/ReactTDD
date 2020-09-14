@@ -159,4 +159,11 @@ describe('Main screen', () => {
     expect(child(0).type).toEqual('div');
     expect(child(0).props.className).toEqual('button-bar');
   });
+
+  it('renders an AppointmentsDayViewLoader', () => {
+    render(<MainScreen/>);
+    expect(
+      elementMatching(type(AppointmentsDayViewLoader))
+    ).toBeDefined();
+  });
 });

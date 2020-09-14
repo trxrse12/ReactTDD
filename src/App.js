@@ -7,6 +7,7 @@ import { CustomerSearch } from './CustomerSearch';
 export const MainScreen = () => (
   <React.Fragment>
     <div className="button-bar"></div>
+    <AppointmentsDayViewLoader/>
   </React.Fragment>
 );
 
