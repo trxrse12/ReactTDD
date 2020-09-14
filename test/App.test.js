@@ -5,7 +5,7 @@ import {
   createShallowRenderer,
   type, childrenOf, id
 } from "./shallowHelpers";
-import {App} from '../src/App';
+import {App, MainScreen} from '../src/App';
 import {AppointmentsDayViewLoader} from "../src/AppointmentsDayViewLoader";
 import {AppointmentFormLoader} from "../src/AppointmentFormLoader";
 import {AppointmentForm} from "../src/AppointmentForm";
@@ -145,5 +145,18 @@ describe('App', () => {
       // expect(elementMatching(AppointmentFormLoader)).not.toBeNull();
       // expect(elementMatching(AppointmentFormLoader).props.customer).toBe(customer);
     });
+  });
+});
+
+describe('Main screen', () => {
+  let render, child, elementMatching;
+  beforeEach(() => {
+    ({render, elementMatching, child} = createShallowRenderer());
+  });
+
+  it('renders a button bas as the first child', () => {
+    render(<MainScreen />);
+    expect(child(0).type).toEqual('div');
+    expect(child(0).props.className).toEqual('button-bar');
   });
 });

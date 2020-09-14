@@ -4,6 +4,12 @@ import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
 import { CustomerSearch } from './CustomerSearch';
 
+export const MainScreen = () => (
+  <React.Fragment>
+    <div className="button-bar"></div>
+  </React.Fragment>
+);
+
 export const App = () => {
   const [view, setView] = useState('dayView');
   const [customer, setCustomer] = useState();
