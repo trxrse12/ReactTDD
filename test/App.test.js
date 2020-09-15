@@ -83,31 +83,53 @@ describe('App', () => {
     expect(lastRoute.props.component).toEqual(MainScreen);
   });
 
-  it.only('renders AppointmentFormLoader at /addAppointment', () => {
-    render(<App/>);
-    expect(
-      routeFor('/addAppointment').props.render().type
-    ).toEqual(AppointmentFormLoader);
+  describe('within /addCustomer route', () => {
+    // Route test of categ #1 (see 309 my notes)
+    it.only('renders CustomerForm at the /addCustomer', () => {
+      render(<App/>);
+      expect(
+        routeFor('/addCustomer').props.render().type
+      ).toEqual(CustomerForm);
+    });
+
+    // Route test of categ #2 (see 309 my notes) not necessary here, as <CustomerForm/>
+    //  doesn't have any param passed into it
+
+    // Route test of categ #3 (see 309 my notes)
+    it.only('navigates to /addAppointment after the CustomerForm is submitted', () => {
+      render(<App history={{push: historySpy}} />);
+      const onSave = routeFor('/addCustomer').props.render().props.onSave;
+      onSave(customer);
+      expect(historySpy).toHaveBeenCalledWith('/addAppointment');
+    });
   });
 
-  it.only('renders CustomerForm at the /addCustomer', () => {
-    render(<App/>);
-    expect(
-      routeFor('/addCustomer').props.render().type
-    ).toEqual(CustomerForm);
-  });
+  describe('within /addAppointment route', () => {
+    // Route test of categ #1 (see 309 my notes)
+    it.only('renders AppointmentFormLoader at /addAppointment', () => {
+      render(<App/>);
+      expect(
+        routeFor('/addAppointment').props.render().type
+      ).toEqual(AppointmentFormLoader);
+    });
 
-  it.only('navigates to /addAppointment when after the CustomerForm is submitted', () => {
-    render(<App history={{push: historySpy}} />);
-    const onSave = routeFor('/addCustomer').props.render().props.onSave;
-    onSave(customer);
-    expect(historySpy).toHaveBeenCalledWith('/addAppointment');
-  });
+    // Route test of categ #2 (see 309 my notes)
+    it.only('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
+      render(<App history={{push: historySpy}}/>);
+      const onSave = routeFor('/addCustomer').props.render().props.onSave;
+      onSave(customer);
+      let renderFunc = routeFor('/addAppointment').props.render;
+      expect(renderFunc().props.customer).toEqual(customer);
+    });
 
-  // it.only('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
-  //   render(<App history={{push: historySpy}}/>);
-  //   const onSave = routeFor('/addCustomer')
-  // });
+    // Route test of categ #3 (see 309 my notes)
+    it.only('navigates to / after AppointmentFormLoader is saved', () => {
+      render(<App history={{push: historySpy}} />);
+      const onSave = routeFor('/addAppointment').props.render().props.onSave;
+      onSave();
+      expect(historySpy).toHaveBeenCalledWith('/');
+    });
+  });
 
   it('initially shows the AppointmentDayViewLoader', () => {
     render(<App/>);

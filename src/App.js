@@ -35,8 +35,8 @@ export const App = ({history}) => {
   );
 
   const transitionToDayView = useCallback(
-    () => setView('dayView'),
-    []
+    () => history.push('/'),
+    [history]
   );
 
   const transitionToSearchCustomers = useCallback(
