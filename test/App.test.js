@@ -69,6 +69,8 @@ describe('App', () => {
     historySpy = jest.fn();
   });
 
+  const customer={id: 123};
+
   const childRoutes = () =>
     childrenOf(elementMatching(type(Switch)));
 
@@ -95,9 +97,16 @@ describe('App', () => {
     ).toEqual(CustomerForm);
   });
 
+  it.only('navigates to /addAppointment when after the CustomerForm is submitted', () => {
+    render(<App history={{push: historySpy}} />);
+    const onSave = routeFor('/addCustomer').props.render().props.onSave;
+    onSave(customer);
+    expect(historySpy).toHaveBeenCalledWith('/addAppointment');
+  });
+
   // it.only('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
   //   render(<App history={{push: historySpy}}/>);
-  //   const onSave = routeFor('add')
+  //   const onSave = routeFor('/addCustomer')
   // });
 
   it('initially shows the AppointmentDayViewLoader', () => {

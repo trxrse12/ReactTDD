@@ -19,15 +19,15 @@ export const MainScreen = () => (
   </React.Fragment>
 );
 
-export const App = () => {
+export const App = ({history}) => {
   const [view, setView] = useState('dayView');
   const [customer, setCustomer] = useState();
 
   const transitionToAddAppointment = useCallback(
     customer => {
       setCustomer(customer);
-      setView('addAppointment')
-    }, []);
+      history.push('/addAppointment')
+    }, [history]);
 
   const transitionToAddCustomer = useCallback(
     () => setView('addCustomer'),
@@ -60,7 +60,8 @@ export const App = () => {
         path="/addCustomer"
         render={() => (
           <CustomerForm
-            />
+            onSave={transitionToAddAppointment}
+          />
         )}
       />
       <Route
