@@ -57,6 +57,13 @@ export const App = () => {
   return (
     <Switch>
       <Route
+        path="/addCustomer"
+        render={() => (
+          <CustomerForm
+            />
+        )}
+      />
+      <Route
         path="/addAppointment"
         render={() => (
           <AppointmentFormLoader

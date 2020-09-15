@@ -62,9 +62,11 @@ describe('Main screen', () => {
 
 describe('App', () => {
   let render, elementMatching, child;
+  let historySpy;
 
   beforeEach(() => {
     ({render, elementMatching, child} = createShallowRenderer());
+    historySpy = jest.fn();
   });
 
   const childRoutes = () =>
@@ -85,6 +87,18 @@ describe('App', () => {
       routeFor('/addAppointment').props.render().type
     ).toEqual(AppointmentFormLoader);
   });
+
+  it.only('renders CustomerForm at the /addCustomer', () => {
+    render(<App/>);
+    expect(
+      routeFor('/addCustomer').props.render().type
+    ).toEqual(CustomerForm);
+  });
+
+  // it.only('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
+  //   render(<App history={{push: historySpy}}/>);
+  //   const onSave = routeFor('add')
+  // });
 
   it('initially shows the AppointmentDayViewLoader', () => {
     render(<App/>);
@@ -139,12 +153,12 @@ describe('App', () => {
       elementMatching(type(AppointmentFormLoader))).toBeDefined();
   });
 
-  it('passes the customer to the AppointmentForm', async () => {
-    const customer = {id: 123};
-    beginAddingCustomerAndAppointment();
-    saveCustomer(customer);
-    expect(elementMatching(type(AppointmentFormLoader)).props.customer).toBe(customer);
-  });
+  // it('passes the customer to the AppointmentForm', async () => {
+  //   const customer = {id: 123};
+  //   beginAddingCustomerAndAppointment();
+  //   saveCustomer(customer);
+  //   expect(elementMatching(type(AppointmentFormLoader)).props.customer).toBe(customer);
+  // });
 
   const saveAppointment = () => elementMatching(type(AppointmentFormLoader)).props.onSave();
   it('renders AppointmentDayViewLoader after AppointmentForm is submitted', async() => {
