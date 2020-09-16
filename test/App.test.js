@@ -6,12 +6,14 @@ import {
   createShallowRenderer,
   type, childrenOf, id, prop
 } from "./shallowHelpers";
+import {createContainer} from '../test/domManipulator';
 import {App, MainScreen} from '../src/App';
 import {AppointmentsDayViewLoader} from "../src/AppointmentsDayViewLoader";
 import {AppointmentFormLoader} from "../src/AppointmentFormLoader";
 import {AppointmentForm} from "../src/AppointmentForm";
 import {CustomerForm} from "../src/CustomerForm";
 import {CustomerSearch} from "../src/CustomerSearch";
+import {CustomerSearchRoute} from "../src/CustomerSearchRoute";
 
 describe('Main screen', () => {
   let render, child, elementMatching;
@@ -102,6 +104,54 @@ describe('App', () => {
       onSave(customer);
       expect(historySpy).toHaveBeenCalledWith('/addAppointment');
     });
+  });
+
+  describe('within /searchCustomers route', () => {
+    //Route test of categ #1 (see 309 my notes)
+    it.only('renders CustomerSearchRoute at the /searchCustomers', () => {
+      render(<App/>);
+      expect(
+        routeFor('/searchCustomers').props.render().type
+      ).toEqual(CustomerSearchRoute);
+    });
+
+    const renderSearchActionsForCustomer = customer => {
+      render(<App history={{ push: historySpy }} />);
+      const customerSearch = routeFor(
+        '/searchCustomers'
+      ).props.render();
+      const searchActionComponent =
+        customerSearch.props.renderCustomerActions;
+      return searchActionComponent(customer);
+    };
+    // Route test of categ #2 (see 309 my notes)
+    it.only('passes a button to the CustomerSearch, button named Create Appointment', () => {
+      const button = childrenOf(
+        renderSearchActionsForCustomer()
+      )[0];
+      expect(button).toBeDefined();
+      expect(button.type).toEqual('button');
+      expect(button.props.role).toEqual('button');
+      expect(button.props.children).toEqual('Create appointment');
+    });
+
+    // Route test of categ #3 (see 309 my notes)
+    it.only('navigates to /addAppointment when clicking the Create appointment button', () => {
+      const button = childrenOf(
+        renderSearchActionsForCustomer()
+      )[0];
+      click(button);
+      expect(historySpy).toHaveBeenCalledWith('/addAppointment');
+    });
+    // Route test of categ #3 (see 309 my notes)
+    it.only('passes saved customer to AppointmentFormLoader when clicking the Create appointment button', () => {
+      const button = childrenOf(
+        renderSearchActionsForCustomer(customer)
+      )[0];
+      click(button);
+      const appointmentForm = routeFor('/addAppointment').props.render();
+      expect(appointmentForm.props.customer).toEqual(customer);
+    })
   });
 
   describe('within /addAppointment route', () => {

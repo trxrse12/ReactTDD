@@ -4,6 +4,7 @@ import { AppointmentFormLoader } from './AppointmentFormLoader';
 import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
 import { CustomerSearch } from './CustomerSearch';
+import {CustomerSearchRoute} from "./CustomerSearchRoute";
 
 export const MainScreen = () => (
   <React.Fragment>
@@ -44,15 +45,17 @@ export const App = ({history}) => {
     []
   );
 
-  const searchActions = (customer) => (
-    <React.Fragment>
-      <button
-        role="button"
-        onClick={() => transitionToAddAppointment(customer)}>
+  const searchActions = (customer) => {
+    console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM: customer=', customer)
+    return (<React.Fragment>
+        <button
+          role="button"
+          onClick={() => transitionToAddAppointment(customer)}>
           Create appointment
-      </button>
-    </React.Fragment>
-  );
+        </button>
+      </React.Fragment>
+    );
+  };
 
   return (
     <Switch>
@@ -61,6 +64,14 @@ export const App = ({history}) => {
         render={() => (
           <CustomerForm
             onSave={transitionToAddAppointment}
+          />
+        )}
+      />
+      <Route
+        path="/searchCustomers"
+        render={() => (
+          <CustomerSearchRoute
+            renderCustomerActions={searchActions}
           />
         )}
       />
