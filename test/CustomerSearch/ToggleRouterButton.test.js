@@ -29,4 +29,16 @@ describe('ToggleRouterButton', () => {
       search: '?a=123&b=234'
     })
   });
+
+  it('renders children', () => {
+    render(<ToggleRouterButton queryParams={queryParams}>
+        child text
+    </ToggleRouterButton>);
+    expect(root().props.children).toEqual('child text');
+  });
+
+  it('add toggled class if toggled pro is true', () => {
+    render(<ToggleRouterButton toggled={true} queryParams={queryParams} />);
+    expect(root().props.className).toContain('toggled');
+  })
 });
