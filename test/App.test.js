@@ -117,14 +117,14 @@ describe('App', () => {
 
     const renderSearchActionsForCustomer = customer => {
       render(<App history={{ push: historySpy }} />);
-      const customerSearch = routeFor(
+      const customerSearchContainer = routeFor(
         '/searchCustomers'
       ).props.render();
-      const searchActionComponent =
-        customerSearch.props.renderCustomerActions;
-      return searchActionComponent(customer);
+      const searchActionComponentProp =
+        customerSearchContainer.props.renderCustomerActions;
+      return searchActionComponentProp(customer);
     };
-    // Route test of categ #2 (see 309 my notes)
+    // Route test of categ #3 (see 309 my notes)
     it.only('passes a button to the CustomerSearch, button named Create Appointment', () => {
       const button = childrenOf(
         renderSearchActionsForCustomer()

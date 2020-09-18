@@ -46,7 +46,7 @@ export const App = ({history}) => {
   );
 
   const searchActions = (customer) => {
-    console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM: customer=', customer)
+    // console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM: customer=', customer)
     return (<React.Fragment>
         <button
           role="button"
@@ -69,11 +69,14 @@ export const App = ({history}) => {
       />
       <Route
         path="/searchCustomers"
-        render={() => (
+        render={props => {
+          // console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP props=', props)
+          return (
           <CustomerSearchRoute
+            {...props}
             renderCustomerActions={searchActions}
           />
-        )}
+        )}}
       />
       <Route
         path="/addAppointment"
