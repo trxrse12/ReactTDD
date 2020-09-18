@@ -1,7 +1,6 @@
 import React from 'react';
 import {createContainer, withEvent} from "./domManipulator";
 import {CustomerSearch} from "../src/CustomerSearch";
-import * as SearchButtonExports from '../src/CustomerSearch/SearchButtons';
 import 'whatwg-fetch';
 import {fetchResponseOk} from "./spyHelpers";
 
