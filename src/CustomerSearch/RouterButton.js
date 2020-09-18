@@ -5,14 +5,21 @@ import {Link} from "react-router-dom";
 export const RouterButton = ({
   pathname,
   queryParams,
+  children,
+  disabled,
 }) => {
+  let className = 'button';
+  if (disabled){
+    className += 'disabled';
+  }
   return (
     <Link
-      className={'button'}
+      className={className}
       to={{
         pathname: pathname,
         search: objectToQueryString(queryParams),
-      }}
-    />
+      }}>
+      {children}
+    </Link>
   )
 };
