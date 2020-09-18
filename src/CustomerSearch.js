@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {objectToQueryString} from "./objectToQueryString";
+import {RouterButton} from "./CustomerSearch/RouterButton";
 
 const CustomerRow = ({customer, renderCustomerActions}) => {
   return (
