@@ -12,7 +12,7 @@ import {AppointmentsDayViewLoader} from "../src/AppointmentsDayViewLoader";
 import {AppointmentFormLoader} from "../src/AppointmentFormLoader";
 import {AppointmentForm} from "../src/AppointmentForm";
 import {CustomerForm} from "../src/CustomerForm";
-import {CustomerSearch} from "../src/CustomerSearch";
+import {CustomerSearch} from "../src/CustomerSearch/CustomerSearch";
 import {CustomerSearchRoute} from "../src/CustomerSearchRoute";
 
 describe('Main screen', () => {

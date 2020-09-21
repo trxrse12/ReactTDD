@@ -3,7 +3,7 @@ import {Link, Switch, Route} from 'react-router-dom';
 import { AppointmentFormLoader } from './AppointmentFormLoader';
 import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
-import { CustomerSearch } from './CustomerSearch';
+import { CustomerSearch } from './CustomerSearch/CustomerSearch';
 import {CustomerSearchRoute} from "./CustomerSearchRoute";
 
 export const MainScreen = () => (

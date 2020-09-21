@@ -1,5 +1,5 @@
 import React from 'react';
-import {CustomerSearch} from "./CustomerSearch";
+import {CustomerSearch} from "./CustomerSearch/CustomerSearch";
 
 const convertParams = url => {
   const params = new URLSearchParams(url);
