@@ -1,9 +1,9 @@
 import React from 'react';
-import {createContainer, withEvent} from "./domManipulator";
-import {CustomerSearch} from "../src/CustomerSearch/CustomerSearch";
-import * as SearchButtonsExports from '../src/CustomerSearch/SearchButtons';
+import {createContainer, withEvent} from "../domManipulator";
+import {CustomerSearch} from "../../src/CustomerSearch/CustomerSearch";
+import * as SearchButtonsExports from '../../src/CustomerSearch/SearchButtons';
 import 'whatwg-fetch';
-import {fetchResponseOk} from "./spyHelpers";
+import {fetchResponseOk} from "../spyHelpers";
 
 const oneCustomer = [
   {id: 1, firstName: 'A', lastName: 'B', phoneNumber: '1'}
