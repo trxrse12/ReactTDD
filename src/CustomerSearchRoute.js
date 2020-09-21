@@ -23,6 +23,6 @@ export const CustomerSearchRoute = props =>
   (
     <CustomerSearch
       {...props}
-      {...convertParams(props.location.sear)}
+      {...convertParams(props.location.search)}
     />
   );
