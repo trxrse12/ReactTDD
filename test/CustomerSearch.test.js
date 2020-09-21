@@ -1,6 +1,7 @@
 import React from 'react';
 import {createContainer, withEvent} from "./domManipulator";
 import {CustomerSearch} from "../src/CustomerSearch";
+import * as SearchButtonsExports from '../src/CustomerSearch/SearchButtons';
 import 'whatwg-fetch';
 import {fetchResponseOk} from "./spyHelpers";
 
@@ -37,16 +38,12 @@ describe('CustomerSearch form', () => {
       .mockReturnValue(fetchResponseOk([]));
     historySpy = jest.fn();
     actionSpy = jest.fn();
+    jest
+      .spyOn(SearchButtonsExports, 'SearchButtons')
+      .mockReturnValue(null);
   });
   afterEach(() => {
     window.fetch.mockRestore();
-  });
-  it('renders a table with four headings', async () => {
-    await renderAndWait(<CustomerSearch />);
-    const headings = elements('table th');
-    expect(headings.map(h => h.textContent)).toEqual([
-      'First name', 'Last name', 'Phone number', 'Actions',
-    ]);
   });
 
   const renderCustomerSearch = props =>
@@ -58,6 +55,14 @@ describe('CustomerSearch form', () => {
         location={{pathname: '/path'}}
       />
     );
+
+  it.only('renders a table with four headings', async () => {
+    await renderCustomerSearch();
+    const headings = elements('table th');
+    expect(headings.map(h => h.textContent)).toEqual([
+      'First name', 'Last name', 'Phone number', 'Actions',
+    ]);
+  });
 
   it.only('fetches all customer data when component mounts', async () => {
     await renderCustomerSearch();
@@ -162,7 +167,7 @@ describe('CustomerSearch form', () => {
       'Enter filter text')
   });
 
-  it.only('change location when search term is changed', async () => {
+  it.only('changes location when search term is changed', async () => {
     await renderCustomerSearch();
     change(element('input'), withEvent('input', 'name'));
     expect(historySpy).toHaveBeenCalledWith(
@@ -199,7 +204,7 @@ describe('CustomerSearch form', () => {
     expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
   });
 
-  it.skip('renders SearchButtons with props', async() => {
+  it.only('renders SearchButtons with props', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
     await renderCustomerSearch({
       searchTerm: 'term',
@@ -208,7 +213,16 @@ describe('CustomerSearch form', () => {
       pathname: '/path',
     });
     expect(
-      SearchButtonExports.Se
+      SearchButtonsExports.SearchButtons
+    ).toHaveBeenCalledWith(
+      {
+        customers: tenCustomers,
+        searchTerm: 'term',
+        limit: 20,
+        lastRowIds: ['123'],
+        pathname: '/path',
+      },
+      expect.anything()
     )
   });
 

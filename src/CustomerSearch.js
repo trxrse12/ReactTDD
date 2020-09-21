@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {objectToQueryString} from "./objectToQueryString";
-import {RouterButton} from "./CustomerSearch/RouterButton";
+import {SearchButtons} from "./CustomerSearch/SearchButtons";
 
 const CustomerRow = ({customer, renderCustomerActions}) => {
   return (
@@ -13,73 +13,6 @@ const CustomerRow = ({customer, renderCustomerActions}) => {
   );
 };
 
-const ToggleButton = ({id, onClick, toggled, children}) => {
-  let className = 'toggle-button';
-  if (toggled){
-    className += ' toggled';
-  }
-  return (
-    <a id={id} onClick={onClick} className={className}>
-      {children}
-    </a>
-  );
-};
-
-const SearchButtons = ({
-   handleNext,
-   handlePrevious,
-   hasPrevious,
-   hasNext,
-   limit,
-   handleLimit,
-}) => {
-  return (
-    <div className="button-bar">
-      <ToggleButton
-        id="limit-10"
-        toggled={limit  === 10}
-        onClick={()=>handleLimit(10)}
-      >
-        10
-      </ToggleButton>
-      <ToggleButton
-        id="limit-20"
-        toggled={limit  === 20}
-        onClick={()=>handleLimit(20)}
-      >
-        20
-      </ToggleButton>
-      <ToggleButton
-        id="limit-50"
-        toggled={limit  === 50}
-        onClick={()=>handleLimit(50)}
-      >
-        50
-      </ToggleButton>
-      <ToggleButton
-        id="limit-100"
-        toggled={limit  === 100}
-        onClick={()=>handleLimit(100)}
-      >
-        100
-      </ToggleButton>
-      <button
-        role="button"
-        id="previous-page"
-        disabled={!hasPrevious}
-        onClick={handlePrevious}
-      >Previous</button>
-      <button
-        role="button"
-        id="next-page"
-        disabled={!hasNext}
-        onClick={handleNext}>
-        Next
-      </button>
-    </div>
-  );
-}
-
 export const CustomerSearch = ({
   renderCustomerActions,
   lastRowIds,
@@ -91,7 +24,7 @@ export const CustomerSearch = ({
   const [customers, setCustomers] = useState([]);
 
   const handleSearchTextChanged = ({target: {value}}) => {
-    const params = {limit, searchTerm: value}
+    const params = {limit, searchTerm: value};
     history.push(location.pathname + objectToQueryString(params));
   };
 
@@ -116,18 +49,6 @@ export const CustomerSearch = ({
     fetchData();
   }, [lastRowIds, searchTerm, limit]);
 
-  const handleNext = useCallback(() => {
-    const currentLastRowId = customers[customers.length -1].id;
-    setLastRowIds([...lastRowIds, currentLastRowId]);
-  }, [customers, lastRowIds]);
-
-  const handlePrevious = useCallback(() =>
-      setLastRowIds(lastRowIds.slice(0,-1))
-      , [lastRowIds]);
-
-  const hasPrevious = lastRowIds.length > 0;
-  const hasNext = customers.length === 10;
-
   return (
     <React.Fragment>
       <input
@@ -141,12 +62,6 @@ export const CustomerSearch = ({
         limit={limit}
         lastRowIds={lastRowIds}
         pathname={location.pathname}
-        // handleNext={handleNext}
-        // handlePrevious={handlePrevious}
-        // hasPrevious={hasPrevious}
-        // hasNext={hasNext}
-        // handleLimit={setLimit}
-        // limit={limit}
       />
       <table>
         <thead>

@@ -10,6 +10,13 @@ export const SearchButtons = ({
   limit,
   customers,
 }) => {
+  // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX, ddd=', {
+  //   pathname,
+  //   lastRowIds,
+  //   searchTerm,
+  //   limit,
+  //   customers,
+  // })
   limit = limit || 10;
 
   const previousPageParams = useCallback(
