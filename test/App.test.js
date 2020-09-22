@@ -22,20 +22,20 @@ describe('Main screen', () => {
     ({render, child, elementMatching} = createShallowRenderer())
   });
 
-  it('renders a button bas as the first child', () => {
+  it.only('renders a button bas as the first child', () => {
     render(<MainScreen />);
     expect(child(0).type).toEqual('div');
     expect(child(0).props.className).toEqual('button-bar');
   });
 
-  it('renders an AppointmentsDayViewLoader', () => {
+  it.only('renders an AppointmentsDayViewLoader', () => {
     render(<MainScreen/>);
     expect(
       elementMatching(type(AppointmentsDayViewLoader))
     ).toBeDefined();
   });
 
-  it('renders a link to /addCustomer', () => {
+  it.only('renders a link to /addCustomer', () => {
     render(<MainScreen/>);
     const links = childrenOf(
       elementMatching(className('button-bar'))
@@ -48,7 +48,7 @@ describe('Main screen', () => {
     )
   });
 
-  it('renders a link to /searchCustomer', () => {
+  it.only('renders a link to /searchCustomer', () => {
     render(<MainScreen/>);
     const links = childrenOf(
       elementMatching(className('button-bar'))
@@ -181,20 +181,20 @@ describe('App', () => {
     });
   });
 
-  it('initially shows the AppointmentDayViewLoader', () => {
+  it.skip('initially shows the AppointmentDayViewLoader', () => {
     render(<App/>);
     expect(
       elementMatching(type(AppointmentsDayViewLoader))
     ).toBeDefined();
   });
 
-  it('has a button bar as the first child', () => {
+  it.skip('has a button bar as the first child', () => {
     render(<App/>);
     expect(child(0).type).toEqual('div');
     expect(child(0).props.className).toEqual('button-bar');
   });
 
-  it('has a button to initiate add customer and appointment action', () => {
+  it.skip('has a button to initiate add customer and appointment action', () => {
     render(<App />);
     const buttons = childrenOf(
       elementMatching(className('button-bar'))
@@ -210,24 +210,24 @@ describe('App', () => {
     click(elementMatching(id('addCustomer')));
   };
 
-  it('displays the CustomerForm when button is clicked', async () => {
+  it.skip('displays the CustomerForm when button is clicked', async () => {
     beginAddingCustomerAndAppointment();
     expect(elementMatching(type(CustomerForm))).toBeDefined()
   });
 
-  it('hides the AppointmentDayViewLoader when button is clicked', async () => {
+  it.skip('hides the AppointmentDayViewLoader when button is clicked', async () => {
     beginAddingCustomerAndAppointment();
     expect(elementMatching(type(AppointmentsDayViewLoader))).not.toBeDefined();
   });
 
-  it('hides the button bar when CustomerForm is being displayed', async () =>{
+  it.skip('hides the button bar when CustomerForm is being displayed', async () =>{
     beginAddingCustomerAndAppointment();
     expect(elementMatching(className('button-bar'))).not.toBeTruthy();
   });
 
   const saveCustomer = customer =>
     elementMatching(type(CustomerForm)).props.onSave(customer);
-  it('displays the AppointmentFormLoader after the CustomerForm is submitted', async() => {
+  it.skip('displays the AppointmentFormLoader after the CustomerForm is submitted', async() => {
     beginAddingCustomerAndAppointment();
     saveCustomer();
     expect(
@@ -242,7 +242,7 @@ describe('App', () => {
   // });
 
   const saveAppointment = () => elementMatching(type(AppointmentFormLoader)).props.onSave();
-  it('renders AppointmentDayViewLoader after AppointmentForm is submitted', async() => {
+  it.skip('renders AppointmentDayViewLoader after AppointmentForm is submitted', async() => {
     beginAddingCustomerAndAppointment();
     saveCustomer();
     saveAppointment();
@@ -250,7 +250,7 @@ describe('App', () => {
   });
 
   describe('search customers', () => {
-    it('has a button to initiate searching customers', () => {
+    it.skip('has a button to initiate searching customers', () => {
       render(<App />);
       const buttons = childrenOf(
         elementMatching(className('button-bar'))
@@ -265,17 +265,17 @@ describe('App', () => {
       render(<App />);
       click(elementMatching(id('searchCustomers')));
     };
-    it('displays the CustomerSearch when button is clicked', async() => {
+    it.skip('displays the CustomerSearch when button is clicked', async() => {
       beginSearchCustomer();
       expect(elementMatching(type(CustomerSearch))).toBeDefined();
     });
 
-    it('hides the AppointmentDayViewLoader when button is clicked', async() => {
+    it.skip('hides the AppointmentDayViewLoader when button is clicked', async() => {
       beginSearchCustomer();
       expect(elementMatching(type(AppointmentsDayViewLoader))).not.toBeDefined();
     });
 
-    it('hides the button bar when CustomerSearch is being displayed', async () => {
+    it.skip('hides the button bar when CustomerSearch is being displayed', async () => {
       beginSearchCustomer();
       expect(elementMatching(className('button-bar'))).not.toBeTruthy();
     });
@@ -287,7 +287,7 @@ describe('App', () => {
       return searchActionsComponent(customer);
     };
 
-    it('pases a button to the CustomerSearch named Create appointment', async() => {
+    it.skip('pases a button to the CustomerSearch named Create appointment', async() => {
       const button = childrenOf(
         renderSearchActionsForCustomer()
       )[0];
@@ -297,7 +297,7 @@ describe('App', () => {
       expect(button.props.children).toEqual('Create appointment');
     });
 
-    it('clicking appointment button shows the appointment form for that customer', async () => {
+    it.skip('clicking appointment button shows the appointment form for that customer', async () => {
       const customer={id: 123};
       const button = childrenOf(
         renderSearchActionsForCustomer()
