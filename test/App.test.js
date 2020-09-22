@@ -1,3 +1,7 @@
+// valid tests are the ones with .only, as the ones with .skip were part of the old
+//    architecture, the one without React Router
+
+
 import React, {useState, useCallback} from 'react';
 import {Link, Switch} from 'react-router-dom';
 import {
