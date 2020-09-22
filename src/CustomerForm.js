@@ -100,7 +100,7 @@ export const CustomerForm = ({
         </span>
       );
     }
-  }
+  };
 
   return (
     <form id="customer" onSubmit={handleSubmit}>

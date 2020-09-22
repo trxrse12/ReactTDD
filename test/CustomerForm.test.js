@@ -48,18 +48,37 @@ describe('CustomerForm', () => {
     window.fetch.mockRestore();
   });
 
-  it('renders a form', () => {
+  it.only('renders a form', () => {
     render(<CustomerForm {...validCustomer}/>);
     expect(form('customer')).not.toBeNull();
   });
 
-  it('has a submit button',() => {
-    render(<CustomerForm {...validCustomer}/>);
-    const submitButton = element(
-      'input[type="submit"]'
-    );
-    expect(submitButton).not.toBeNull();
+  const submitButton = () => element('input[type="submit"]');
+
+  describe('submit button', () => {
+    it.only('has a submit button',() => {
+      render(<CustomerForm {...validCustomer}/>);
+      expect(submitButton()).not.toBeNull();
+    });
+
+    it.only('disables the submit button after the form has been submitted', async() => {
+      render(
+        <CustomerForm {...validCustomer} />
+      );
+      act(() => {
+        ReactTestUtils.Simulate.submit(form('customer'));
+      });
+      await act(async () => {
+        expect(submitButton().disabled).toBeTruthy()
+      });
+    });
+
+    it.only('initially does not disable the submit button', () => {
+      render(<CustomerForm {...validCustomer}/>);
+      expect(submitButton().disabled).toBeFalsy();
+    });
   });
+
 
   it('calls fetch with the right properties when submitting data', async () => {
     render(
@@ -152,14 +171,6 @@ describe('CustomerForm', () => {
         [fieldName]: value
       })
     });
-
-  // it('disables the submit button after the form has been submitted', () => {
-  //   render(
-  //     <CustomerForm {...validCustomer} />
-  //   );
-  //   await submit(form('customer'));
-  //   expect()
-  // });
 
   const itSavesNewValueWhenSubmitted = (fieldName, value) =>
     it('saves new value when submitted',  async() => {
@@ -260,10 +271,7 @@ describe('CustomerForm', () => {
         expect(element('span.submittingIndicator')).not.toBeNull();
       });
     });
-    it('initially does not display the submitting indicator', () => {
-      render(<CustomerForm {...validCustomer} />);
-      expect(element('.submittingIndicator')).toBeNull();
-    });
+
     it('hides indicator when form has submitted', async () => {
       render(<CustomerForm {...validCustomer} />);
       await submit(form('customer'));
