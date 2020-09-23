@@ -2,6 +2,8 @@ import React from 'react';
 import {CustomerSearch} from "./CustomerSearch/CustomerSearch";
 
 const convertParams = url => {
+  // a typical url (in my case is props.lcoation.search) will look like
+  //    '?=lastRowIds=1%2C2%2C3`
   const params = new URLSearchParams(url);
   const obj = {};
   if (params.has('searchTerm')) {
@@ -14,7 +16,7 @@ const convertParams = url => {
     obj.lastRowIds = params
       .get('lastRowIds')
       .split(',')
-      .filter(id => id !== '');
+      .filter(id => id !== ''); // removes the empty values
   }
   return obj;
 };
