@@ -160,7 +160,7 @@ describe('CustomerSearch form', () => {
     )
   });
 
-  it.only('has a search input field with a placholder', async () => {
+  it.only('has a search input field with a placeholder', async () => {
     await renderCustomerSearch();
     expect(element('input')).not.toBeNull();
     expect(element('input').getAttribute('placeholder')).toEqual('' +
@@ -197,7 +197,7 @@ describe('CustomerSearch form', () => {
     expect(rows[rows.length-1].textContent).toEqual('actions');
   });
 
-  it.only('pases customer to the renderCustomerActions prop', async() => {
+  it.only('passes customer to the renderCustomerActions prop', async() => {
     actionSpy.mockReturnValue('actions');
     window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
     await renderCustomerSearch();

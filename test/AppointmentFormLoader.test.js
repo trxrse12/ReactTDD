@@ -52,7 +52,7 @@ describe('AppointmentFormLoader', () => {
     )
   });
 
-  it('displays time slot that are fetched on mount', async () => {
+  it('displays time slots that are fetched on mount', async () => {
     await renderAndWait(<AppointmentFormLoader/>);
     expect(
       AppointmentFormExports.AppointmentForm

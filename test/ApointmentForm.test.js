@@ -46,6 +46,7 @@ describe('AppointmentForm', () => {
     render(<AppointmentForm />);
     expect(form('appointment')).not.toBeNull();
   });
+
   it('has a submit button', () => {
     render(<AppointmentForm />);
     const submitButton = container.querySelector(
@@ -53,6 +54,31 @@ describe('AppointmentForm', () => {
     );
     expect(submitButton).not.toBeNull();
   });
+
+  it('calls fetch with the right properties when submitting data', async() => {
+    render(<AppointmentForm customer={customer}/>);
+    await submit(form('appointment'));
+    expect(window.fetch).toHaveBeenCalledWith(
+      '/appointments',
+      expect.objectContaining({
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {'Content-Type': 'application/json'}
+      })
+    )
+  });
+
+  it('notifies onSave when form is submitted', async () => {
+    const appointment = {id: 123};
+    window.fetch.mockReturnValue(fetchResponseOk({}));
+    const saveSpy = jest.fn();
+    render(
+      <AppointmentForm onSave={saveSpy} customer={customer} />
+    );
+    await submit(form('appointment'));
+    expect(saveSpy).toHaveBeenCalled();
+  });
+
   const itRendersAsASelectBox = fieldName =>
     it('renders as a select box', () => {
       render(<AppointmentForm/>);
@@ -91,18 +117,7 @@ describe('AppointmentForm', () => {
       render(<AppointmentForm/>);
       expect(field('appointment', fieldName).id).toEqual(fieldName)
     });
-  it('calls fetch with the right properties when submitting data', async() => {
-    render(<AppointmentForm customer={customer}/>);
-    await submit(form('appointment'));
-    expect(window.fetch).toHaveBeenCalledWith(
-      '/appointments',
-       expect.objectContaining({
-         method: 'POST',
-         credentials: 'same-origin',
-         headers: {'Content-Type': 'application/json'}
-       })
-      )
-  });
+
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
     render(<AppointmentForm customer={customer}/>);
