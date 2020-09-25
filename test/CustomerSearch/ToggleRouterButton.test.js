@@ -37,7 +37,7 @@ describe('ToggleRouterButton', () => {
     expect(root().props.children).toEqual('child text');
   });
 
-  it('add toggled class if toggled pro is true', () => {
+  it('add toggled class if toggled prop is true', () => {
     render(<ToggleRouterButton toggled={true} queryParams={queryParams} />);
     expect(root().props.className).toContain('toggled');
   })
