@@ -2,15 +2,13 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/dist/layout.css" line="22" />
-    <bookmark url="file://$PROJECT_DIR$/test/ApointmentForm.test.js" line="178" />
+    <bookmark url="file://$PROJECT_DIR$/test/ApointmentForm.test.js" line="201" />
     <bookmark url="file://$PROJECT_DIR$/src/AppointmentsDayViewLoader.js" line="11" />
     <bookmark url="file://$PROJECT_DIR$/test/CustomerForm.test.js" line="381" />
     <bookmark url="file://$PROJECT_DIR$/test/App.test.js" line="282" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/test/ApointmentForm.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/ApointmentForm.test.js" afterDir="false" />
-    </list>
+    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -23,7 +21,7 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.54043126">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.35515022">
+        <splitter split-orientation="vertical" split-proportion="0.4914163">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="false">
@@ -53,7 +51,7 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
+                    <state relative-caret-position="252">
                       <caret line="164" column="12" selection-start-line="164" selection-start-column="6" selection-end-line="164" selection-end-column="12" />
                     </state>
                   </provider>
@@ -102,8 +100,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="216">
-                      <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+                    <state relative-caret-position="308">
+                      <caret line="130" column="7" lean-forward="true" selection-start-line="125" selection-start-column="2" selection-end-line="130" selection-end-column="7" />
                       <folding>
                         <element signature="e#0#26#0" expanded="true" />
                       </folding>
@@ -158,7 +156,7 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="97">
+                        <state relative-caret-position="181">
                           <caret line="59" column="14" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="17" />
                           <folding>
                             <element signature="e#0#33#0" expanded="true" />
@@ -270,7 +268,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jest</find>
       <find>change</find>
       <find>onSave</find>
       <find>validators</find>
@@ -300,6 +297,7 @@
       <find>it.only</find>
       <find>const submitButton</find>
       <find>renders multi</find>
+      <find>notifies</find>
     </findStrings>
     <replaceStrings>
       <replace>requestBodyOf</replace>
@@ -522,7 +520,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="593646000" />
+    <option name="totallyTimeSpent" value="596545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -562,16 +560,6 @@
           <url>file://$PROJECT_DIR$/src/sampleData.js</url>
           <line>51</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test/ApointmentForm.test.js</url>
-          <line>182</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/test/ApointmentForm.test.js</url>
-          <line>214</line>
-          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/CustomerForm.js</url>
@@ -614,9 +602,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/test/ApointmentForm.test.js</url>
-          <line>88</line>
+          <line>49</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -956,13 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CustomerSearch/SearchButtons.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -972,7 +953,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/domManipulator.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
+        <state relative-caret-position="181">
           <caret line="59" column="14" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="17" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
@@ -992,8 +973,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/CustomerSearch/CustomerSearch.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="115" column="5" lean-forward="true" selection-start-line="115" selection-start-column="5" selection-end-line="115" selection-end-column="5" />
+        <state relative-caret-position="84">
+          <caret line="36" column="25" selection-start-line="36" selection-start-column="25" selection-end-line="36" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -1022,15 +1003,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="252">
           <caret line="164" column="12" selection-start-line="164" selection-start-column="6" selection-end-line="164" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+        <state relative-caret-position="308">
+          <caret line="130" column="7" lean-forward="true" selection-start-line="125" selection-start-column="2" selection-end-line="130" selection-end-column="7" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

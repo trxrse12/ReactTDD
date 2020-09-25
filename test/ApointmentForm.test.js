@@ -309,7 +309,7 @@ describe('AppointmentForm', () => {
       expect(headerRow.firstChild.textContent).toEqual('');
     });
 
-    it('renders a week of avgailable dates', () => {
+    it('renders a week of available dates', () => {
       const today = new Date(2018, 11, 1);
       render(<AppointmentForm today={today} />);
       const dates = timeSlotTable().querySelectorAll(
