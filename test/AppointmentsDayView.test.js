@@ -29,7 +29,7 @@ describe('Appointment', () => {
     expect(appointmentTable().textContent).toMatch('Ashley');
   });
 
-  it('renders the customer first name', () => {
+  it('renders another customer first name', () => {
     customer = { firstName: 'Jordan'};
     render(<Appointment customer={customer} />);
     expect(appointmentTable().textContent).toMatch('Jordan');
@@ -124,10 +124,6 @@ describe('AppointmentsDayView', () => {
     } = createContainer());
   });
 
-  it('renders a div with the right id', () => {
-    render(<AppointmentsDayView appointments={[]}/>);
-    expect(element('div#appointmentsDayView')).not.toBeNull();
-  });
   it('renders multiple appointments in an ol element', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
     expect(element('ol')).not.toBeNull();
@@ -135,45 +131,58 @@ describe('AppointmentsDayView', () => {
       element('ol').children
     ).toHaveLength(2);
   });
+
   it('renders each appointment inside an li', () => {
     render(<AppointmentsDayView appointments={appointments}/>);
     expect(elements('li')).toHaveLength(2);
     expect(elements('li')[0].textContent).toEqual('12:00');
     expect(elements('li')[1].textContent).toEqual('13:00');
   });
+
   it('initially shows a message saying there are no appointments today', () => {
     render(<AppointmentsDayView appointments={[]} />);
     expect(container.textContent).toMatch(
       'There are no appointments scheduled for today.'
     );
   });
+
   it('selects the first appointment by default',() =>{
     render(<AppointmentsDayView appointments={appointments} />);
     expect(container.textContent).toMatch('Ashley');
   });
+
   it('has a button element in each li', () =>{
     render(<AppointmentsDayView appointments={appointments} />);
     expect(elements('li > button')).toHaveLength(2);
     expect(elements('li > button')[0].type).toEqual('button');
   });
+
   it('renders an appointment when selected', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     const button = elements('button')[0];
     click(button);
     expect(container.textContent).toMatch('Ashley');
   });
+
   it('renders another appointment when selected', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     const button = elements('button')[1];
     click(button);
     expect(container.textContent).toMatch('Jordan');
   });
+
+  it('renders a div with the right id', () => {
+    render(<AppointmentsDayView appointments={[]}/>);
+    expect(element('div#appointmentsDayView')).not.toBeNull();
+  });
+
   it('adds toggled class to button when selected', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     const button = elements('button')[1];
     click(button);
     expect(button.className).toMatch('toggled');
   });
+
   it('does not add toggled class if button is not selected', () => {
     render(<AppointmentsDayView appointments={appointments} />);
     const button = elements('button')[1];
