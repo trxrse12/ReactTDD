@@ -135,5 +135,37 @@ describe('reducer', () => {
         a:123,
       })
     });
+
+    it('sets validation errors to provided errors', () => {
+      expect(reducer(undefined, action)).toMatchObject({
+        validationErrors
+      })
+    });
+  });
+
+  describe('ADD_CUSTOMER_SUCCESSFUL action', () => {
+    const customer={id:123};
+    const action = {
+      type: 'ADD_CUSTOMER_SUCCESSFUL',
+      customer,
+    };
+
+    it('sets status to SUCCESSFUL', () => {
+      expect(reducer(undefined, action)).toMatchObject({
+        status: 'SUCCESSFUL',
+      })
+    });
+
+    it('maintains existing state', () => {
+      expect(reducer({a:123}, action)).toMatchObject({
+        a:123
+      })
+    });
+
+    it('sets customer to provided customer', () => {
+      expect(reducer(undefined, action)).toMatchObject({
+        customer
+      })
+    });
   });
 });
