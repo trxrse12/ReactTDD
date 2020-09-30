@@ -2,6 +2,7 @@ import {storeSpy, expectRedux} from "expect-redux";
 import {configureStore} from '../../src/store';
 import { reducer } from '../../src/sagas/customer';
 import {fetchResponseError, fetchResponseOk} from "../spyHelpers";
+import {createContainerWithStore, withEvent} from "../domManipulator";
 import 'whatwg-fetch';
 import {
   itMaintainsExistingState,
@@ -9,7 +10,7 @@ import {
 } from '../reducerGenerators';
 
 describe('addCustomer saga', () => {
-  let store;
+  let renderWithStore, store;
   const customer = {id:123};
 
   beforeEach(() => {
