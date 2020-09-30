@@ -87,17 +87,28 @@ describe('CustomerForm', () => {
   });
 
 
-  it('calls fetch with the right properties when submitting data', async () => {
-    renderWithStore(
-      <CustomerForm {...validCustomer}/>
-    );
-    await submit(form('customer'));
-    expect(window.fetch).toHaveBeenCalledWith('/customers',
-      expect.objectContaining({
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {'Content-Type': 'application/json'}
-      }));
+  // it('calls fetch with the right properties when submitting data', async () => {
+  //   renderWithStore(
+  //     <CustomerForm {...validCustomer}/>
+  //   );
+  //   await submit(form('customer'));
+  //   expect(window.fetch).toHaveBeenCalledWith('/customers',
+  //     expect.objectContaining({
+  //       method: 'POST',
+  //       credentials: 'same-origin',
+  //       headers: {'Content-Type': 'application/json'}
+  //     }));
+  // });
+
+  it('dispatches ADD_CUSTOMER_REQUEST when submitting data', async() => {
+    renderWithStore(<CustomerForm {...validCustomer}/>);
+    submit(form('customer'));
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({
+        type: 'ADD_CUSTOMER_REQUEST',
+        customer: validCustomer,
+      })
   });
 
   it('notifies onSave when form is submitted', async () => {
