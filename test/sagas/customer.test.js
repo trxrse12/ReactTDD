@@ -3,6 +3,10 @@ import {configureStore} from '../../src/store';
 import { reducer } from '../../src/sagas/customer';
 import {fetchResponseError, fetchResponseOk} from "../spyHelpers";
 import 'whatwg-fetch';
+import {
+  itMaintainsExistingState,
+  itSetsStatus,
+} from '../reducerGenerators';
 
 describe('addCustomer saga', () => {
   let store;
@@ -82,34 +86,15 @@ describe('reducer', () => {
 
   describe('ADD_CUSTOMER_SUBMITTING action', () => {
     const action = { type: 'ADD_CUSTOMER_SUBMITTING'};
-    it('sets status to SUBMITTING', () => {
-      expect(reducer(undefined, action)).toMatchObject({
-        status: 'SUBMITTING'
-      })
-    });
-
-    it('maintains existing state', () => {
-      expect(reducer({a:123}, action)).toMatchObject({
-        a: 123
-      });
-    });
+    itSetsStatus(reducer, action, 'SUBMITTING');
+    itMaintainsExistingState(reducer, action);
   });
 
   // similar to the two tests above, but compressed into one
   describe('ADD_CUSTOMER_FAILED action', () => {
     const action = {type: 'ADD_CUSTOMER_FAILED'};
-    it('sets status to FAILED', () => {
-      expect(reducer(undefined, action)).toMatchObject({
-        status: 'FAILED'
-      })
-    });
-
-    it('maintains existing state', () => {
-      expect(reducer({a:123}, action)).toMatchObject({
-        a:123
-      })
-    });
-
+    itSetsStatus(reducer, action, 'FAILED');
+    itMaintainsExistingState(reducer, action);
     it('sets error to true', () => {
       expect(reducer(undefined, action)).toMatchObject({
         error: true,
@@ -123,19 +108,8 @@ describe('reducer', () => {
       type: 'ADD_CUSTOMER_VALIDATION_FAILED',
       validationErrors
     };
-
-    it('sets status to VALIDATION_FAILED', () => {
-      expect(reducer(undefined, action)).toMatchObject({
-        status: 'VALIDATION_FAILED',
-      })
-    });
-
-    it('maintains existing state', () => {
-      expect(reducer({a:123}, action)).toMatchObject({
-        a:123,
-      })
-    });
-
+    itSetsStatus(reducer, action, 'VALIDATION_FAILED');
+    itMaintainsExistingState(reducer, action);
     it('sets validation errors to provided errors', () => {
       expect(reducer(undefined, action)).toMatchObject({
         validationErrors
@@ -149,19 +123,8 @@ describe('reducer', () => {
       type: 'ADD_CUSTOMER_SUCCESSFUL',
       customer,
     };
-
-    it('sets status to SUCCESSFUL', () => {
-      expect(reducer(undefined, action)).toMatchObject({
-        status: 'SUCCESSFUL',
-      })
-    });
-
-    it('maintains existing state', () => {
-      expect(reducer({a:123}, action)).toMatchObject({
-        a:123
-      })
-    });
-
+    itSetsStatus(reducer, action, 'SUCCESSFUL');
+    itMaintainsExistingState(reducer, action);
     it('sets customer to provided customer', () => {
       expect(reducer(undefined, action)).toMatchObject({
         customer
