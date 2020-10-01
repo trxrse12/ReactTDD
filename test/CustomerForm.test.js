@@ -154,7 +154,7 @@ describe('CustomerForm', () => {
   //   expect(element('.error').textContent).toMatch('error occurred');
   // });
 
-  it.only('renders error message when error prop is true', () => {
+  it('renders error message when error prop is true', () => {
     renderWithStore(<CustomerForm {...validCustomer} />);
     store.dispatch({type: 'ADD_CUSTOMER_FAILED'});
     expect(element('.error').textContent).toMatch('error occurred');

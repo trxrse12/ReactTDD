@@ -41,7 +41,6 @@ export const CustomerForm = connect(
     firstName,
     lastName,
     phoneNumber,
-    onSave,
     addCustomerRequest,
     error,
     serverValidationErrors,  // the server validation errors
