@@ -46,7 +46,6 @@ export const App = ({history}) => {
   );
 
   const searchActions = (customer) => {
-    // console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM: customer=', customer)
     return (<React.Fragment>
         <button
           role="button"
@@ -70,7 +69,6 @@ export const App = ({history}) => {
       <Route
         path="/searchCustomers"
         render={props => {
-          // console.log('PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP props=', props)
           return (
           <CustomerSearchRoute
             {...props}
@@ -90,38 +88,4 @@ export const App = ({history}) => {
       <Route component={MainScreen} />
     </Switch>
   )
-
-  // switch (view) {
-  //   case 'addCustomer':
-  //     return <CustomerForm onSave={transitionToAddAppointment}/>;
-  //   case 'searchCustomers':
-  //     return <CustomerSearch renderCustomerActions={searchActions}/>;
-  //   case 'addAppointment':
-  //     return (
-  //       <AppointmentFormLoader
-  //         customer={customer}
-  //         onSave={transitionToDayView}
-  //       />
-  //     );
-  //   default:
-  //     return (
-  //       <React.Fragment>
-  //         <div className="button-bar">
-  //           <button
-  //             type="button"
-  //             id="addCustomer"
-  //             onClick={transitionToAddCustomer}>
-  //             Add customer and appointment
-  //           </button>
-  //           <button
-  //             type="buton"
-  //             id="searchCustomers"
-  //             onClick={transitionToSearchCustomers}>
-  //             Search customers
-  //           </button>
-  //         </div>
-  //         <AppointmentsDayViewLoader/>
-  //     </React.Fragment>
-  //   );
-  // }
 };
