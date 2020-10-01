@@ -68,16 +68,18 @@ describe('CustomerForm', () => {
       expect(submitButton()).not.toBeNull();
     });
 
-    it('disables the submit button after the form has been submitted', async() => {
+    it('disables the submit button after the form has been submitted', () => {
       renderWithStore(
         <CustomerForm {...validCustomer} />
       );
-      act(() => {
-        ReactTestUtils.Simulate.submit(form('customer'));
-      });
-      await act(async () => {
-        expect(submitButton().disabled).toBeTruthy()
-      });
+      // act(() => {
+      //   ReactTestUtils.Simulate.submit(form('customer'));
+      // });
+      store.dispatch({type: 'ADD_CUSTOMER_SUBMITTING'});
+      // await act(async () => {
+      //   expect(submitButton().disabled).toBeTruthy()
+      // });
+      expect(submitButton().disabled).toBeTruthy();
     });
 
     it('initially does not disable the submit button', () => {
@@ -111,28 +113,28 @@ describe('CustomerForm', () => {
       })
   });
 
-  it('notifies onSave when form is submitted', async () => {
-    const customer = {id: 123};
-    window.fetch.mockReturnValue(fetchResponseOk(customer));
-    const saveSpy = jest.fn();
+  // it('notifies onSave when form is submitted', async () => {
+  //   const customer = {id: 123};
+  //   window.fetch.mockReturnValue(fetchResponseOk(customer));
+  //   const saveSpy = jest.fn();
+  //
+  //   renderWithStore(<CustomerForm
+  //     {...validCustomer}
+  //     onSave={saveSpy} />);
+  //   await submit(form('customer'));
+  //
+  //   expect(saveSpy).toHaveBeenCalledWith(customer);
+  // });
 
-    renderWithStore(<CustomerForm
-      {...validCustomer}
-      onSave={saveSpy} />);
-    await submit(form('customer'));
-
-    expect(saveSpy).toHaveBeenCalledWith(customer);
-  });
-
-  it('does not notify onSave if the POST request returns an error', async () => {
-    window.fetch.mockReturnValue(fetchResponseError());
-    const saveSpy = jest.fn();
-    renderWithStore(<CustomerForm
-      {...validCustomer}
-      onSave={saveSpy} />);
-    await submit(form('customer'));
-    expect(saveSpy).not.toHaveBeenCalled();
-  });
+  // it('does not notify onSave if the POST request returns an error', async () => {
+  //   window.fetch.mockReturnValue(fetchResponseError());
+  //   const saveSpy = jest.fn();
+  //   renderWithStore(<CustomerForm
+  //     {...validCustomer}
+  //     onSave={saveSpy} />);
+  //   await submit(form('customer'));
+  //   expect(saveSpy).not.toHaveBeenCalled();
+  // });
 
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
@@ -143,31 +145,41 @@ describe('CustomerForm', () => {
     expect(preventDefaultSpy).toHaveBeenCalled();
   });
 
-  it('renders error message when fetch call fails', async () => {
-    window.fetch.mockReturnValue(fetchResponseError());
-    renderWithStore(<CustomerForm {...validCustomer}/>);
-    await submit(form('customer'));
+  // it('renders error message when fetch call fails', async () => {
+  //   window.fetch.mockReturnValue(fetchResponseError());
+  //   renderWithStore(<CustomerForm {...validCustomer}/>);
+  //   await submit(form('customer'));
+  //
+  //   expect(element('.error')).not.toBeNull();
+  //   expect(element('.error').textContent).toMatch('error occurred');
+  // });
 
-    expect(element('.error')).not.toBeNull();
+  it.only('renders error message when error prop is true', () => {
+    renderWithStore(<CustomerForm {...validCustomer} />);
+    store.dispatch({type: 'ADD_CUSTOMER_FAILED'});
     expect(element('.error').textContent).toMatch('error occurred');
   });
 
-  it('clears the error message when fetch call succeeds', async() => {
-    renderWithStore(<CustomerForm {...validCustomer}/>);
-    window.fetch.mockReturnValue(fetchResponseError());
-    await submit(form('customer'));
-
-    const customer = {id: 123};
-    window.fetch.mockReturnValue(fetchResponseOk(customer));
-    await submit(form('customer'));
-    expect(element('.error')).toBeNull();
-  });
+  // it('clears the error message when fetch call succeeds', async() => {
+  //   renderWithStore(<CustomerForm {...validCustomer}/>);
+  //   window.fetch.mockReturnValue(fetchResponseError());
+  //   await submit(form('customer'));
+  //
+  //   const customer = {id: 123};
+  //   window.fetch.mockReturnValue(fetchResponseOk(customer));
+  //   await submit(form('customer'));
+  //   expect(element('.error')).toBeNull();
+  // });
 
   it('does not submit the form when there are validation errors', async() => {
     renderWithStore(<CustomerForm />);
     await submit(form('customer'));
-    expect(window.fetch).not.toHaveBeenCalled();
+    // expect(window.fetch).not.toHaveBeenCalled();
+    return expectRedux(store)
+      .toNotDispatchAnAction(100)
+      .ofType('ADD_CUSTOMER_REQUEST');
   });
+
 
   it('renders validation errors after submission fails', async () => {
     renderWithStore(<CustomerForm />);
@@ -176,29 +188,42 @@ describe('CustomerForm', () => {
     expect(element('.error')).not.toBeNull();
   });
 
-  it('renders field validation errors from server', async() => {
+  // it('renders field validation errors from server', async() => {
+  //   const errors = {
+  //     phoneNumber: 'Phone number already exists in the system'
+  //   };
+  //   window.fetch.mockReturnValue(
+  //     fetchResponseError(422, { errors })
+  //   );
+  //   renderWithStore(<CustomerForm {...validCustomer} />);
+  //   await submit(form('customer'));
+  //   expect(element('.error').textContent).toMatch(
+  //     errors.phoneNumber
+  //   );
+  // });
+
+  it('renders field validation errors from server', () => {
     const errors = {
       phoneNumber: 'Phone number already exists in the system'
     };
-    window.fetch.mockReturnValue(
-      fetchResponseError(422, { errors })
-    );
     renderWithStore(<CustomerForm {...validCustomer} />);
-    await submit(form('customer'));
+    store.dispatch({
+      type: 'ADD_CUSTOMER_VALIDATION_FAILED',
+      validationErrors: errors
+    });
     expect(element('.error').textContent).toMatch(
       errors.phoneNumber
     );
   });
 
   describe('submitting indicator', () => {
-    it('displays indicator when the form is submitting', async() => {
+    it('displays indicator when the form is submitting', () => {
       renderWithStore(<CustomerForm {...validCustomer}/>);
-      act(() => {
-        ReactTestUtils.Simulate.submit(form('customer'));
-      });
-      await act(async () => {
-        expect(element('span.submittingIndicator')).not.toBeNull();
-      });
+      // act(() => {
+      //   ReactTestUtils.Simulate.submit(form('customer'));
+      // });
+      store.dispatch({type: 'ADD_CUSTOMER_SUBMITTING'});
+      expect(element('span.submittingIndicator')).not.toBeNull();
     });
 
     it('initially does not display the submitting indicator', () => {
@@ -208,7 +233,8 @@ describe('CustomerForm', () => {
 
     it('hides indicator when form has submitted', async () => {
       renderWithStore(<CustomerForm {...validCustomer} />);
-      await submit(form('customer'));
+      // await submit(form('customer'));
+      store.dispatch({type: 'ADD_CUSTOMER_SUCCESSFUL'});
       expect(element('.submittingIndicator')).toBeNull();
     });
   });

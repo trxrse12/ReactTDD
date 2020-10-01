@@ -19,7 +19,13 @@ const validators = {
   ),
 };
 
-const mapToStateProps = () => ({});
+const mapToStateProps = ({
+                           customer: {validationErrors, error, status}
+}) => ({
+  serverValidationErrors: validationErrors,
+  error,
+  status,
+});
 const mapDispatchToProps = {
   addCustomerRequest: customer => ({
     type: 'ADD_CUSTOMER_REQUEST',
@@ -36,11 +42,13 @@ export const CustomerForm = connect(
     lastName,
     phoneNumber,
     onSave,
-    addCustomerRequest
+    addCustomerRequest,
+    error,
+    serverValidationErrors,  // the server validation errors
+    status,
                              }) => {
-    const [submitting, setSubmitting] = useState(false);
-    const [validationErrors, setValidationErrors] = useState({});
-    const [error, setError] = useState(false);
+    const submitting = status === 'SUBMITTING';
+    const [validationErrors, setValidationErrors] = useState({}); // the client validation errors
     const [customer, setCustomer] = useState({
       firstName,
       lastName,
@@ -67,32 +75,28 @@ export const CustomerForm = connect(
       }
     };
 
-    const doSave = async () => {
-      setSubmitting(true);
-      const result = await window.fetch('/customers', {
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(customer),
-      });
-      setSubmitting(false);
-      if (result.ok) {
-        setError(false);
-        const customerWithId = await result.json();
-        onSave(customerWithId)
-      } else if (result.status === 422) {
-        const response = await result.json();
-        setValidationErrors(response.errors);
-      } else {
-        setError(true);
-      }
-    };
+    // const doSave = async () => {
+    //   const result = await window.fetch('/customers', {
+    //     method: 'POST',
+    //     credentials: 'same-origin',
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: JSON.stringify(customer),
+    //   });
+    //   if (result.ok) {
+    //     const customerWithId = await result.json();
+    //     onSave(customerWithId)
+    //   } else if (result.status === 422) {
+    //     const response = await result.json();
+    //     setValidationErrors(response.errors);
+    //   } else {
+    //   }
+    // };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
       e.preventDefault();
       const validationResult = validateMany(validators, customer);
       if (!anyErrors(validationResult)){
-        await doSave();
+        // await doSave();
         addCustomerRequest(customer);
       } else {
         setValidationErrors(validationResult);
@@ -109,10 +113,14 @@ export const CustomerForm = connect(
     };
 
     const renderError = fieldName => {
-      if (hasError(validationErrors, fieldName)){
+      const allValidationErrors = {
+        ...validationErrors,
+        ...serverValidationErrors,
+      };
+      if (hasError(allValidationErrors, fieldName)){
         return (
           <span className="error">
-            {validationErrors[fieldName]}
+            {allValidationErrors[fieldName]}
           </span>
         );
       }
@@ -161,6 +169,6 @@ export const CustomerForm = connect(
   }
 );
 
-CustomerForm.defaultProps = {
-  onSave: () => {}
-}
+// CustomerForm.defaultProps = {
+//   onSave: () => {}
+// }
