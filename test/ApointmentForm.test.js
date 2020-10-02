@@ -4,13 +4,15 @@ import 'whatwg-fetch';
 import { createContainerWithStore, withEvent } from "./domManipulator";
 import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
+import {expectRedux} from "expect-redux";
 
 describe('AppointmentForm', () => {
-  let renderWithStore, container, submit, field, form, children, change, element;
+  let renderWithStore, store, container, submit, field, form, children, change, element;
   const customer={id: 123};
   beforeEach(() => {
     ({
       renderWithStore,
+      store,
       container,
       form,
       field,
@@ -55,9 +57,9 @@ describe('AppointmentForm', () => {
     expect(submitButton).not.toBeNull();
   });
 
-  it('calls fetch with the right properties when submitting data', async() => {
+  it('calls fetch with the right properties when submitting data', () => {
     renderWithStore(<AppointmentForm customer={customer}/>);
-    await submit(form('appointment'));
+    submit(form('appointment'));
     expect(window.fetch).toHaveBeenCalledWith(
       '/appointments',
       expect.objectContaining({
@@ -66,6 +68,12 @@ describe('AppointmentForm', () => {
         headers: {'Content-Type': 'application/json'}
       })
     )
+    // return expectRedux(store)
+    //   .toDispatchAnAction()
+    //   .matching({
+    //     type: 'ADD_CUSTOMER_REQUEST',
+    //     customer: customer
+    //   })
   });
 
   it('notifies onSave when form is submitted', async () => {
@@ -116,7 +124,11 @@ describe('AppointmentForm', () => {
   });
 
   it('passes the customer id to fetch when submitting', async() => {
-    renderWithStore(<AppointmentForm customer={customer} />);
+    renderWithStore(<AppointmentForm />);
+    store.dispatch({
+      type: 'SET_CUSTOMER_FOR_APPOINTMENT',
+      customer
+    });
     await submit(form('appointment'));
     expect(requestBodyOf(window.fetch)).toMatchObject({
       customer: customer.id

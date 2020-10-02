@@ -20,9 +20,10 @@ describe('AppointmentFormLoader', () => {
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue (fetchResponseOk(availableTimeSlots));
-    jest
-      .spyOn(AppointmentFormExports, 'AppointmentForm')
-      .mockReturnValue(null);
+    // jest
+    //   .spyOn(AppointmentFormExports, 'AppointmentForm')
+    //   .mockReturnValue(null);
+    AppointmentFormExports.AppointmentForm = jest.fn(() => null);
   });
 
   afterEach(() => {
