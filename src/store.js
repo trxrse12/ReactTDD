@@ -5,11 +5,13 @@ import {
   combineReducers,
 } from "redux";
 import {takeLatest} from 'redux-saga/effects';
+import createSagaMiddleware from 'redux-saga';
 import {
   addCustomer,
   reducer as customerReducer,
 } from './sagas/customer';
-import createSagaMiddleware from 'redux-saga';
+// import {reducer as appointmentReducer} from "./reducers/appointment";
+
 
 function* rootSaga() {
   yield takeLatest('ADD_CUSTOMER_REQUEST', addCustomer);
