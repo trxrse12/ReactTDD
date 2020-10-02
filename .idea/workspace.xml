@@ -9,10 +9,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/reducers/appointment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/reducers/appointment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AppointmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AppointmentForm.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,11 +50,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="298">
-                      <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="12" />
+                    <state relative-caret-position="154">
+                      <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
                     </state>
                   </provider>
                 </entry>
@@ -86,11 +83,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state>
-                      <caret column="44" lean-forward="true" selection-start-column="44" selection-end-column="44" />
+                    <state relative-caret-position="154">
+                      <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
                     </state>
                   </provider>
                 </entry>
@@ -112,11 +109,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/test/reducers/appointment.js">
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/test/reducers/appointment.test.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="252">
-                      <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+                      <caret line="18" column="3" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="38" />
                       <folding>
                         <element signature="e#0#57#0" expanded="true" />
                       </folding>
@@ -124,14 +121,11 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="434">
-                      <caret line="427" column="10" lean-forward="true" selection-start-line="427" selection-start-column="10" selection-end-line="427" selection-end-column="10" />
-                      <folding>
-                        <element signature="e#0#26#0" expanded="true" />
-                      </folding>
+                    <state relative-caret-position="42">
+                      <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
                     </state>
                   </provider>
                 </entry>
@@ -171,7 +165,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/sagas/customer.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="201">
+                    <state relative-caret-position="33">
                       <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
                     </state>
                   </provider>
@@ -180,11 +174,20 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="294">
-                      <caret line="111" column="4" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="55" />
+                    <state relative-caret-position="308">
+                      <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
                       <folding>
                         <element signature="e#0#51#0" expanded="true" />
                       </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/test/reducerGenerators.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state>
+                      <caret column="13" selection-start-column="13" selection-end-column="13" />
                     </state>
                   </provider>
                 </entry>
@@ -205,23 +208,14 @@
                   </provider>
                 </entry>
               </file>
+              <file pinned="false" current-in-tab="false">
+                <entry file="mock:///Local">
+                  <provider selected="true" editor-type-id="terminal-session-editor" />
+                </entry>
+              </file>
               <file pinned="false" current-in-tab="true">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="mock:///Local">
-                  <provider selected="true" editor-type-id="terminal-session-editor" />
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/reducerGenerators.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state>
-                      <caret column="13" selection-start-column="13" selection-end-column="13" />
-                    </state>
-                  </provider>
                 </entry>
               </file>
             </leaf>
@@ -282,7 +276,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dist/fixed_liquid.html" />
         <option value="$PROJECT_DIR$/dist/layout.html" />
         <option value="$PROJECT_DIR$/dist/layout2.css" />
         <option value="$PROJECT_DIR$/ReadMe.md" />
@@ -293,7 +286,6 @@
         <option value="$PROJECT_DIR$/src/AppointmentsDayView.js" />
         <option value="$PROJECT_DIR$/test/AppointmentFormLoader.js" />
         <option value="$PROJECT_DIR$/src/AppoointmentsDayViewLoader.js" />
-        <option value="$PROJECT_DIR$/src/AppointmentForm.js" />
         <option value="$PROJECT_DIR$/test/shallowHelpers.test.js" />
         <option value="$PROJECT_DIR$/src/AppointmentFormLoader.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
@@ -331,8 +323,10 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/CustomerForm.js" />
         <option value="$PROJECT_DIR$/src/store.js" />
-        <option value="$PROJECT_DIR$/src/reducers/appointment.js" />
         <option value="$PROJECT_DIR$/test/reducers/appointment.js" />
+        <option value="$PROJECT_DIR$/test/reducers/appointment.test.js" />
+        <option value="$PROJECT_DIR$/src/reducers/appointment.js" />
+        <option value="$PROJECT_DIR$/src/AppointmentForm.js" />
       </list>
     </option>
   </component>
@@ -383,12 +377,6 @@
               <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
               <item name="appointments" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
-              <item name="appointments" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sagas" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -401,12 +389,6 @@
               <item name="appointments" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="CustomerSearch" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
-              <item name="appointments" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
@@ -487,7 +469,7 @@
       <workItem from="1599128250403" duration="41753000" />
       <workItem from="1599642493974" duration="44463000" />
       <workItem from="1600361102160" duration="11385000" />
-      <workItem from="1601304522428" duration="37813000" />
+      <workItem from="1601304522428" duration="38729000" />
     </task>
     <servers />
   </component>
@@ -512,7 +494,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="648424000" />
+    <option name="totallyTimeSpent" value="649340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -944,13 +926,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="127" column="12" selection-start-line="127" selection-start-column="12" selection-end-line="127" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/store.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -974,7 +949,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sagas/customer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
+        <state relative-caret-position="33">
           <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
         </state>
       </provider>
@@ -986,40 +961,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="427" column="10" lean-forward="true" selection-start-line="427" selection-start-column="10" selection-end-line="427" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="111" column="4" lean-forward="true" selection-start-line="111" selection-start-column="4" selection-end-line="111" selection-end-column="55" />
+        <state relative-caret-position="308">
+          <caret line="112" column="23" selection-start-line="112" selection-start-column="23" selection-end-line="112" selection-end-column="23" />
           <folding>
             <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/reducers/appointment.js">
+    <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/reducers/appointment.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="18" column="3" lean-forward="true" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <caret line="18" column="3" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="38" />
           <folding>
             <element signature="e#0#57#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
+    <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="44" lean-forward="true" selection-start-column="44" selection-end-column="44" />
+        <state relative-caret-position="42">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
         </state>
       </provider>
     </entry>

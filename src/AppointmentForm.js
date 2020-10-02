@@ -113,6 +113,8 @@ const TimeSlotTable = ({
   )
 };
 
+// const mapStateToProps = ({customer})
+
 export const AppointmentForm = ({
      selectableServices,
      service,

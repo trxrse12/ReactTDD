@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactTestUtils from 'react-dom/test-utils';
 import 'whatwg-fetch';
-import { createContainer, withEvent } from "./domManipulator";
+import { createContainerWithStore, withEvent } from "./domManipulator";
 import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 describe('AppointmentForm', () => {
-  let render, container, submit, field, form, children, change, element;
+  let renderWithStore, container, submit, field, form, children, change, element;
   const customer={id: 123};
   beforeEach(() => {
     ({
-      render,
+      renderWithStore,
       container,
       form,
       field,
@@ -18,7 +18,7 @@ describe('AppointmentForm', () => {
       submit,
       change,
       element,
-    } = createContainer());
+    } = createContainerWithStore());
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk({}));
@@ -43,12 +43,12 @@ describe('AppointmentForm', () => {
   };
 
   it('renders a form', () => {
-    render(<AppointmentForm />);
+    renderWithStore(<AppointmentForm />);
     expect(form('appointment')).not.toBeNull();
   });
 
   it('has a submit button', () => {
-    render(<AppointmentForm />);
+    renderWithStore(<AppointmentForm />);
     const submitButton = container.querySelector(
       'input[type="submit"]'
     );
@@ -56,7 +56,7 @@ describe('AppointmentForm', () => {
   });
 
   it('calls fetch with the right properties when submitting data', async() => {
-    render(<AppointmentForm customer={customer}/>);
+    renderWithStore(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'));
     expect(window.fetch).toHaveBeenCalledWith(
       '/appointments',
@@ -72,7 +72,7 @@ describe('AppointmentForm', () => {
     const appointment = {id: 123};
     window.fetch.mockReturnValue(fetchResponseOk({}));
     const saveSpy = jest.fn();
-    render(
+    renderWithStore(
       <AppointmentForm onSave={saveSpy} customer={customer} />
     );
     await submit(form('appointment'));
@@ -82,7 +82,7 @@ describe('AppointmentForm', () => {
   it('does not notify onSave if the POST request returns an error', async () => {
     window.fetch.mockReturnValue(fetchResponseError());
     const saveSpy = jest.fn();
-    render(
+    renderWithStore(
       <AppointmentForm onSave={saveSpy} customer={customer} />
     );
     await submit(form('appointment'));
@@ -91,7 +91,7 @@ describe('AppointmentForm', () => {
 
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
-    render(<AppointmentForm customer={customer}/>);
+    renderWithStore(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'), {
       preventDefault: preventDefaultSpy
     });
@@ -100,7 +100,7 @@ describe('AppointmentForm', () => {
 
   it('renders error message when fetch call fails', async () => {
     window.fetch.mockReturnValue(fetchResponseError());
-    render(<AppointmentForm customer={customer}/>);
+    renderWithStore(<AppointmentForm customer={customer}/>);
     await submit(form('appointment'));
     expect(element('.error')).not.toBeNull();
     expect(element('.error').textContent).toMatch('error occurred');
@@ -109,14 +109,14 @@ describe('AppointmentForm', () => {
   it('clears the error message when fetch call succeeds', async () => {
     window.fetch.mockReturnValueOnce(fetchResponseError());
     window.fetch.mockReturnValue(fetchResponseOk());
-    render(<AppointmentForm customer={customer}/>);
+    renderWithStore(<AppointmentForm customer={customer}/>);
     await(submit(form('appointment')));
     await(submit(form('appointment')));
     expect(element('.error')).toBeNull();
   });
 
   it('passes the customer id to fetch when submitting', async() => {
-    render(<AppointmentForm customer={customer} />);
+    renderWithStore(<AppointmentForm customer={customer} />);
     await submit(form('appointment'));
     expect(requestBodyOf(window.fetch)).toMatchObject({
       customer: customer.id
@@ -125,7 +125,7 @@ describe('AppointmentForm', () => {
 
   const itRendersAsASelectBox = fieldName =>
     it('renders as a select box', () => {
-      render(<AppointmentForm/>);
+      renderWithStore(<AppointmentForm/>);
       expect(field('appointment', fieldName)).not.toBeNull();
       expect(field('appointment', fieldName).tagName).toEqual('SELECT');
     });
@@ -133,7 +133,7 @@ describe('AppointmentForm', () => {
 
   const itInitiallyHasABlankValueChosen = fieldName =>
     it('initially has a blank value chosen', () => {
-      render(<AppointmentForm/>);
+      renderWithStore(<AppointmentForm/>);
       const firstNode = field('appointment', fieldName).childNodes[0];
       expect(firstNode.value).toEqual('');
       expect(firstNode.selected).toBeTruthy();
@@ -142,7 +142,7 @@ describe('AppointmentForm', () => {
 
   const itPreselectExistingValue = (fieldName, props, existingValue) =>
     it('preselects the existing value', () => {
-      render(
+      renderWithStore(
         <AppointmentForm
           {...props}
           {...{[fieldName]: existingValue}}
@@ -158,20 +158,20 @@ describe('AppointmentForm', () => {
 
   const itRendersALabel = (fieldName, text) =>
     it('renders a label', () => {
-      render(<AppointmentForm />);
+      renderWithStore(<AppointmentForm />);
       expect(labelFor(fieldName, text)).not.toBeNull();
       expect(labelFor(fieldName).textContent).toEqual(text)
     });
 
   const itAssignsAnIdThatMatchesTheLabelId = (fieldName) =>
     it('assigns an id that matches the label id', () => {
-      render(<AppointmentForm/>);
+      renderWithStore(<AppointmentForm/>);
       expect(field('appointment', fieldName).id).toEqual(fieldName)
     });
 
   const itSubmitsExistingValue = (fieldName, props) =>
     it('saves existing value when submitted', async () => {
-      render(
+      renderWithStore(
         <AppointmentForm
           {...props}
           {...{[fieldName]:'value'}}
@@ -187,7 +187,7 @@ describe('AppointmentForm', () => {
 
   const itSubmitsNewValue = (fieldName, props) =>
     it('saves new value when submitted', async () => {
-      render(
+      renderWithStore(
         <AppointmentForm
           {...props}
           {...{[fieldName]: 'existingValue'}}
@@ -224,7 +224,7 @@ describe('AppointmentForm', () => {
 
     it('lists all the salon\'s services', () => {
       const selectableServices = ['Cut', 'Blow-dry'];
-      render(
+      renderWithStore(
         <AppointmentForm
           selectableServices={selectableServices}
         />
@@ -257,7 +257,7 @@ describe('AppointmentForm', () => {
       const serviceStylists = {
         '1':['A', 'B'],
       }
-      render(
+      renderWithStore(
         <AppointmentForm
             selectableServices={selectableServices}
             selectableStylists={selectableStylists}
@@ -282,14 +282,14 @@ describe('AppointmentForm', () => {
   describe('time slot table', () => {
 
     it('renders a table from time slots', () => {
-      render(<AppointmentForm />);
+      renderWithStore(<AppointmentForm />);
       expect(
         timeSlotTable()
       ).not.toBeNull();
     });
 
     it('renders a time slot for every half an hour between open and close time', () => {
-      render(
+      renderWithStore(
         <AppointmentForm salonOpensAt={9} salonClosesAt={11} />
       );
       const timesOfDay = timeSlotTable().querySelectorAll(
@@ -302,7 +302,7 @@ describe('AppointmentForm', () => {
     });
 
     it('renders an empty cell at the start of the header row', () => {
-      render(<AppointmentForm />);
+      renderWithStore(<AppointmentForm />);
       const headerRow = timeSlotTable().querySelector(
         'thead > tr'
       );
@@ -311,7 +311,7 @@ describe('AppointmentForm', () => {
 
     it('renders a week of available dates', () => {
       const today = new Date(2018, 11, 1);
-      render(<AppointmentForm today={today} />);
+      renderWithStore(<AppointmentForm today={today} />);
       const dates = timeSlotTable().querySelectorAll(
         'thead >* th:not(:first-child)'
       );
@@ -327,7 +327,7 @@ describe('AppointmentForm', () => {
         { startsAt: today.setHours(9, 0, 0, 0)},
         { startsAt: today.setHours(9, 30, 0, 0)},
       ];
-      render(<AppointmentForm
+      renderWithStore(<AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
         />
@@ -341,7 +341,7 @@ describe('AppointmentForm', () => {
       ).not.toBeNull();
     });
     it('does not render radio buttons for unavailable timeslots', () => {
-      render(<AppointmentForm availableTimeSlots={[]} />);
+      renderWithStore(<AppointmentForm availableTimeSlots={[]} />);
       const timesOfDay = timeSlotTable().querySelectorAll('input');
       expect(timesOfDay).toHaveLength(0);
     });
@@ -352,7 +352,7 @@ describe('AppointmentForm', () => {
     ];
 
     it('sets radio button values to the startsAt value of the corresponding appointment', () => {
-      render(
+      renderWithStore(
         <AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
@@ -367,7 +367,7 @@ describe('AppointmentForm', () => {
     });
 
     it('pre-selects the existing value', () => {
-      render(
+      renderWithStore(
         <AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
@@ -378,7 +378,7 @@ describe('AppointmentForm', () => {
     });
 
     it('saves existing values when submitted', async () => {
-      render(<AppointmentForm
+      renderWithStore(<AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
@@ -393,7 +393,7 @@ describe('AppointmentForm', () => {
     });
 
     it('saves a new value when submitted', async () => {
-      render(<AppointmentForm
+      renderWithStore(<AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
           startsAt={availableTimeSlots[0].startsAt}
@@ -415,7 +415,7 @@ describe('AppointmentForm', () => {
     });
 
     it('does not render radio buttons for unavailable time slots', () => {
-      render(<AppointmentForm availableTimeSlots={[]} />);
+      renderWithStore(<AppointmentForm availableTimeSlots={[]} />);
       const timesOfDay = timeSlotTable().querySelectorAll('input');
       expect(timesOfDay).toHaveLength(0);
     });
@@ -431,7 +431,7 @@ describe('AppointmentForm', () => {
           stylists: ['A'],
         }
       ];
-      render(
+      renderWithStore(
         <AppointmentForm
           availableTimeSlots={availableTimeSlots}
           today={today}
