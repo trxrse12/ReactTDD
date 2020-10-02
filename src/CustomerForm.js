@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {anyErrors, hasError, list, match, required, validateMany} from './formValidation';
-import {addCustomer} from "./sagas/customer";
 import { connect } from 'react-redux';
 
 const Error = () => (
