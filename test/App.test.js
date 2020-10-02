@@ -94,7 +94,8 @@ describe('App', () => {
     it('renders CustomerForm at the /addCustomer', () => {
       render(<App/>);
       expect(
-        routeFor('/addCustomer').props.render().type
+        // routeFor('/addCustomer').props.render().type
+        routeFor('/addCustomer').props.component
       ).toEqual(CustomerForm);
     });
 
@@ -102,15 +103,20 @@ describe('App', () => {
     //  doesn't have any param passed into it
 
     // Route test of categ #3 (see 309 my notes)
-    it('navigates to /addAppointment after the CustomerForm is submitted', () => {
-      render(<App history={{push: historySpy}} />);
-      const onSave = routeFor('/addCustomer').props.render().props.onSave;
-      onSave(customer);
-      expect(historySpy).toHaveBeenCalledWith('/addAppointment');
-    });
+    // it('navigates to /addAppointment after the CustomerForm is submitted', () => {
+    //   render(<App history={{push: historySpy}} />);
+    //   const onSave = routeFor('/addCustomer').props.render().props.onSave;
+    //   onSave(customer);
+    //   expect(historySpy).toHaveBeenCalledWith('/addAppointment');
+    // });
   });
 
   describe('within /searchCustomers route', () => {
+    let dispatchSpy;
+    beforeEach(() => {
+      dispatchSpy = jest.fn();
+    });
+
     //Route test of categ #1 (see 309 my notes)
     it('renders CustomerSearchRoute at the /searchCustomers', () => {
       render(<App/>);
@@ -120,7 +126,10 @@ describe('App', () => {
     });
 
     const renderSearchActionsForCustomer = customer => {
-      render(<App history={{ push: historySpy }} />);
+      render(<App
+        history={{ push: historySpy }}
+        setCustomerForAppointment={dispatchSpy}
+      />);
       const customerSearchContainer = routeFor(
         '/searchCustomers'
       ).props.render();
@@ -148,14 +157,21 @@ describe('App', () => {
       expect(historySpy).toHaveBeenCalledWith('/addAppointment');
     });
     // Route test of categ #3 (see 309 my notes)
-    it('passes saved customer to AppointmentFormLoader when clicking the Create appointment button', () => {
+    // it('passes saved customer to AppointmentFormLoader when clicking the Create appointment button', () => {
+    //   const button = childrenOf(
+    //     renderSearchActionsForCustomer(customer)
+    //   )[0];
+    //   click(button);
+    //   const appointmentForm = routeFor('/addAppointment').props.render();
+    //   expect(appointmentForm.props.customer).toEqual(customer);
+    // })
+    it('dispatches SET_CUSTOMER_FOR_APPOINTMENT when clicking the Create appointment button', async() => {
       const button = childrenOf(
         renderSearchActionsForCustomer(customer)
       )[0];
       click(button);
-      const appointmentForm = routeFor('/addAppointment').props.render();
-      expect(appointmentForm.props.customer).toEqual(customer);
-    })
+      expect(dispatchSpy).toHaveBeenCalledWith(customer);
+    });
   });
 
   describe('within /addAppointment route', () => {
@@ -168,13 +184,13 @@ describe('App', () => {
     });
 
     // Route test of categ #2 (see 309 my notes)
-    it('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
-      render(<App history={{push: historySpy}}/>);
-      const onSave = routeFor('/addCustomer').props.render().props.onSave;
-      onSave(customer);
-      let renderFunc = routeFor('/addAppointment').props.render;
-      expect(renderFunc().props.customer).toEqual(customer);
-    });
+    // it('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
+    //   render(<App history={{push: historySpy}}/>);
+    //   const onSave = routeFor('/addCustomer').props.render().props.onSave;
+    //   onSave(customer);
+    //   let renderFunc = routeFor('/addAppointment').props.render;
+    //   expect(renderFunc().props.customer).toEqual(customer);
+    // });
 
     // Route test of categ #3 (see 309 my notes)
     it('navigates to / after AppointmentFormLoader is saved', () => {
@@ -254,6 +270,7 @@ describe('App', () => {
   });
 
   describe('search customers', () => {
+
     it.skip('has a button to initiate searching customers', () => {
       render(<App />);
       const buttons = childrenOf(
@@ -266,8 +283,11 @@ describe('App', () => {
     });
 
     const beginSearchCustomer = async () => {
-      render(<App />);
-      click(elementMatching(id('searchCustomers')));
+      render(<App
+        history={{push: historySpy}}
+          setCustomerForAppointment={dispatchSpy}
+          />);
+          click(elementMatching(id('searchCustomers')));
     };
     it.skip('displays the CustomerSearch when button is clicked', async() => {
       beginSearchCustomer();
@@ -291,7 +311,7 @@ describe('App', () => {
       return searchActionsComponent(customer);
     };
 
-    it.skip('pases a button to the CustomerSearch named Create appointment', async() => {
+    it.skip('passes a button to the CustomerSearch named Create appointment', async() => {
       const button = childrenOf(
         renderSearchActionsForCustomer()
       )[0];

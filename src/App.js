@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import {Link, Switch, Route} from 'react-router-dom';
 import { AppointmentFormLoader } from './AppointmentFormLoader';
 import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
 import { CustomerSearch } from './CustomerSearch/CustomerSearch';
 import {CustomerSearchRoute} from "./CustomerSearchRoute";
+import { connect } from 'react-redux';
 
 export const MainScreen = () => (
   <React.Fragment>
@@ -20,15 +21,14 @@ export const MainScreen = () => (
   </React.Fragment>
 );
 
-export const App = ({history}) => {
-  const [view, setView] = useState('dayView');
-  const [customer, setCustomer] = useState();
+export const App = ({history, setCustomerForAppointment}) => {
+  // const [view, setView] = useState('dayView');
+  // const [customer, setCustomer] = useState();
 
-  const transitionToAddAppointment = useCallback(
-    customer => {
-      setCustomer(customer);
+  const transitionToAddAppointment = customer => {
+      setCustomerForAppointment(customer);
       history.push('/addAppointment')
-    }, [history]);
+    };
 
   const transitionToAddCustomer = useCallback(
     () => setView('addCustomer'),
@@ -60,11 +60,12 @@ export const App = ({history}) => {
     <Switch>
       <Route
         path="/addCustomer"
-        render={() => (
-          <CustomerForm
-            onSave={transitionToAddAppointment}
-          />
-        )}
+        // render={() => (
+        //   <CustomerForm
+        //     onSave={transitionToAddAppointment}
+        //   />
+        // )}
+        component={CustomerForm}
       />
       <Route
         path="/searchCustomers"
@@ -80,7 +81,7 @@ export const App = ({history}) => {
         path="/addAppointment"
         render={() => (
           <AppointmentFormLoader
-            customer={customer}
+            // customer={customer}
             onSave={transitionToDayView}
           />
         )}
@@ -89,3 +90,15 @@ export const App = ({history}) => {
     </Switch>
   )
 };
+
+const mapDispatchToProps = {
+  setCustomerForAppointment: customer => ({
+    type: 'SET_CUSTOMER_FOR_APPOINTMENT',
+    customer
+  })
+};
+
+export const ConnectedApp = connect(
+  null,
+  mapDispatchToProps
+)(App);
