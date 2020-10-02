@@ -1,4 +1,4 @@
-// valid tests are the ones with .only, as the ones with .skip were part of the old
+// valid tests are the ones with , as the ones with .skip were part of the old
 //    architecture, the one without React Router
 
 
@@ -26,20 +26,20 @@ describe('Main screen', () => {
     ({render, child, elementMatching} = createShallowRenderer())
   });
 
-  it.only('renders a button bas as the first child', () => {
+  it('renders a button bas as the first child', () => {
     render(<MainScreen />);
     expect(child(0).type).toEqual('div');
     expect(child(0).props.className).toEqual('button-bar');
   });
 
-  it.only('renders an AppointmentsDayViewLoader', () => {
+  it('renders an AppointmentsDayViewLoader', () => {
     render(<MainScreen/>);
     expect(
       elementMatching(type(AppointmentsDayViewLoader))
     ).toBeDefined();
   });
 
-  it.only('renders a link to /addCustomer', () => {
+  it('renders a link to /addCustomer', () => {
     render(<MainScreen/>);
     const links = childrenOf(
       elementMatching(className('button-bar'))
@@ -52,7 +52,7 @@ describe('Main screen', () => {
     )
   });
 
-  it.only('renders a link to /searchCustomer', () => {
+  it('renders a link to /searchCustomer', () => {
     render(<MainScreen/>);
     const links = childrenOf(
       elementMatching(className('button-bar'))
@@ -82,7 +82,7 @@ describe('App', () => {
 
   const routeFor = path => childRoutes().find(prop('path', path));
 
-  it.only('renders the MainScreen as the default route', () => {
+  it('renders the MainScreen as the default route', () => {
     render(<App/>);
     const routes = childRoutes();
     const lastRoute = routes[routes.length - 1];
@@ -91,7 +91,7 @@ describe('App', () => {
 
   describe('within /addCustomer route', () => {
     // Route test of categ #1 (see 309 my notes)
-    it.only('renders CustomerForm at the /addCustomer', () => {
+    it('renders CustomerForm at the /addCustomer', () => {
       render(<App/>);
       expect(
         routeFor('/addCustomer').props.render().type
@@ -102,7 +102,7 @@ describe('App', () => {
     //  doesn't have any param passed into it
 
     // Route test of categ #3 (see 309 my notes)
-    it.only('navigates to /addAppointment after the CustomerForm is submitted', () => {
+    it('navigates to /addAppointment after the CustomerForm is submitted', () => {
       render(<App history={{push: historySpy}} />);
       const onSave = routeFor('/addCustomer').props.render().props.onSave;
       onSave(customer);
@@ -112,7 +112,7 @@ describe('App', () => {
 
   describe('within /searchCustomers route', () => {
     //Route test of categ #1 (see 309 my notes)
-    it.only('renders CustomerSearchRoute at the /searchCustomers', () => {
+    it('renders CustomerSearchRoute at the /searchCustomers', () => {
       render(<App/>);
       expect(
         routeFor('/searchCustomers').props.render().type
@@ -129,7 +129,7 @@ describe('App', () => {
       return searchActionComponentProp(customer);
     };
     // Route test of categ #3 (see 309 my notes)
-    it.only('passes a button to the CustomerSearch, button named Create Appointment', () => {
+    it('passes a button to the CustomerSearch, button named Create Appointment', () => {
       const button = childrenOf(
         renderSearchActionsForCustomer()
       )[0];
@@ -140,7 +140,7 @@ describe('App', () => {
     });
 
     // Route test of categ #3 (see 309 my notes)
-    it.only('navigates to /addAppointment when clicking the Create appointment button', () => {
+    it('navigates to /addAppointment when clicking the Create appointment button', () => {
       const button = childrenOf(
         renderSearchActionsForCustomer()
       )[0];
@@ -148,7 +148,7 @@ describe('App', () => {
       expect(historySpy).toHaveBeenCalledWith('/addAppointment');
     });
     // Route test of categ #3 (see 309 my notes)
-    it.only('passes saved customer to AppointmentFormLoader when clicking the Create appointment button', () => {
+    it('passes saved customer to AppointmentFormLoader when clicking the Create appointment button', () => {
       const button = childrenOf(
         renderSearchActionsForCustomer(customer)
       )[0];
@@ -160,7 +160,7 @@ describe('App', () => {
 
   describe('within /addAppointment route', () => {
     // Route test of categ #1 (see 309 my notes)
-    it.only('renders AppointmentFormLoader at /addAppointment', () => {
+    it('renders AppointmentFormLoader at /addAppointment', () => {
       render(<App/>);
       expect(
         routeFor('/addAppointment').props.render().type
@@ -168,7 +168,7 @@ describe('App', () => {
     });
 
     // Route test of categ #2 (see 309 my notes)
-    it.only('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
+    it('passes saved customer to AppointmentFormLoader after the CustomerForm is submitted', () => {
       render(<App history={{push: historySpy}}/>);
       const onSave = routeFor('/addCustomer').props.render().props.onSave;
       onSave(customer);
@@ -177,7 +177,7 @@ describe('App', () => {
     });
 
     // Route test of categ #3 (see 309 my notes)
-    it.only('navigates to / after AppointmentFormLoader is saved', () => {
+    it('navigates to / after AppointmentFormLoader is saved', () => {
       render(<App history={{push: historySpy}} />);
       const onSave = routeFor('/addAppointment').props.render().props.onSave;
       onSave();
