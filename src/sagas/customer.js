@@ -43,7 +43,8 @@ export const reducer = (state = defaultState, action) => {
       return {
         ...state,
         status: 'SUCCESSFUL',
-        customer: action.customer
+        customer: action.customer,
+        error: false,
       };
     case 'ADD_CUSTOMER_FAILED':
       return {...state, status: 'FAILED', error: true};
