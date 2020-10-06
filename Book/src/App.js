@@ -41,7 +41,7 @@ export const App = () => {
 
   switch (view) {
     case 'addCustomer':
-      return <CustomerForm onSave={transitionToAddAppointment}/>;
+      return <CustomerForm/>;
     case 'searchCustomers':
       return <CustomerSearch renderCustomerActions={searchActions}/>;
     case 'addAppointment':
