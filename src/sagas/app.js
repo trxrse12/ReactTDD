@@ -8,3 +8,7 @@ export function* customerAdded({customer}) {
     customer
     })
 }
+
+export function* appointmentAdded(){
+  appHistory.push('/');
+}
