@@ -77,27 +77,27 @@ describe('AppointmentForm', () => {
         customer
       })
   });
+  //
+  // it('notifies onSave when form is submitted', async () => {
+  //   const appointment = {id: 123};
+  //   window.fetch.mockReturnValue(fetchResponseOk({}));
+  //   const saveSpy = jest.fn();
+  //   renderWithStore(
+  //     <AppointmentForm onSave={saveSpy} customer={customer} />
+  //   );
+  //   await submit(form('appointment'));
+  //   expect(saveSpy).toHaveBeenCalled();
+  // });
 
-  it('notifies onSave when form is submitted', async () => {
-    const appointment = {id: 123};
-    window.fetch.mockReturnValue(fetchResponseOk({}));
-    const saveSpy = jest.fn();
-    renderWithStore(
-      <AppointmentForm onSave={saveSpy} customer={customer} />
-    );
-    await submit(form('appointment'));
-    expect(saveSpy).toHaveBeenCalled();
-  });
-
-  it('does not notify onSave if the POST request returns an error', async () => {
-    window.fetch.mockReturnValue(fetchResponseError());
-    const saveSpy = jest.fn();
-    renderWithStore(
-      <AppointmentForm onSave={saveSpy} customer={customer} />
-    );
-    await submit(form('appointment'));
-    expect(saveSpy).not.toHaveBeenCalled();
-  });
+  // it('does not notify onSave if the POST request returns an error', async () => {
+  //   window.fetch.mockReturnValue(fetchResponseError());
+  //   const saveSpy = jest.fn();
+  //   renderWithStore(
+  //     <AppointmentForm onSave={saveSpy} customer={customer} />
+  //   );
+  //   await submit(form('appointment'));
+  //   expect(saveSpy).not.toHaveBeenCalled();
+  // });
 
   it('prevents the default action when submitting the form', async () => {
     const preventDefaultSpy = jest.fn();
@@ -108,22 +108,23 @@ describe('AppointmentForm', () => {
     expect(preventDefaultSpy).toHaveBeenCalled();
   });
 
-  it('renders error message when fetch call fails', async () => {
-    window.fetch.mockReturnValue(fetchResponseError());
-    renderWithStore(<AppointmentForm customer={customer}/>);
-    await submit(form('appointment'));
+  it('renders error message when error prop is true', async () => {
+    // window.fetch.mockReturnValue(fetchResponseError());
+    renderWithStore(<AppointmentForm/>);
+    // await submit(form('appointment'));
+    store.dispatch({type: 'ADD_APPOINTMENT_FAILED'});
     expect(element('.error')).not.toBeNull();
     expect(element('.error').textContent).toMatch('error occurred');
   });
 
-  it('clears the error message when fetch call succeeds', async () => {
-    window.fetch.mockReturnValueOnce(fetchResponseError());
-    window.fetch.mockReturnValue(fetchResponseOk());
-    renderWithStore(<AppointmentForm customer={customer}/>);
-    await(submit(form('appointment')));
-    await(submit(form('appointment')));
-    expect(element('.error')).toBeNull();
-  });
+  // it('clears the error message when fetch call succeeds', async () => {
+  //   window.fetch.mockReturnValueOnce(fetchResponseError());
+  //   window.fetch.mockReturnValue(fetchResponseOk());
+  //   renderWithStore(<AppointmentForm customer={customer}/>);
+  //   await(submit(form('appointment')));
+  //   await(submit(form('appointment')));
+  //   expect(element('.error')).toBeNull();
+  // });
 
   it('passes the customer id to fetch when submitting', async() => {
     renderWithStore(<AppointmentForm />);

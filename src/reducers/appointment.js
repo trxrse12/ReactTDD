@@ -10,6 +10,12 @@ export const reducer = (state = defaultState, action) => {
         customer: action.customer,
       };
     }
+    case 'ADD_APPOINTMENT_FAILED': {
+      return {
+        ...state,
+        error: true,
+      }
+    }
     default:
       return state;
   }

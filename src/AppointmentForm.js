@@ -114,13 +114,17 @@ const TimeSlotTable = ({
   )
 };
 
-const mapStateToProps = ({appointment: {customer}}) => ({customer});
+const mapStateToProps = ({appointment: {customer, error}}) => ({customer, error});
 const mapDispatchToProps = {
-  addAppointmentRequest: ({appointment, customer}) => ({
+  addAppointmentRequest: ({appointment, customer}) => {
+    // console.log('SSSSSSSSSSSSSSSSSSSSSSSS customer=', customer);
+    // console.log('DDDDDDDDDDDDDDDDDDDDDDDD error=', error);
+    return ({
       type: 'ADD_APPOINTMENT_REQUEST',
       appointment,
       customer,
     })
+  }
 };
 
 export const AppointmentForm = connect(
@@ -133,7 +137,6 @@ export const AppointmentForm = connect(
      selectableStylists,
      stylist,
      serviceStylists,
-     onSave,
      salonOpensAt,
      salonClosesAt,
      today,
@@ -141,8 +144,9 @@ export const AppointmentForm = connect(
      startsAt,
      customer,
      addAppointmentRequest,
+     error,
    }) => {
-    const [error, setError] = useState(false);
+    // console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF error=', error)
     const [appointment, setAppointment] = useState({
       service,
       startsAt,
@@ -176,14 +180,10 @@ export const AppointmentForm = connect(
         }),
       });
       if (result.ok){
-        setError(false);
-        onSave();
         addAppointmentRequest({
           appointment,
           customer,
         })
-      } else {
-        setError(true);
       }
     };
 
@@ -261,5 +261,4 @@ AppointmentForm.defaultProps = {
     'Cut & beard trim': ['Pat', 'Sam'],
     Extensions: ['Ashley', 'Pat']
   },
-  onSave: () => {},
 };
