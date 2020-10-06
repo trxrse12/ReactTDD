@@ -115,10 +115,17 @@ const TimeSlotTable = ({
 };
 
 const mapStateToProps = ({appointment: {customer}}) => ({customer});
+const mapDispatchToProps = {
+  addAppointmentRequest: ({appointment, customer}) => ({
+      type: 'ADD_APPOINTMENT_REQUEST',
+      appointment,
+      customer,
+    })
+};
 
 export const AppointmentForm = connect(
   mapStateToProps,
-  null
+  mapDispatchToProps,
 )(
   ({
      selectableServices,
@@ -133,6 +140,7 @@ export const AppointmentForm = connect(
      availableTimeSlots,
      startsAt,
      customer,
+     addAppointmentRequest,
    }) => {
     const [error, setError] = useState(false);
     const [appointment, setAppointment] = useState({
@@ -170,6 +178,10 @@ export const AppointmentForm = connect(
       if (result.ok){
         setError(false);
         onSave();
+        addAppointmentRequest({
+          appointment,
+          customer,
+        })
       } else {
         setError(true);
       }

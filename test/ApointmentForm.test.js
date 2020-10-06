@@ -57,23 +57,25 @@ describe('AppointmentForm', () => {
     expect(submitButton).not.toBeNull();
   });
 
-  it('calls fetch with the right properties when submitting data', () => {
-    renderWithStore(<AppointmentForm customer={customer}/>);
+  it('dispatches ADD_APPOINTMENT_REQUEST when submitting data', () => {
+    const appointment = {
+      service: 'Blow-dry',
+      startsAt: 123,
+      stylist: 'Joe',
+    };
+    store.dispatch({
+      type: 'SET_CUSTOMER_FOR_APPOINTMENT',
+      customer,
+    });
+    renderWithStore(<AppointmentForm {...appointment}/>);
     submit(form('appointment'));
-    expect(window.fetch).toHaveBeenCalledWith(
-      '/appointments',
-      expect.objectContaining({
-        method: 'POST',
-        credentials: 'same-origin',
-        headers: {'Content-Type': 'application/json'}
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({
+        type: 'ADD_APPOINTMENT_REQUEST',
+        appointment,
+        customer
       })
-    )
-    // return expectRedux(store)
-    //   .toDispatchAnAction()
-    //   .matching({
-    //     type: 'ADD_CUSTOMER_REQUEST',
-    //     customer: customer
-    //   })
   });
 
   it('notifies onSave when form is submitted', async () => {
