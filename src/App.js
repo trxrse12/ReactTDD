@@ -59,13 +59,7 @@ export const App = ({history, setCustomerForAppointment}) => {
   return (
     <Switch>
       <Route
-        path="/addCustomer"
-        // render={() => (
-        //   <CustomerForm
-        //     onSave={transitionToAddAppointment}
-        //   />
-        // )}
-        component={CustomerForm}
+        path="/addCustomer" component={CustomerForm}
       />
       <Route
         path="/searchCustomers"
@@ -78,13 +72,7 @@ export const App = ({history, setCustomerForAppointment}) => {
         )}}
       />
       <Route
-        path="/addAppointment"
-        render={() => (
-          <AppointmentFormLoader
-            // customer={customer}
-            onSave={transitionToDayView}
-          />
-        )}
+        path="/addAppointment" component={AppointmentFormLoader}
       />
       <Route component={MainScreen} />
     </Switch>
