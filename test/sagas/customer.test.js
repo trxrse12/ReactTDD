@@ -101,6 +101,25 @@ describe('customer sagas', () => {
           headers: { 'Content-Type': 'application/json'},
         })
       });
+
+      it('sends the after query as the last item in lastRowIds', () => {
+        dispatchRequest({
+          ...defaultParams,
+          lastRowIds: [123, 234, 345]
+        });
+
+        expect(window.fetch).toHaveBeenCalledWith(
+          '/customers?after=345',
+           expect.anything(),
+        )
+      });
+
+      //   it('dispatches ADD_CUSTOMER_SUCCESSFUL on success', () => {
+    //     dispatchRequest();
+    //     return expectRedux(store)
+    //       .toDispatchAnAction
+    //       .matching({type: 'ADD_CUSTOMER_SUCCESSFUL', customer});
+    //   });
     });
   });
 });
