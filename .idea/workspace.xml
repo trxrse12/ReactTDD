@@ -8,7 +8,12 @@
     <bookmark url="file://$PROJECT_DIR$/test/App.test.js" line="302" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="" />
+    <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/sagas/searchCustomers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/sagas/customer.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/sagas/customer.test.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -21,61 +26,25 @@
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.5451031">
       <split-first>
-        <splitter split-orientation="vertical" split-proportion="0.39484978">
+        <splitter split-orientation="vertical" split-proportion="0.29935622">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/sagas/appointment.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="154">
-                      <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
               <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/Book/src/App.js">
+                <entry file="file://$PROJECT_DIR$/src/sagas/customer.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="84">
-                      <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-                      <folding>
-                        <element signature="e#0#53#0" expanded="true" />
-                      </folding>
+                    <state relative-caret-position="112">
+                      <caret line="8" column="5" lean-forward="true" selection-start-line="2" selection-end-line="8" selection-end-column="5" />
                     </state>
                   </provider>
                 </entry>
               </file>
               <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
+                <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="124">
-                      <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
-                      <folding>
-                        <element signature="e#0#53#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/AppointmentFormLoader.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="294">
-                      <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+                    <state relative-caret-position="101">
+                      <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
                       <folding>
                         <element signature="e#0#51#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/store.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="84">
-                      <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-                      <folding>
-                        <element signature="e#0#88#0" expanded="true" />
                       </folding>
                     </state>
                   </provider>
@@ -84,101 +53,78 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/test/App.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="134">
-                      <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
-                      <folding>
-                        <element signature="n#!!doc" expanded="true" />
-                        <element signature="e#130#181#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/ApointmentForm.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="154">
-                      <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-                      <folding>
-                        <element signature="e#0#26#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/sagas/app.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="246">
-                      <caret line="34" column="7" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
-                      <folding>
-                        <element signature="e#0#51#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/sagas/appointment.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="168">
-                      <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
-      </split-first>
-      <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.47639486">
-          <split-first>
-            <splitter split-orientation="vertical" split-proportion="0.6230248">
+            <splitter split-orientation="vertical" split-proportion="0.46078432">
               <split-first>
                 <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
                   <file pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/src/sagas/app.js">
+                    <entry file="file://$PROJECT_DIR$/test/CustomerSearch/CustomerSearch.test.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="182">
-                          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+                        <state relative-caret-position="180">
+                          <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
                           <folding>
-                            <element signature="e#0#39#0" expanded="true" />
+                            <element signature="e#0#26#0" expanded="true" />
                           </folding>
-                        </state>
-                      </provider>
-                    </entry>
-                  </file>
-                  <file pinned="false" current-in-tab="false">
-                    <entry file="file://$PROJECT_DIR$/src/sagas/appointment.js">
-                      <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="79">
-                          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
                         </state>
                       </provider>
                     </entry>
                   </file>
                   <file pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="140">
+                          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+                          <folding>
+                            <element signature="e#0#51#0" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-first>
+              <split-second>
+                <leaf>
+                  <file pinned="false" current-in-tab="true">
+                    <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="196">
+                          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+                          <folding>
+                            <element signature="e#0#51#0" expanded="true" />
+                          </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                </leaf>
+              </split-second>
+            </splitter>
+          </split-second>
+        </splitter>
+      </split-first>
+      <split-second>
+        <splitter split-orientation="vertical" split-proportion="0.5107296">
+          <split-first>
+            <splitter split-orientation="vertical" split-proportion="0.57473683">
+              <split-first>
+                <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                  <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/store.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="98">
-                          <caret line="19" column="61" lean-forward="true" selection-start-line="19" selection-start-column="61" selection-end-line="19" selection-end-column="61" />
+                        <state relative-caret-position="70">
+                          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
                           <folding>
                             <element signature="e#0#88#0" expanded="true" />
                           </folding>
+                        </state>
+                      </provider>
+                    </entry>
+                  </file>
+                  <file pinned="false" current-in-tab="false">
+                    <entry file="file://$PROJECT_DIR$/src/sagas/searchCustomers.js">
+                      <provider selected="true" editor-type-id="text-editor">
+                        <state relative-caret-position="146">
+                          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
                         </state>
                       </provider>
                     </entry>
@@ -224,7 +170,7 @@
                   <file pinned="false" current-in-tab="true">
                     <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
                       <provider selected="true" editor-type-id="text-editor">
-                        <state relative-caret-position="28">
+                        <state relative-caret-position="98">
                           <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
                         </state>
                       </provider>
@@ -236,19 +182,7 @@
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/AppointmentFormLoader.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="252">
-                      <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-                      <folding>
-                        <element signature="e#0#26#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
+              <file pinned="false" current-in-tab="true">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
                 </entry>
@@ -262,21 +196,9 @@
                   </provider>
                 </entry>
               </file>
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="mock:///Local">
                   <provider selected="true" editor-type-id="terminal-session-editor" />
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="364">
-                      <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-                      <folding>
-                        <element signature="e#0#51#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
                 </entry>
               </file>
             </leaf>
@@ -314,7 +236,6 @@
       <find>render</find>
       <find>store</find>
       <find>onSave</find>
-      <find>.only</find>
       <find>storeSpy</find>
       <find>passes</find>
       <find>passes saved</find>
@@ -324,8 +245,8 @@
       <find>it(</find>
       <find>only</find>
       <find>setError</find>
-      <find>notifies</find>
       <find>renders AppointmentFormLoader</find>
+      <find>.only</find>
     </findStrings>
     <replaceStrings>
       <replace>requestBodyOf</replace>
@@ -338,7 +259,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/sampleData.js" />
         <option value="$PROJECT_DIR$/dist/styles.css" />
         <option value="$PROJECT_DIR$/src/AppointmentsDayView.js" />
         <option value="$PROJECT_DIR$/test/AppointmentFormLoader.js" />
@@ -367,7 +287,6 @@
         <option value="$PROJECT_DIR$/test/objectToQueryString.test.js" />
         <option value="$PROJECT_DIR$/src/CustomerSearchRoute.js" />
         <option value="$PROJECT_DIR$/test/reducerGenerators.js" />
-        <option value="$PROJECT_DIR$/test/sagas/customer.test.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/test/domManipulator.js" />
         <option value="$PROJECT_DIR$/test/CustomerForm.test.js" />
@@ -385,10 +304,12 @@
         <option value="$PROJECT_DIR$/src/reducers/appointment.js" />
         <option value="$PROJECT_DIR$/test/ApointmentForm.test.js" />
         <option value="$PROJECT_DIR$/src/AppointmentForm.js" />
-        <option value="$PROJECT_DIR$/src/store.js" />
         <option value="$PROJECT_DIR$/src/sagas/app.js" />
         <option value="$PROJECT_DIR$/test/sagas/app.test.js" />
         <option value="$PROJECT_DIR$/Book/src/App.js" />
+        <option value="$PROJECT_DIR$/src/store.js" />
+        <option value="$PROJECT_DIR$/src/sagas/searchCustomers.js" />
+        <option value="$PROJECT_DIR$/test/sagas/customer.test.js" />
       </list>
     </option>
   </component>
@@ -433,6 +354,12 @@
               <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
               <item name="appointments" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appointments" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CustomerSearch" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appointments" type="b2602c69:ProjectViewProjectNode" />
@@ -564,7 +491,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="682439000" />
+    <option name="totallyTimeSpent" value="686229000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="4" width="1920" height="1051" extended-state="0" />
@@ -573,7 +500,7 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16943699" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.16943699" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32905984" />
@@ -639,13 +566,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ReadMe.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -825,26 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CustomerSearch/CustomerSearch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/CustomerSearch/CustomerSearch.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="119" column="40" selection-start-line="119" selection-start-column="40" selection-end-line="119" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -933,16 +833,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="68" column="25" lean-forward="true" selection-start-line="68" selection-start-column="25" selection-end-line="68" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/@babel/runtime/helpers/asyncToGenerator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
@@ -950,17 +840,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sagas/customer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppointmentForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+        <state relative-caret-position="121">
+          <caret line="121" column="13" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
@@ -980,8 +863,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/reducers/appointment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        <state relative-caret-position="98">
+          <caret line="7" column="14" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1032,20 +915,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/store.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
-          <folding>
-            <element signature="e#0#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sagas/appointment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+        <state relative-caret-position="79">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -1071,11 +944,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/App.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
+        <state relative-caret-position="224">
+          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="e#130#181#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CustomerSearch/CustomerSearch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CustomerSearch/CustomerSearch.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="80" column="11" selection-start-line="80" selection-start-column="11" selection-end-line="80" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagas/customer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="2" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sagas/searchCustomers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#88#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/sagas/customer.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

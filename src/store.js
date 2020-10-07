@@ -13,6 +13,7 @@ import {
 import {appointmentAdded, customerAdded} from "./sagas/app";
 import {reducer as appointmentReducer} from "./reducers/appointment";
 import {addAppointment} from "./sagas/appointment";
+import {searchCustomers} from './sagas/searchCustomers';
 
 
 function* rootSaga() {
@@ -20,6 +21,7 @@ function* rootSaga() {
   yield takeLatest('ADD_CUSTOMER_SUCCESSFUL', customerAdded);
   yield takeLatest('ADD_APPOINTMENT_REQUEST', addAppointment);
   yield takeLatest('ADD_APPOINTMENT_SUCCESSFUL', appointmentAdded);
+  yield takeLatest('SEARCH_CUSTOMER_REQUEST', searchCustomers);
 }
 
 export const configureStore = (storeEnhancers = []) => {

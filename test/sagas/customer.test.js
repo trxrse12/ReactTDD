@@ -9,7 +9,8 @@ import {
   itSetsStatus,
 } from '../reducerGenerators';
 
-describe('addCustomer saga', () => {
+
+describe('customer sagas', () => {
   let renderWithStore, store;
   const customer = {id:123};
 
@@ -19,61 +20,91 @@ describe('addCustomer saga', () => {
     store = configureStore([storeSpy]);
   });
 
-  const dispatchRequest = customer =>
-    store.dispatch({
-      type: 'ADD_CUSTOMER_REQUEST',
-      customer
+  describe('addCustomer saga', () => {
+    const dispatchRequest = customer =>
+      store.dispatch({
+        type: 'ADD_CUSTOMER_REQUEST',
+        customer
+      });
+
+    it('sets current status to submitting', () => {
+      dispatchRequest();
+
+      return expectRedux(store)
+        .toDispatchAnAction()
+        .matching(({type: 'ADD_CUSTOMER_SUBMITTING'}))
     });
 
-  it('sets current status to submitting', () => {
-    dispatchRequest();
+    it('submits request to the fetch api', async() => {
+      const inputCustomer = {firstName: 'Ashley'};
+      dispatchRequest(inputCustomer);
 
-    return expectRedux(store)
-      .toDispatchAnAction()
-      .matching(({type: 'ADD_CUSTOMER_SUBMITTING'}))
-  });
+      expect(window.fetch).toHaveBeenCalledWith('/customers',{
+        body: JSON.stringify(inputCustomer),
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json'},
+      });
+    });
 
-  it('submits request to the fetch api', async() => {
-    const inputCustomer = {firstName: 'Ashley'};
-    dispatchRequest(inputCustomer);
+    it('dispatches ADD_CUSTOMER_SUCCESSFUL on success', () => {
+      dispatchRequest();
+      return expectRedux(store)
+        .toDispatchAnAction()
+        .matching({type: 'ADD_CUSTOMER_SUCCESSFUL', customer});
+    });
 
-    expect(window.fetch).toHaveBeenCalledWith('/customers',{
-      body: JSON.stringify(inputCustomer),
-      method: 'POST',
-      credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json'},
+    it('dispatches ADD_CUSTOMER_FAILED on non-specific error', () => {
+      window.fetch.mockReturnValue(fetchResponseError());
+      dispatchRequest();
+      return expectRedux(store)
+        .toDispatchAnAction()
+        .matching({type: 'ADD_CUSTOMER_FAILED'});
+    });
+
+    it('dispatches ADD_CUSTOMER_VALIDATION_FAILED if validation errors were returned', () => {
+      const errors = {field: 'field', description: 'error text'};
+      window.fetch.mockReturnValue(
+        fetchResponseError(422, {errors})
+      );
+      dispatchRequest();
+      return expectRedux(store)
+        .toDispatchAnAction()
+        .matching({
+          type: 'ADD_CUSTOMER_VALIDATION_FAILED',
+          validationErrors: errors,
+        })
     });
   });
 
-  it('dispatches ADD_CUSTOMER_SUCCESSFUL on success', () => {
-    dispatchRequest();
-    return expectRedux(store)
-      .toDispatchAnAction()
-      .matching({type: 'ADD_CUSTOMER_SUCCESSFUL', customer});
-  });
+  describe('searchCustomers saga', () => {
+    const defaultParams = {
+      lastRowIds: [],
+      searchTerm: '',
+      limit: 10,
+    };
 
-  it('dispatches ADD_CUSTOMER_FAILED on non-specific error', () => {
-    window.fetch.mockReturnValue(fetchResponseError());
-    dispatchRequest();
-    return expectRedux(store)
-      .toDispatchAnAction()
-      .matching({type: 'ADD_CUSTOMER_FAILED'});
-  });
+    const dispatchRequest = ({lastRowIds, searchTerm, limit}) =>
+      store.dispatch({
+        type: 'SEARCH_CUSTOMER_REQUEST',
+        lastRowIds,
+        searchTerm,
+        limit,
+      });
 
-  it('dispatches ADD_CUSTOMER_VALIDATION_FAILED if validation errors were returned', () => {
-    const errors = {field: 'field', description: 'error text'};
-    window.fetch.mockReturnValue(
-      fetchResponseError(422, {errors})
-    );
-    dispatchRequest();
-    return expectRedux(store)
-      .toDispatchAnAction()
-      .matching({
-        type: 'ADD_CUSTOMER_VALIDATION_FAILED',
-        validationErrors: errors,
-      })
+    describe('calling GET /customers', () => {
+      it('with the default search items', () => {
+        dispatchRequest(defaultParams);
+        expect(window.fetch).toHaveBeenCalledWith('/customers', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json'},
+        })
+      });
+    });
   });
 });
+
 
 describe('reducer', () => {
   it('returns a default state for an undefined existing state', () => {
