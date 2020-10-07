@@ -13,14 +13,15 @@ import {
 describe('customer sagas', () => {
   let renderWithStore, store;
   const customer = {id:123};
-
-  beforeEach(() => {
-    jest.spyOn(window, 'fetch')
-      .mockReturnValue(fetchResponseOk(customer));
-    store = configureStore([storeSpy]);
-  });
+  const customers = [{ id: '123' }, { id: '234' }]; //emulated json
 
   describe('addCustomer saga', () => {
+    beforeEach(() => {
+      jest.spyOn(window, 'fetch')
+        .mockReturnValue(fetchResponseOk(customer));
+      store = configureStore([storeSpy]);
+    });
+
     const dispatchRequest = customer =>
       store.dispatch({
         type: 'ADD_CUSTOMER_REQUEST',
@@ -77,12 +78,18 @@ describe('customer sagas', () => {
     });
   });
 
+  const defaultParams = {
+    lastRowIds: [],
+    searchTerm: '',
+    limit: 10,
+  };
+
   describe('searchCustomers saga', () => {
-    const defaultParams = {
-      lastRowIds: [],
-      searchTerm: '',
-      limit: 10,
-    };
+    beforeEach(() => {
+      jest.spyOn(window, 'fetch')
+        .mockReturnValue(fetchResponseOk(customers));
+      store = configureStore([storeSpy]);
+    });
 
     const dispatchRequest = ({lastRowIds, searchTerm, limit}) =>
       store.dispatch({
@@ -98,7 +105,7 @@ describe('customer sagas', () => {
         expect(window.fetch).toHaveBeenCalledWith('/customers', {
           method: 'POST',
           credentials: 'same-origin',
-          headers: { 'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json'},
         })
       });
 
@@ -110,16 +117,43 @@ describe('customer sagas', () => {
 
         expect(window.fetch).toHaveBeenCalledWith(
           '/customers?after=345',
-           expect.anything(),
+          expect.anything(),
         )
       });
 
-      //   it('dispatches ADD_CUSTOMER_SUCCESSFUL on success', () => {
-    //     dispatchRequest();
-    //     return expectRedux(store)
-    //       .toDispatchAnAction
-    //       .matching({type: 'ADD_CUSTOMER_SUCCESSFUL', customer});
-    //   });
+      it('sends the search term query param', () => {
+        dispatchRequest({
+          ...defaultParams,
+          searchTerm: 'name'
+        });
+
+        expect(window.fetch).toHaveBeenCalledWith(
+          '/customers?searchTerm=name',
+          expect.anything()
+        );
+      });
+
+      it('sends the limit query param', () => {
+        dispatchRequest({
+          ...defaultParams,
+          limit: 40,
+        });
+
+        expect(window.fetch).toHaveBeenCalledWith(
+          '/customers?limit=40',
+          expect.anything(),
+        )
+      });
+    });
+
+    it('dispatches SEARCH_CUSTOMER_SUCCESSFUL', () => {
+        dispatchRequest(defaultParams);
+        return expectRedux(store)
+          .toDispatchAnAction()
+          .matching({
+            type: 'SEARCH_CUSTOMERS_SUCCESSFUL',
+            customers,
+          });
     });
   });
 });

@@ -25,7 +25,7 @@ export function* searchCustomers({
   const result = yield call(fetch, `/customers${queryString}`);
   const customers = yield call([result, 'json']);
   yield put({
-    type: 'SEARCH_CUSTOMER_SUCCESSFUL',
+    type: 'SEARCH_CUSTOMERS_SUCCESSFUL',
     customers,
   })
 }
