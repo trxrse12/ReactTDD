@@ -1,4 +1,4 @@
-import { reducer } from '../../src/sagas/customer';
+import { reducer } from '../../src/reducer/customer';
 describe('reducer', () => {
   it('returns a default state for an undefined existing state', () => {
     expect(reducer(undefined, {})).toEqual({

@@ -1,4 +1,4 @@
-import {reducer} from "../../src/reducer/customer";
+import {reducer} from "../../src/reducers/customer";
 import {itMaintainsExistingState, itSetsStatus} from "../reducerGenerators";
 
 describe('reducer', () => {

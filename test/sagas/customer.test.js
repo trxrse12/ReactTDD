@@ -1,6 +1,6 @@
 import {storeSpy, expectRedux} from "expect-redux";
 import {configureStore} from '../../src/store';
-import { reducer } from '../../src/sagas/customer';
+import { reducer } from '../../src/reducers/customer';
 import {fetchResponseError, fetchResponseOk} from "../spyHelpers";
 import {createContainerWithStore, withEvent} from "../domManipulator";
 import 'whatwg-fetch';
