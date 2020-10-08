@@ -24,6 +24,16 @@ export const reducer = (state = defaultState, action) => {
         status: 'VALIDATION_FAILED',
         validationErrors: action.validationErrors,
       };
+    case 'SEARCH_CUSTOMERS_REQUEST':
+      return {
+        ...state,
+        customers: [],
+      };
+    case 'SEARCH_CUSTOMERS_SUCCESSFUL':
+      return {
+        ...state,
+        customers: action.customers
+      };
     default:
       return state;
   }

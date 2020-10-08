@@ -58,4 +58,29 @@ describe('reducer', () => {
       })
     });
   });
+
+  describe('SEARCH_CUSTOMERS_REQUEST', () => {
+    const action = {type: 'SEARCH_CUSTOMERS_REQUEST'};
+    itMaintainsExistingState(reducer, action);
+
+    it('resets customers array', () => {
+      expect(reducer({ customers: [{}] }, action)).toMatchObject({
+        customers: []
+      });
+    });
+  });
+
+  describe('SEARCH_CUSTOMERS_SUCCESSFUL', () => {
+    const customers = [{id: '123'}, {id: '234'}];
+    const action = {
+      type: 'SEARCH_CUSTOMERS_SUCCESSFUL',
+      customers,
+    };
+    itMaintainsExistingState(reducer, action);
+    it('sets customers array', () => {
+      expect(reducer(undefined, action)).toMatchObject({
+        customers,
+      })
+    });
+  });
 });
