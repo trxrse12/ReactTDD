@@ -1,4 +1,4 @@
-import {put, call} from 'redux-saga/effects';
+import {call, put} from 'redux-saga/effects';
 
 const fetch = (url, data) =>
   window.fetch(url, {
