@@ -8,12 +8,12 @@ import {takeLatest} from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
 import {
   addCustomer,
-  reducer as customerReducer,
 } from './sagas/customer';
 import {appointmentAdded, customerAdded} from "./sagas/app";
 import {reducer as appointmentReducer} from "./reducers/appointment";
 import {addAppointment} from "./sagas/appointment";
 import {searchCustomers} from './sagas/searchCustomers';
+import {reducer as customerReducer} from './reducers/customer';
 
 
 function* rootSaga() {
