@@ -1,5 +1,5 @@
 import React from 'react';
-import {createContainer, withEvent} from "../domManipulator";
+import {createContainerWithStore, withEvent} from "../domManipulator";
 import {CustomerSearch} from "../../src/CustomerSearch/CustomerSearch";
 import * as SearchButtonsExports from '../../src/CustomerSearch/SearchButtons';
 import 'whatwg-fetch';
@@ -21,18 +21,19 @@ const anotherTenCustomers = Array.from('ABCDEFGHIJ', id => ({id}));
 const lessThanTenCustomers = Array.from('0123456', (id) => ({id}))
 
 describe('CustomerSearch form', () => {
-  let renderAndWait, element, elements, container, clickAndWait, changeAndWait, change;
+  let renderWithStore, store, element, elements, container, clickAndWait, changeAndWait, change;
   let historySpy, actionSpy;
   beforeEach(() => {
     ({
       container,
-      renderAndWait,
+      renderWithStore,
+      store,
       element,
       elements,
       clickAndWait,
       changeAndWait,
       change,
-    } = createContainer());
+    } = createContainerWithStore());
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk([]));
@@ -47,7 +48,7 @@ describe('CustomerSearch form', () => {
   });
 
   const renderCustomerSearch = props =>
-    renderAndWait(
+    renderWithStore(
       <CustomerSearch
         {...props}
         history={{push: historySpy}}
@@ -56,7 +57,7 @@ describe('CustomerSearch form', () => {
       />
     );
 
-  it.only('renders a table with four headings', async () => {
+  it('renders a table with four headings', async () => {
     await renderCustomerSearch();
     const headings = elements('table th');
     expect(headings.map(h => h.textContent)).toEqual([
@@ -64,7 +65,7 @@ describe('CustomerSearch form', () => {
     ]);
   });
 
-  it.only('fetches all customer data when component mounts', async () => {
+  it('fetches all customer data when component mounts', async () => {
     await renderCustomerSearch();
     expect(window.fetch).toHaveBeenCalledWith('/customers', {
       method: 'GET',
@@ -73,30 +74,32 @@ describe('CustomerSearch form', () => {
     });
   });
 
-  it.only('renders all customer data in a table row', async() => {
+  it('renders all customer data in a table row', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
     await renderCustomerSearch();
+    await new Promise(setTimeout); // wait for the API data to be retrieved
     const columns = elements('table > tbody > tr > td');
     expect(columns[0].textContent).toEqual('A');
     expect(columns[1].textContent).toEqual('B');
     expect(columns[2].textContent).toEqual('1');
   });
 
-  it.only('renders multiple customer rows', async() => {
+  it('renders multiple customer rows', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(twoCustomers));
     await renderCustomerSearch();
+    await new Promise(setTimeout); // wait for the API data to be retrieved
     const rows = elements('table tbody tr');
     expect(rows[1].childNodes[0].textContent).toEqual('C');
   });
 
   it.skip('has a next button', async () => {
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     expect(element('button#next-page')).not.toBeNull();
   });
 
   it.skip('requests next page of data when next button is clicked', async () => {
     window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('button#next-page'));
     expect(window.fetch).toHaveBeenLastCalledWith(
       '/customers?after=9',
@@ -109,20 +112,20 @@ describe('CustomerSearch form', () => {
     window.fetch
       .mockReturnValueOnce(fetchResponseOk(tenCustomers))
       .mockReturnValue(fetchResponseOk(nextCustomer));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('button#next-page'));
     expect(elements('tbody tr').length).toEqual(1);
     expect(elements('td')[0].textContent).toEqual('Next');
   });
 
   it.skip('has a previous button', async () => {
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     expect(element('button#previous-page')).not.toBeNull();
   });
 
   it.skip('moves back to first page when previous button is clicked', async () => {
     window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('button#next-page'));
     await clickAndWait(element('button#previous-page'));
     expect(window.fetch).toHaveBeenLastCalledWith(
@@ -135,7 +138,7 @@ describe('CustomerSearch form', () => {
     window.fetch
       .mockReturnValueOnce(fetchResponseOk(tenCustomers))
       .mockReturnValue(fetchResponseOk(anotherTenCustomers));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('button#next-page'));
     await clickAndWait(element('button#next-page'));
     await clickAndWait(element('button#previous-page'));
@@ -149,7 +152,7 @@ describe('CustomerSearch form', () => {
     window.fetch
       .mockReturnValueOnce(fetchResponseOk(tenCustomers))
       .mockReturnValue(fetchResponseOk(anotherTenCustomers));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('button#next-page'));
     await clickAndWait(element('button#next-page'));
     await clickAndWait(element('button#previous-page'));
@@ -160,14 +163,14 @@ describe('CustomerSearch form', () => {
     )
   });
 
-  it.only('has a search input field with a placeholder', async () => {
+  it('has a search input field with a placeholder', async () => {
     await renderCustomerSearch();
     expect(element('input')).not.toBeNull();
     expect(element('input').getAttribute('placeholder')).toEqual('' +
       'Enter filter text')
   });
 
-  it.only('changes location when search term is changed', async () => {
+  it('changes location when search term is changed', async () => {
     await renderCustomerSearch();
     change(element('input'), withEvent('input', 'name'));
     expect(historySpy).toHaveBeenCalledWith(
@@ -177,7 +180,7 @@ describe('CustomerSearch form', () => {
 
   it.skip('includes search term when moving to the next page', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await changeAndWait(
       element('input'),
       withEvent('input','name')
@@ -189,22 +192,24 @@ describe('CustomerSearch form', () => {
     );
   });
 
-  it.only('displays provided action buttons for each customer', async() => {
+  it('displays provided action buttons for each customer', async() => {
     actionSpy.mockReturnValue('actions');
     window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
     await renderCustomerSearch();
+    await new Promise(setTimeout); // wait for the API data to be retrieved
     const rows = elements('table tbody td');
     expect(rows[rows.length-1].textContent).toEqual('actions');
   });
 
-  it.only('passes customer to the renderCustomerActions prop', async() => {
+  it('passes customer to the renderCustomerActions prop', async() => {
     actionSpy.mockReturnValue('actions');
     window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
     await renderCustomerSearch();
+    await new Promise(setTimeout);
     expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
   });
 
-  it.only('renders SearchButtons with props', async() => {
+  it('renders SearchButtons with props', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
     await renderCustomerSearch({
       searchTerm: 'term',
@@ -212,6 +217,7 @@ describe('CustomerSearch form', () => {
       lastRowIds: ['123'],
       pathname: '/path',
     });
+    await new Promise(setTimeout); // await the API data to be retrieved
     expect(
       SearchButtonsExports.SearchButtons
     ).toHaveBeenCalledWith(
@@ -227,7 +233,7 @@ describe('CustomerSearch form', () => {
   });
 
   it.skip('initially disables the previous page',  async() => {
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     expect(
       element('button#previous-page').getAttribute('disabled')
     ).not.toBeNull();
@@ -235,12 +241,12 @@ describe('CustomerSearch form', () => {
 
   it.skip('disables next page button if there are less than ten results on the page', async() => {
     window.fetch.mockReturnValue(fetchResponseOk(lessThanTenCustomers));
-    await renderAndWait(<CustomerSearch />);
+    await renderWithStore(<CustomerSearch />);
     expect(element('button#next-page').getAttribute('disabled')).not.toBeNull();
   });
 
   it.skip('has a button with a label of 10 that is initially toggled', async() => {
-    await renderAndWait(<CustomerSearch />);
+    await renderWithStore(<CustomerSearch />);
     const button = element('a#limit-10');
     expect(button.className).toContain('toggle-button');
     expect(button.className).toContain('toggled');
@@ -249,7 +255,7 @@ describe('CustomerSearch form', () => {
 
   [20, 50, 100].forEach(limitSize => {
     it.skip(`has a button with a label of ${limitSize} that is initially not toggled`, async() => {
-      await renderAndWait(<CustomerSearch/>);
+      await renderWithStore(<CustomerSearch/>);
       const button = element(`a#limit-${limitSize}`);
       expect(button.className).toContain('toggle-button');
       expect(button.className).not.toContain('toggled');
@@ -257,7 +263,7 @@ describe('CustomerSearch form', () => {
     });
 
     it.skip(`searches by ${limitSize} records when clicking on ${limitSize}`, async() => {
-      await renderAndWait(<CustomerSearch/>);
+      await renderWithStore(<CustomerSearch/>);
       await clickAndWait(element('a#limit-10'));
       await clickAndWait(element(`a#limit-${limitSize}`));
       expect(window.fetch).toHaveBeenLastCalledWith(
@@ -268,7 +274,7 @@ describe('CustomerSearch form', () => {
   });
 
   it.skip('searches by 10 records when clicking on 10', async() => {
-    await renderAndWait(<CustomerSearch/>);
+    await renderWithStore(<CustomerSearch/>);
     await clickAndWait(element('a#limit-20'));
     await clickAndWait(element('a#limit-10'));
     expect(window.fetch).toHaveBeenLastCalledWith(
