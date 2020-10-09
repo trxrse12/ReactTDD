@@ -23,8 +23,13 @@ const mapDispatchToProps = {
   })
 };
 
+
+const mapStateToProps = ({ customer: { customers } }) => ({
+    customers
+});
+
 export const CustomerSearch = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(
   ({
@@ -35,9 +40,8 @@ export const CustomerSearch = connect(
      history,
      location,
      searchCustomers,
+     customers,
    }) => {
-    const [customers, setCustomers] = useState([]);
-
     const handleSearchTextChanged = ({target: {value}}) => {
       const params = {limit, searchTerm: value};
       history.push(location.pathname + objectToQueryString(params));
@@ -71,7 +75,7 @@ export const CustomerSearch = connect(
           </tr>
           </thead>
           <tbody>
-          {customers.map(customer => (
+          {customers?.map(customer => (
               <CustomerRow
                 customer={customer}
                 key={customer.id}
@@ -89,5 +93,5 @@ export const CustomerSearch = connect(
 CustomerSearch.defaultProps = {
   renderCustomerActions: () => {},
   searchTerm: '',
-  lastRowIds: []
+  lastRowIds: [],
 };

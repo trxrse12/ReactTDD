@@ -77,11 +77,6 @@ describe('CustomerSearch form', () => {
       searchTerm,
       limit,
     });
-    // expect(window.fetch).toHaveBeenCalledWith('/customers', {
-    //   method: 'GET',
-    //   credentials: 'same-origin',
-    //   headers: {'Content-Type': 'application/json'}
-    // });
     return expectRedux(store)
       .toDispatchAnAction()
       .matching({
@@ -92,10 +87,12 @@ describe('CustomerSearch form', () => {
       })
   });
 
-  it('renders all customer data in a table row', async() => {
-    window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
+  it('xxx renders all customer data in a table row', async () => {
+    jest
+      .spyOn(window, 'fetch')
+      .mockReturnValue(fetchResponseOk(oneCustomer));
     await renderCustomerSearch();
-    await new Promise(setTimeout); // wait for the API data to be retrieved
+    // await new Promise(setTimeout); // wait for the API data to be retrieved
     const columns = elements('table > tbody > tr > td');
     expect(columns[0].textContent).toEqual('A');
     expect(columns[1].textContent).toEqual('B');

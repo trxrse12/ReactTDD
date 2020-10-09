@@ -21,7 +21,7 @@ function* rootSaga() {
   yield takeLatest('ADD_CUSTOMER_SUCCESSFUL', customerAdded);
   yield takeLatest('ADD_APPOINTMENT_REQUEST', addAppointment);
   yield takeLatest('ADD_APPOINTMENT_SUCCESSFUL', appointmentAdded);
-  yield takeLatest('SEARCH_CUSTOMER_REQUEST', searchCustomers);
+  yield takeLatest('SEARCH_CUSTOMERS_REQUEST', searchCustomers);
 }
 
 export const configureStore = (storeEnhancers = []) => {
