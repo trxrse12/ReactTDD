@@ -1,4 +1,5 @@
 import React from 'react';
+import {expectRedux} from "expect-redux";
 import ReactTestUtils, {act} from 'react-dom/test-utils';
 import {createContainerWithStore, withEvent} from "../domManipulator";
 import {CustomerSearch} from "../../src/CustomerSearch/CustomerSearch";
@@ -67,13 +68,28 @@ describe('CustomerSearch form', () => {
     ]);
   });
 
-  it('fetches all customer data when component mounts', async () => {
-    await renderCustomerSearch();
-    expect(window.fetch).toHaveBeenCalledWith('/customers', {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {'Content-Type': 'application/json'}
+  it('xxx dispatches SEARCH_CUSTOMERS_REQUEST when component mounts', async () => {
+    const lastRowIds = [123, 234, 345];
+    const searchTerm = 'test';
+    const limit = 10;
+    await renderCustomerSearch({
+      lastRowIds,
+      searchTerm,
+      limit,
     });
+    // expect(window.fetch).toHaveBeenCalledWith('/customers', {
+    //   method: 'GET',
+    //   credentials: 'same-origin',
+    //   headers: {'Content-Type': 'application/json'}
+    // });
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({
+        type: 'SEARCH_CUSTOMERS_REQUEST',
+        lastRowIds,
+        searchTerm,
+        limit,
+      })
   });
 
   it('renders all customer data in a table row', async() => {
