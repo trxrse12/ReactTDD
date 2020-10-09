@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTestUtils, {act} from 'react-dom/test-utils';
 import {createContainerWithStore, withEvent} from "../domManipulator";
 import {CustomerSearch} from "../../src/CustomerSearch/CustomerSearch";
 import * as SearchButtonsExports from '../../src/CustomerSearch/SearchButtons';
@@ -47,15 +48,16 @@ describe('CustomerSearch form', () => {
     window.fetch.mockRestore();
   });
 
-  const renderCustomerSearch = props =>
-    renderWithStore(
+  const renderCustomerSearch = async props =>
+    await act(async () => renderWithStore(
       <CustomerSearch
         {...props}
         history={{push: historySpy}}
         renderCustomerActions={actionSpy}
         location={{pathname: '/path'}}
       />
-    );
+    )
+  );
 
   it('renders a table with four headings', async () => {
     await renderCustomerSearch();
