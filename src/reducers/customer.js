@@ -1,5 +1,6 @@
 const defaultState = {
   customer: {},
+  customers: [],
   status: undefined,
   validationErrors: {},
   error: false,

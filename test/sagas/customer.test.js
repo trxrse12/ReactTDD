@@ -93,7 +93,7 @@ describe('customer sagas', () => {
 
     const dispatchRequest = ({lastRowIds, searchTerm, limit}) =>
       store.dispatch({
-        type: 'SEARCH_CUSTOMER_REQUEST',
+        type: 'SEARCH_CUSTOMERS_REQUEST',
         lastRowIds,
         searchTerm,
         limit,
@@ -163,6 +163,7 @@ describe('reducer', () => {
   it('returns a default state for an undefined existing state', () => {
     expect(reducer(undefined, {})).toEqual({
       customer: {},
+      customers: [],
       status: undefined,
       validationErrors: {},
       error: false,
