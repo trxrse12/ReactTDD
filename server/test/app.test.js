@@ -338,6 +338,25 @@ describe('app', () => {
           .then( _ => {
             expect(appointmentsSpy).toHaveBeenCalledWith('123');
             expect(appointmentsSpy).toHaveBeenLastCalledWith('234');
+          });
+      });
+    });
+
+    describe('customer query', () => {
+      let customersSpy = jest.fn();
+      beforeEach(() => {
+        spyOn(Customers.prototype, 'all', customersSpy);
+        customersSpy.mockReturnValue({'5': {firstName: 'Daniel', id: '5'}});
+      });
+      afterEach(() => {
+        removeSpy(Customers.prototype, 'all');
+      });
+      it('calls customers.all', async () => {
+        await request(app()).post('/graphql?')
+          .send({ "query":"\n\n{ customer(id:5) { id } }\n\n"})
+          .then( _ => {
+            console.log('RRRRRRRRRRRRRRRRRRRRRRRRRR response.body=', _.body);
+            expect(customersSpy).toHaveBeenCalled();
           })
       });
     });

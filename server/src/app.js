@@ -77,6 +77,10 @@ export function buildApp(customerData, appointmentData, timeSlots) {
   app.use('/graphql', expressGraphql({
     schema,
     rootValue: {
+      customer: ({id}) => {
+        const customer = customers.all()[id];
+        return { ... customer, appointments: appointments.forCustomer(customer.id)}
+      },
       customers: query =>
         customers.search(buildSearchParams(query))
           .map(customer => {
