@@ -31,7 +31,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
 
   app.use(morgan('dev'));
   app.get ('/', (req, res) => {
-    res.status(200)
+    res.status(200);
     return res.send('OK')
   });
 
@@ -44,11 +44,11 @@ export function buildApp(customerData, appointmentData, timeSlots) {
       const errors = customers.errors(customer);
       return res.status(422).json({errors});
     }
-  })
+  });
 
   app.get('/availableTimeSlots', (req, res, next) => {
     return res.json(appointments.getTimeSlots());
-  })
+  });
 
   app.post('/appointments', (req, res, next) => {
     const appointment = req.body;
@@ -59,7 +59,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
       const errors = appointments.errors(appointment);
       return res.status(422).json({errors});
     }
-  })
+  });
 
   app.get('/appointments/:from-:to', (req, res, next) => {
     res.json(appointments.getAppointments(
@@ -79,12 +79,14 @@ export function buildApp(customerData, appointmentData, timeSlots) {
     rootValue: {
       customers: query =>
         customers.search(buildSearchParams(query))
-          .map(customer => (
-            {
-              ...customer,
-              appointment: () => appointments.forCustomer(customer.id)
-            }
-          )
+          .map(customer => {
+            return (
+              {
+                ...customer,
+                appointments: () => appointments.forCustomer(customer.id)
+              }
+            )
+          }
         )
     },
     graphiql: true,

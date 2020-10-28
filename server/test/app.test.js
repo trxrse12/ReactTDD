@@ -289,12 +289,16 @@ describe('app', () => {
   describe('POST graphql', () => {
     describe('customers query', () => {
       let searchSpy = jest.fn();
+      let appointmentsSpy = jest.fn();
       beforeEach(() => {
+        spyOn(Appointments.prototype, 'forCustomer', appointmentsSpy);
         spyOn(Customers.prototype, 'search', searchSpy);
       });
       afterEach(() => {
+        removeSpy(Appointments.prototype, 'forCustomer');
         removeSpy(Customers.prototype, 'search');
       });
+
       it('returns all customers',async () => {
         // mock the search function results
         searchSpy.mockReturnValue([
@@ -304,13 +308,24 @@ describe('app', () => {
         await request(app()).post('/graphql?')
           .send({"query":"\n\n{ customers { id firstName } }\n\n"})
           .then(response => {
-            console.log('RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR response.body.data=', response.body.data);
             const data = response.body.data;
             expect(data.customers).toEqual([
               {id: '123', firstName: 'test'},
               {id: '234', firstName: 'another'},
             ]);
           })
+      });
+
+      it('appends appointment information to customers', async() => {
+        searchSpy.mockReturnValue([
+          {id: '123', firstName: 'test', lastName: 'test'}]);
+        appointmentsSpy.mockReturnValue([{startsAt: 123456}]);
+        await request(app()).post('/graphql?')
+          .send({ "query":"\n\n{ customers { appointments { startsAt } } }\n\n" })
+          .then(response => {
+            const data = response.body.data;
+            expect(data.customers).toEqual([{appointments: [{startsAt: '123456'}]}])
+          });
       });
     });
   });
