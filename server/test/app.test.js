@@ -327,6 +327,19 @@ describe('app', () => {
             expect(data.customers).toEqual([{appointments: [{startsAt: '123456'}]}])
           });
       });
+
+      it('calls forCustomer for each customer id', async() => {
+        searchSpy.mockReturnValue([
+          {id: '123', firstName: 'test', lastName: 'test'},
+          {id: '234', firstName: 'another', lastName: 'another'},
+        ]);
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{customers { appointments { startsAt } } }\n\n" })
+          .then( _ => {
+            expect(appointmentsSpy).toHaveBeenCalledWith('123');
+            expect(appointmentsSpy).toHaveBeenLastCalledWith('234');
+          })
+      });
     });
   });
 });
