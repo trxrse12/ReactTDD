@@ -1,0 +1,18 @@
+type Query {
+    customers: [Customer]
+}
+
+type Customer {
+    id: ID
+    firstName: String
+    lastName: String
+    phoneNumber: String
+    appointments: [Appointment]
+}
+
+type Appointment {
+    startsAt: String
+    stylist: String
+    service: String
+    notes: String
+}

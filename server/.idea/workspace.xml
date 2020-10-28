@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="046aef7a-ddf3-49b1-a223-e9744b6f6df5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/customers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/app.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/app.test.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
+  </component>
+  <component name="ProjectId" id="1iy0FiJAFHwBerqQk7O9WN3SSzb" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="046aef7a-ddf3-49b1-a223-e9744b6f6df5" name="Default Changelist" comment="" />
+      <created>1602864433409</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602864433409</updated>
+      <workItem from="1602864444275" duration="768000" />
+      <workItem from="1602865266313" duration="3699000" />
+      <workItem from="1603094049196" duration="198000" />
+      <workItem from="1603098080209" duration="51850000" />
+      <workItem from="1603451223495" duration="1582000" />
+      <workItem from="1603707637247" duration="20144000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="439" y="377" width="551" height="333" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1602867638177">
+      <screen x="0" y="0" width="1920" height="1060" />
+    </state>
+    <state x="439" y="377" width="551" height="333" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1060@0.0.1920.1060" timestamp="1602867638177" />
+    <state x="715" y="335" width="479" height="382" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603119345799">
+      <screen x="0" y="0" width="1920" height="1060" />
+    </state>
+    <state x="715" y="335" width="479" height="382" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1060@0.0.1920.1060" timestamp="1603119345799" />
+    <state x="736" y="273" width="438" height="506" key="FileChooserDialogImpl" timestamp="1602864626165">
+      <screen x="0" y="0" width="1920" height="1060" />
+    </state>
+    <state x="736" y="273" width="438" height="506" key="FileChooserDialogImpl/0.0.1920.1060@0.0.1920.1060" timestamp="1602864626165" />
+    <state x="231" y="201" width="977" height="737" key="SettingsEditor" timestamp="1603794839892">
+      <screen x="0" y="25" width="1920" height="1031" />
+    </state>
+    <state x="231" y="181" key="SettingsEditor/0.0.1920.1060@0.0.1920.1060" timestamp="1602867639593" />
+    <state x="231" y="201" width="977" height="737" key="SettingsEditor/0.25.1920.1031@0.25.1920.1031" timestamp="1603794839891" />
+    <state x="689" y="271" width="540" height="524" key="StructurePopup" timestamp="1603795093794">
+      <screen x="0" y="25" width="1920" height="1031" />
+    </state>
+    <state x="689" y="271" width="540" height="524" key="StructurePopup/0.25.1920.1031@0.25.1920.1031" timestamp="1603795093794" />
+    <state x="100" y="99" width="1720" height="860" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1603129501718">
+      <screen x="0" y="0" width="1920" height="1060" />
+    </state>
+    <state x="100" y="99" width="1720" height="860" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1060@0.0.1920.1060" timestamp="1603129501718" />
+    <state x="665" y="174" width="589" height="732" key="find.popup" timestamp="1603731548101">
+      <screen x="0" y="25" width="2944" height="1031" />
+    </state>
+    <state x="665" y="174" width="589" height="732" key="find.popup/0.25.2944.1031@0.25.2944.1031" timestamp="1603731548101" />
+    <state x="623" y="252" width="672" height="660" key="search.everywhere.popup" timestamp="1603795044718">
+      <screen x="0" y="25" width="1920" height="1031" />
+    </state>
+    <state x="623" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1920.1060@0.0.1920.1060" timestamp="1603208079171" />
+    <state x="623" y="252" width="672" height="660" key="search.everywhere.popup/0.25.1920.1031@0.25.1920.1031" timestamp="1603795044718" />
+  </component>
+</project>

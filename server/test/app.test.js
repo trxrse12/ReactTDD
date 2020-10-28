@@ -1,0 +1,317 @@
+import {buildApp} from '../src/app';
+import request from 'supertest';
+import {Customers} from '../src/customers';
+import {Appointments} from '../src/appointments';
+
+let server;
+
+const appointment = {
+  startsAt: new Date().setHours(9,0,0,0),
+  service: 'Blow-dry',
+}
+
+describe('app', () => {
+  let originalFunctions = {};
+
+  function spyOn(object, method, spy){
+    originalFunctions[object] = originalFunctions[object] || {};
+    originalFunctions[object][method] = object[method];
+    object[method] = spy;
+  }
+
+  function removeSpy(object, method){
+    object[method] = originalFunctions[object][method]
+  }
+
+  function app() {
+    return buildApp();
+  };
+
+  it('serves an index page', async () => {
+    await request(app()).get('/').expect(200);
+  });
+
+  describe('POST customers', () => {
+    let addSpy = jest.fn();
+    let isValidSpy = jest.fn();
+    beforeEach(() => {
+      spyOn(Customers.prototype, 'add', addSpy);
+      spyOn(Customers.prototype, 'isValid', isValidSpy);
+      isValidSpy.mockReturnValue(true);
+    });
+    afterEach( () => {
+      removeSpy(Customers.prototype,'add');
+      removeSpy(Customers.prototype, 'isValid');
+    });
+    const customer = {
+      firstName: 'Ashley',
+      lastName: 'Jones',
+      phoneNumber: '123456789',
+    };
+
+    it('saves a customer',async () => {
+      await request(app()).post('/customers')
+        .send(customer)
+        .expect(201);
+    });
+
+    it('passes customer to the customer module', async () => {
+      await request(app()).post('/customers')
+        .send(customer);
+      expect(addSpy).toHaveBeenCalledWith(customer);
+    });
+
+    it('returns the result of the add call', async () => {
+      const result = {id: 123};
+      addSpy.mockReturnValue(result);
+      await request(app()).post('/customers')
+        .send(customer)
+        .then(response => {
+          expect(response.body).toEqual(result);
+        })
+    });
+
+    describe('invalid customer', () => {
+      let error = {field: 'error'};
+      let errorsSpy = jest.fn();
+      beforeEach(() => {
+        spyOn(Customers.prototype, 'errors', errorsSpy);
+        isValidSpy.mockReturnValue(false);
+        errorsSpy.mockReturnValue(error);
+      });
+      afterEach(() => {
+        removeSpy(Customers.prototype, 'errors');
+      })
+      it('returns 422 for an invalid customer', async () => {
+        await request(app()).post('/customers')
+          .send(customer)
+          .expect(422);
+      });
+      it('calls errors for an invalid customer',async () => {
+        await request(app()).post('/customers')
+          .send(customer)
+        expect(errorsSpy).toHaveBeenCalledWith(customer);
+      });
+      it('returns errors',async () => {
+        await request(app()).post('/customers')
+          .send(customer)
+          .then(response =>
+            expect(response.body).toEqual({
+              errors: {field: 'error'}
+            })
+          );
+      });
+    });
+  });
+
+  describe('availableTimeSlots', () => {
+    let timeSlotSpy = jest.fn();
+    beforeEach(function () {
+      spyOn(Appointments.prototype, 'getTimeSlots', timeSlotSpy);
+    });
+    afterEach(function () {
+      removeSpy(Appointments.prototype, 'getTimeSlots');
+    });
+    it('gets appointments',async () => {
+      await request(app())
+        .get('/availableTimeSlots')
+        .expect(200);
+    });
+
+    it('returns all time slots from appointments',async () => {
+      const timeSlots = [1,2,3];
+      timeSlotSpy.mockReturnValueOnce(timeSlots);
+      await request(app())
+        .get('/availableTimeSlots')
+        .then(response => {
+          expect(response.body).toEqual(timeSlots);
+        });
+    });
+  });
+
+  describe('POST appointments', () => {
+    let addSpy = jest.fn();
+    let isValidSpy = jest.fn();
+    let errorsSpy = jest.fn();
+
+    beforeEach(() => {
+      spyOn(Appointments.prototype, 'add', addSpy);
+      spyOn(Appointments.prototype, 'isValid', isValidSpy);
+      isValidSpy.mockReturnValue(true);
+    });
+
+    afterEach(() => {
+      removeSpy(Appointments.prototype, 'add');
+      removeSpy(Appointments.prototype, 'isValid');
+    });
+
+    it('saves an appointment', async () => {
+      await request(app()).post('/appointments')
+        .send(appointment)
+        .expect(201);
+    });
+
+    it('passes appointments request to appointments module', async () => {
+      await request(app()).post('/appointments')
+        .send(appointment);
+      expect(addSpy).toHaveBeenCalledWith(appointment);
+    });
+
+    it('validates appointment requests',async () => {
+      await request(app()).post('/appointments')
+        .send(appointment);
+      expect(isValidSpy).toHaveBeenCalledWith(appointment);
+    });
+
+    describe('invalid appointment', () => {
+      let error = {field: 'error'};
+
+      beforeEach(() => {
+        spyOn(Appointments.prototype, 'errors', errorsSpy);
+        isValidSpy.mockReturnValue(false);
+        errorsSpy.mockReturnValue(error);
+      });
+
+      afterEach(() => {
+        removeSpy(Appointments.prototype, 'errors');
+      });
+
+      it('returns 422 for an invalid appointment', async () => {
+        await request(app()).post('/appointments')
+          .send(appointment)
+          .expect(422)
+      });
+
+      it('calls errors for an invalid appointment',async () => {
+        await request(app()).post('/appointments')
+          .send(appointment);
+        expect(errorsSpy).toHaveBeenCalledWith(appointment);
+      });
+
+      it('returns errors',async () => {
+        await request(app()).post('/appointments')
+          .send(appointment)
+          .then(response =>
+            expect(response.body).toEqual({
+              errors: {field: 'error'}
+            })
+          )
+      });
+    });
+  });
+
+  describe('GET appointments', () => {
+    let appointmentsSpy = jest.fn();
+    let customersSpy = jest.fn();
+
+    beforeEach(() => {
+      spyOn(Appointments.prototype, 'getAppointments', appointmentsSpy);
+      spyOn(Customers.prototype, 'all', customersSpy);
+    });
+
+    afterEach(() => {
+      removeSpy(Appointments.prototype, 'getAppointments');
+      removeSpy(Customers.prototype, 'all');
+    });
+
+    it('get appointments',async () => {
+      await request(app()).get('/appointments/123-456')
+        .send(appointment)
+        .expect(200)
+    });
+
+    it('passes the "from" and "to" params through to appointments when retrieving appointments',async () => {
+      const allCustomers = [{id: 0}, {id: 1}];
+      customersSpy.mockReturnValue(allCustomers);
+      await request(app()).get('/appointments/123-456');
+      expect(appointmentsSpy).toHaveBeenCalledWith(123, 456, allCustomers);
+    });
+
+    it('returns the result of calling getAppointments', async () => {
+      const allAppointments = [{startsAt: 123}, {startsAt: 456}];
+      appointmentsSpy.mockReturnValue(allAppointments);
+      await request(app())
+        .get('/appointments/123-456')
+        .then(response => {
+          expect(response.body).toEqual(allAppointments);
+        });
+    });
+  });
+
+  describe('GET /customers', () => {
+    let searchSpy = jest.fn();
+    beforeEach(() => {
+      spyOn(Customers.prototype, 'search', searchSpy);
+    });
+    afterEach(() => {
+      removeSpy(Customers.prototype, 'search');
+    });
+
+    it('passes params on to customer search', async () => {
+      await request(app())
+        .get('/customers?limit=10&after=6&searchTerm=A&orderBy=firstName&orderDirection=asc');
+      expect(searchSpy).toHaveBeenCalledWith({
+        limit: 10,
+        after: 6,
+        searchTerms: ['A'],
+        orderBy: 'firstName',
+        orderDirection: 'asc',
+        }
+      )
+    });
+
+    it('does NOT pass unknown search terms',async () => {
+      await request(app())
+        .get('/customers?test=test');
+      expect(searchSpy).toHaveBeenCalledWith({});
+    });
+
+    it('passes multiple search terms', async () => {
+      await request(app())
+        .get('/customers?searchTerm=A&searchTerm=B');
+      expect(searchSpy).toHaveBeenCalledWith({
+        searchTerms: ['A', 'B']
+      });
+    });
+
+    it('passes the result back to user',async () => {
+      const results = [{id: 0}, {id: 1}];
+      searchSpy.mockReturnValue(results);
+      await request(app())
+        .get('/customers')
+        .expect(200)
+        .then(response =>
+          expect(response.body).toEqual(results)
+        )
+    });
+  });
+
+  describe('POST graphql', () => {
+    describe('customers query', () => {
+      let searchSpy = jest.fn();
+      beforeEach(() => {
+        spyOn(Customers.prototype, 'search', searchSpy);
+      });
+      afterEach(() => {
+        removeSpy(Customers.prototype, 'search');
+      });
+      it('returns all customers',async () => {
+        // mock the search function results
+        searchSpy.mockReturnValue([
+          {id: '123', firstName: 'test', lastName: 'test'},
+          {id: '234', firstName: 'another', lastName: 'another'},
+        ]);
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{ customers { id firstName } }\n\n"})
+          .then(response => {
+            console.log('RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR response.body.data=', response.body.data);
+            const data = response.body.data;
+            expect(data.customers).toEqual([
+              {id: '123', firstName: 'test'},
+              {id: '234', firstName: 'another'},
+            ]);
+          })
+      });
+    });
+  });
+});
