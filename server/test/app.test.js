@@ -344,19 +344,50 @@ describe('app', () => {
 
     describe('customer query', () => {
       let customersSpy = jest.fn();
+      let appointmentsSpy = jest.fn();
       beforeEach(() => {
         spyOn(Customers.prototype, 'all', customersSpy);
         customersSpy.mockReturnValue({'5': {firstName: 'Daniel', id: '5'}});
+        spyOn(Appointments.prototype, 'forCustomer', appointmentsSpy)
       });
       afterEach(() => {
         removeSpy(Customers.prototype, 'all');
+        removeSpy(Appointments.prototype, 'forCustomer');
       });
+
       it('calls customers.all', async () => {
         await request(app()).post('/graphql?')
-          .send({ "query":"\n\n{ customer(id:5) { id } }\n\n"})
+          .send({ "query":"\n\n{customer(id:5) { id } }\n\n"})
           .then( _ => {
-            console.log('RRRRRRRRRRRRRRRRRRRRRRRRRR response.body=', _.body);
             expect(customersSpy).toHaveBeenCalled();
+          })
+      });
+
+      it('selects the customer with the given id', async() => {
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{ customer(id:5) { id firstName } }\n\n"})
+          .then( response => {
+            const data = response.body.data;
+            expect(data.customer.id).toEqual('5');
+            expect(data.customer.firstName).toEqual('Daniel');
+          })
+      });
+
+      it('calls appointments.forCustomer() for the given customer',async () => {
+        await request(app()).post('graphql?')
+          .send({"query":"\n\n{ customer(id:5) { id } }\n\n"})
+          .then(_ => {
+            expect(appointmentsSpy).toHaveBeenCalledWith('5')
+          })
+      });
+
+      it('appends the appointment to the customer', async () => {
+        appointmentsSpy.mockReturnValue([{startsAt: 123}]);
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{ customer(id:5) { appointments { startsAt } } }\n\n"})
+          .then(response => {
+            const data = response.body.data;
+            expect(data.customer.appointments).toEqual([{startsAt: '123'}])
           })
       });
     });
