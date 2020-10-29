@@ -80,7 +80,6 @@ export function buildApp(customerData, appointmentData, timeSlots) {
       customers: query =>
         customers.search(buildSearchParams(query))
           .map(customer => {
-            0
             return (
               {
                 ...customer,
@@ -93,6 +92,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
         const customer = customers.all()[id];
         return { ... customer, appointments: appointments.forCustomer(customer.id)}
       },
+      availableTimeSlots: () => appointments.getTimeSlots(),
     },
     graphiql: true,
   }));

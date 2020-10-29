@@ -1,3 +1,4 @@
+import {conR} from '../utilities/tools';
 import {buildApp} from '../src/app';
 import request from 'supertest';
 import {Customers} from '../src/customers';
@@ -389,6 +390,32 @@ describe('app', () => {
             const data = response.body.data;
             expect(data.customer.appointments).toEqual([{startsAt: '123'}])
           })
+      });
+    });
+
+    describe('availableTimeSlots query', () => {
+      let getTimeSlotsSpy = jest.fn(() => ([{startsAt: 123}])); // a spy that returns a value
+      beforeEach(() => {
+        spyOn(Appointments.prototype, 'getTimeSlots', getTimeSlotsSpy);
+      });
+      afterEach(() => {
+        removeSpy(Appointments.prototype, 'getTimeSlots');
+      });
+      it('calls appointments.getTimeSlots', async () => {
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{ availableTimeSlots { startsAt } }\n\n"})
+          .then( response => {
+            expect(getTimeSlotsSpy).toHaveBeenCalled()
+          })
+      });
+
+      it('returns the timeslot data', async () => {
+        await request(app()).post('/graphql?')
+          .send({"query":"\n\n{ availableTimeSlots {startsAt}}\n\n"})
+          .then(response => {
+            const data = response.body.data;
+            expect(data.availableTimeSlots).toEqual([{startsAt: '123'}])
+          });
       });
     });
   });

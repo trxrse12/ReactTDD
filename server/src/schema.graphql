@@ -1,6 +1,7 @@
 type Query {
     customers: [Customer]
     customer(id: ID!): Customer
+    availableTimeSlots: [Appointment]
 }
 
 type Customer {
