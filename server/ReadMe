@@ -6,3 +6,7 @@
         git remote set-url origin https://<USERNNAME>:<PASSWORD>@github.com/path/to/repo.git
 
 2. DO NOT use plural in your camelCases vars names: e.g. do NOT use startsAt, instead use startAt
+
+3. Make certain node version the default one in Linux and nvm:  nvm alias default 14.5.0
+
+4. nvm install --lts >>> install the latest node

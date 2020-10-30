@@ -418,5 +418,90 @@ describe('app', () => {
           });
       });
     });
+
+    describe('appointments query', () => {
+      const allCustomers = [{id: 1}, {id: 2}];
+      let customerSpy = jest.fn(() => allCustomers);
+      let appointmentsSlotsSpy = jest.fn(() => ([{startsAt: 123}]))
+      beforeEach(() => {
+        spyOn(Appointments.prototype, 'getAppointments', appointmentsSlotsSpy);
+        spyOn(Customers.prototype, 'all', customerSpy);
+      });
+      afterEach(() => {
+        removeSpy(Appointments.prototype, 'getAppointments');
+        removeSpy(Customers.prototype, 'all');
+      });
+      it('calls appointments.getAppointments', async () => {
+        await request(app()).post('/graphql?')
+          .send({'query':'\n\n{ appointments(from: "123", to: "234") { startsAt } }\n\n'})
+          .then(response => {
+            expect(appointmentsSlotsSpy).toHaveBeenCalledWith(123, 234, allCustomers);
+          })
+      });
+      it('returns the appointment data', async () => {
+        await request(app()).post('/graphql?')
+          .send({'query':'\n\n{ appointments(from: "123", to: "234"){ startsAt } }\n\n'})
+          .then(response => {
+            const data = response.body.data;
+            expect(data.appointments).toEqual([{startsAt: '123'}])
+          })
+      });
+    });
+
+    describe('addAppointment mutation', () => {
+      let addSpy = jest.fn(() => ({startsAt: 123, customer: 1}));
+      let validSpy = jest.fn(() => true);
+      let errorSpy = jest.fn();
+      beforeEach(() => {
+        spyOn(Appointments.prototype, 'add', addSpy);
+        spyOn(Appointments.prototype, 'isValid', validSpy);
+        spyOn(Appointments.prototype, 'errors', errorSpy);
+      });
+      afterEach(() => {
+        removeSpy(Appointments.prototype, 'add');
+        removeSpy(Appointments.prototype, 'isValid');
+        removeSpy(Appointments.prototype, 'errors');
+      });
+      const query = `mutation {
+        addAppointment(appointment: { startsAt: "123", customer: 1 }) {
+          startsAt
+        }
+      }`;
+
+      it('saves the appointment if it is valid',async () => {
+        await request(app()).post('/graphql?')
+          .send({query})
+          .then(response => {
+            expect(addSpy).toHaveBeenLastCalledWith({startsAt: 123, customer: '1'});
+          })
+      });
+
+      it('returns the same appointment as the one posted',async () => {
+        await request(app()).post('/graphql?')
+          .send({query})
+          .then(response => {
+            const data = response.body.data;
+            expect(data.addAppointment).toEqual({
+              startsAt: '123'
+            })
+          })
+      });
+
+      it.only('returns errors if appointment is not valid', async() => {
+        validSpy.mockReturnValue(false);
+        errorSpy.mockReturnValue({'field':'desc'});
+        await request(app()).post('/graphql?')
+          .send({query})
+          .then(response => {
+            conR(response)
+            expect(response.body).toEqual({
+              errors: [{
+                message:'desc',
+                path: ['addAppointment', 'field']
+              }]
+            });
+          });
+      });
+    });
   });
 });

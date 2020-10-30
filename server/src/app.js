@@ -14,7 +14,7 @@ import {graphqlHTTP as expressGraphql} from 'express-graphql'; // used the nickn
 //   ]
 // });
 
-
+import { GraphQLError} from "graphql";
 import { buildSchema } from 'graphql';
 import schemaText from './schema.graphql';
 const schema = buildSchema(schemaText);
@@ -69,6 +69,26 @@ export function buildApp(customerData, appointmentData, timeSlots) {
     ))
   });
 
+  const validateObject = (context, fields, repository, path) => {
+    const object = fields.reduce((acc, field) => {
+      acc[field.name.value] = field.value.value;
+      return acc;
+    });
+    if (!repository.isValid(object)){
+      const errors = repository.errors(object);
+      Object.keys(errors).forEach(fieldName => {
+        context.reportError(new GraphQLError(
+          errors[fieldName], undefined, undefined, undefined, [path, fieldName]))
+      });
+    }
+  };
+
+  const appointmentValidation = context => ({
+    Argument(arg){
+      validateObject(context, arg.value.fields, appointments, 'addAppointment')
+    }
+  });
+
   app.get('/customers', (req, res, next) => {
     const results = customers.search(buildSearchParams(req.query));
     res.json(results);
@@ -93,7 +113,19 @@ export function buildApp(customerData, appointmentData, timeSlots) {
         return { ... customer, appointments: appointments.forCustomer(customer.id)}
       },
       availableTimeSlots: () => appointments.getTimeSlots(),
+      appointments: ({from, to}) => {
+        return appointments.getAppointments(
+          parseInt(from),
+          parseInt(to),
+          customers.all(),
+        )
+      },
+      addAppointment: ({appointment}) => {
+        appointment = Object.assign(appointment, { startsAt: parseInt(appointment.startsAt)});
+        return appointments.add(appointment);
+      },
     },
+    validationRules: [appointmentValidation],
     graphiql: true,
   }));
 
