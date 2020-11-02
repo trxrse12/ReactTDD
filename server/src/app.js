@@ -1,6 +1,7 @@
 import express from 'express';
 import {graphqlHTTP as expressGraphql} from 'express-graphql'; // used the nickname to fit his code
 
+import { conR, conA, conP} from "../utilities/tools";
 // an alternative to express-graphql
 // import {join} from 'path';
 // import { loadSchemaSync } from '@graphql-tools/load';
@@ -69,11 +70,34 @@ export function buildApp(customerData, appointmentData, timeSlots) {
     ))
   });
 
+  /* The query fields:
+    fields = [
+        {
+          kind: 'ObjectField',
+          name: { kind: 'Name', value: 'startsAt', loc: [{ start: 49, end: 57 }] },
+          value: { kind: 'StringValue', value: '123', block: false, loc: [{ start: 59, end: 64 }] },
+          loc: { start: 49, end: 64 }
+        },
+        {
+          kind: 'ObjectField',
+          name: { kind: 'Name', value: 'customer', loc: [ { start: 66, end: 74 }] },
+          value: { kind: 'IntValue', value: '1', loc: [ { start: 76, end: 77 }] },
+          loc: { start: 66, end: 77 }
+        }
+      ]
+
+   The repository:
+    Appointments {
+        appointments: [],
+        timeSlots: [],
+        add: [Function: bound mockConstructor]
+   */
   const validateObject = (context, fields, repository, path) => {
-    const object = fields.reduce((acc, field) => {
+    const object = fields?.reduce((acc, field) => {
       acc[field.name.value] = field.value.value;
       return acc;
     });
+    const isValid = repository.isValid(object);
     if (!repository.isValid(object)){
       const errors = repository.errors(object);
       Object.keys(errors).forEach(fieldName => {
@@ -83,11 +107,21 @@ export function buildApp(customerData, appointmentData, timeSlots) {
     }
   };
 
-  const appointmentValidation = context => ({
-    Argument(arg){
-      validateObject(context, arg.value.fields, appointments, 'addAppointment')
-    }
-  });
+  const appointmentValidation = context => {
+    return ({
+      Argument(arg){
+        validateObject(context, arg.value.fields, appointments, 'addAppointment')
+      }
+    });
+  };
+
+  const customerValidation = context => {
+    return ({
+      Argument(arg){
+        validateObject(context, arg.value.fields, customers, 'addCustomer')
+      }
+    })
+  };
 
   app.get('/customers', (req, res, next) => {
     const results = customers.search(buildSearchParams(req.query));
@@ -124,8 +158,11 @@ export function buildApp(customerData, appointmentData, timeSlots) {
         appointment = Object.assign(appointment, { startsAt: parseInt(appointment.startsAt)});
         return appointments.add(appointment);
       },
+      addCustomer: ({customer}) => {
+        return customers.add(customer);
+      }
     },
-    validationRules: [appointmentValidation],
+    validationRules: [customerValidation, appointmentValidation],
     graphiql: true,
   }));
 
