@@ -507,7 +507,6 @@ describe('app', () => {
         await request(app()).post('/graphql?')
           .send({query})
           .then(response => {
-            conR(response)
             expect(response.body.errors).toBeDefined();
             expect(response.body.errors).toEqual(
               expect.arrayContaining([
