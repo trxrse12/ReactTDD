@@ -1,3 +1,18 @@
+import {
+  Environment,
+  Network,
+  RecordSource,
+  Store,
+} from 'relay-runtime';
+
+const verifyStatusOk = result => {
+  if (!result.ok) {
+    return Promise.reject(new Error(500));
+  } else {
+    return result;
+  }
+};
+
 export const performFetch = (operation, variables) =>
   window
     .fetch('/graphql', {
@@ -7,4 +22,14 @@ export const performFetch = (operation, variables) =>
         query: operation.text,
         variables,
       })
-    });
+    })
+    .then(verifyStatusOk)
+    .then(result => result.json());
+
+
+let environment = null;
+export const getEnvironment = () =>
+  environment || (environment  = new Environment({  // memoizing the result of calling getEnvironment
+    network: Network.create(performFetch),
+    store: new Store(new RecordSource()),
+  }));

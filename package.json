@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "jest": "^26.0.1",
     "react-test-renderer": "^16.13.1",
+    "relay-runtime": "^10.0.1",
     "supertest": "^5.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"

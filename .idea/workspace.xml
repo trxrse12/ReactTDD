@@ -9,31 +9,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d573958-0d0e-424c-b6df-62e3772ce5f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/relayEnvironment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/relayEnvironment.test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.babelrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/server.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/ReadMe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/dist/server/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/jest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/npm-debug.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/appointments.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/customers.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema.graphql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/server.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/app.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/appointments.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/test/customers.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utilities/tools.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/webpack-server.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/relayEnvironment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/relayEnvironment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/relayEnvironment.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/relayEnvironment.test.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,7 +30,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/App.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="85">
+                    <state relative-caret-position="798">
                       <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
                       <folding>
                         <element signature="e#0#43#0" expanded="true" />
@@ -65,8 +42,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/relayEnvironment.test.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="56">
-                      <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+                    <state relative-caret-position="280">
+                      <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
                       <folding>
                         <element signature="e#0#22#0" expanded="true" />
                       </folding>
@@ -81,8 +58,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/App.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="308">
-                      <caret line="78" column="3" selection-start-line="78" selection-start-column="3" selection-end-line="78" selection-end-column="3" />
+                    <state relative-caret-position="278">
+                      <caret line="83" column="41" lean-forward="true" selection-start-line="83" selection-start-column="41" selection-end-line="83" selection-end-column="41" />
                       <folding>
                         <element signature="e#0#43#0" expanded="true" />
                       </folding>
@@ -95,13 +72,13 @@
         </splitter>
       </split-first>
       <split-second>
-        <splitter split-orientation="vertical" split-proportion="0.49202976">
+        <splitter split-orientation="vertical" split-proportion="0.5">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/App.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="99">
+                    <state relative-caret-position="910">
                       <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
                       <folding>
                         <element signature="e#0#43#0" expanded="true" />
@@ -117,26 +94,24 @@
               </file>
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
-                  <provider selected="true" editor-type-id="text-editor" />
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="238">
+                      <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+                    </state>
+                  </provider>
                 </entry>
               </file>
             </leaf>
           </split-first>
           <split-second>
-            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <leaf>
               <file pinned="false" current-in-tab="true">
-                <entry file="mock:///Local">
-                  <provider selected="true" editor-type-id="terminal-session-editor" />
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="mock:///Local">
-                  <provider selected="true" editor-type-id="terminal-session-editor" />
-                </entry>
-              </file>
-              <file pinned="false" current-in-tab="false">
-                <entry file="mock:///Local">
-                  <provider selected="true" editor-type-id="terminal-session-editor" />
+                <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="238">
+                      <caret line="17" selection-start-line="17" selection-end-line="17" />
+                    </state>
+                  </provider>
                 </entry>
               </file>
             </leaf>
@@ -373,6 +348,7 @@
       <workItem from="1603880328388" duration="26277000" />
       <workItem from="1604054612550" duration="20102000" />
       <workItem from="1604398095964" duration="1394000" />
+      <workItem from="1604406288044" duration="304000" />
     </task>
     <servers />
   </component>
@@ -397,16 +373,15 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="813001000" />
+    <option name="totallyTimeSpent" value="813305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1060" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info id="npm" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.1463807" />
+      <window_info content_ui="combo" id="Project" order="3" side_tool="true" visible="true" weight="0.14798927" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32731137" />
@@ -416,7 +391,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32943678" />
-      <window_info anchor="bottom" x="2227" y="296" width="1122" height="616" id="Terminal" order="9" weight="0.18490967" />
+      <window_info active="true" anchor="bottom" x="2227" y="296" width="1122" height="616" id="Terminal" order="9" visible="true" weight="0.18490967" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32990867" />
       <window_info anchor="bottom" id="GraphQL" order="11" />
       <window_info anchor="bottom" id="Quokka" order="12" weight="0.32939914" />
@@ -772,119 +747,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/.babelrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test/app.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="499" column="14" selection-start-line="499" selection-start-column="14" selection-end-line="499" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="10" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test/appointments.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="67" column="8" selection-start-line="67" selection-start-column="8" selection-end-line="67" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#113#0" expanded="true" />
-            <element signature="e#148#840#0" />
-            <element signature="e#887#2353#0" />
-            <element signature="e#2394#6232#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/test/customers.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding>
-            <element signature="e#114#12703#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/jest.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/utilities/tools.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/customers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="105" selection-start-line="105" selection-end-line="105" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/appointments.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="43" column="5" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/schema.graphql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="8" column="57" lean-forward="true" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/ReadMe">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1806">
-          <caret line="133" column="9" lean-forward="true" selection-start-line="133" selection-start-column="9" selection-end-line="133" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/webpack-server.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/.babelrc" />
+    <entry file="file://$PROJECT_DIR$/server/test/app.test.js" />
+    <entry file="file://$PROJECT_DIR$/server/src/server.js" />
+    <entry file="file://$PROJECT_DIR$/server/test/appointments.test.js" />
+    <entry file="file://$PROJECT_DIR$/server/test/customers.test.js" />
+    <entry file="file://$PROJECT_DIR$/server/jest.json" />
+    <entry file="file://$PROJECT_DIR$/server/utilities/tools.js" />
+    <entry file="file://$PROJECT_DIR$/server/src/customers.js" />
+    <entry file="file://$PROJECT_DIR$/server/src/appointments.js" />
+    <entry file="file://$PROJECT_DIR$/server/src/schema.graphql" />
+    <entry file="file://$PROJECT_DIR$/server/ReadMe" />
+    <entry file="file://$PROJECT_DIR$/server/package.json" />
+    <entry file="file://$PROJECT_DIR$/server/src/app.js" />
+    <entry file="file://$PROJECT_DIR$/server/webpack-server.config.js" />
     <entry file="file://$PROJECT_DIR$/src/relayEnvironment.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/relayEnvironment.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+        <state relative-caret-position="910">
+          <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
@@ -892,15 +785,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/spyHelpers.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/relayEnvironment.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#22#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
