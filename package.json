@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll",
-    "build": "webpack"
+    "build": "webpack",
+    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --extensions js jsx"
   },
   "author": "",
   "repository": "example.com",
@@ -16,17 +17,20 @@
     "@babel/preset-react": "^7.10.1",
     "@babel/runtime": "^7.10.2",
     "babel-loader": "^8.1.0",
+    "babel-plugin-relay": "^10.0.1",
     "chance": "^1.1.6",
     "expect-redux": "^5.0.3",
     "express": "^4.17.1",
     "jest": "^26.0.1",
     "react-test-renderer": "^16.13.1",
+    "relay-compiler": "^10.0.1",
     "relay-runtime": "^10.0.1",
     "supertest": "^5.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "graphql": "^15.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

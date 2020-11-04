@@ -15,6 +15,11 @@ import {reducer as customerReducer} from "./reducers/customer";
 import {addAppointment} from "./sagas/appointment";
 import {searchCustomers} from './sagas/searchCustomers';
 
+import {
+  queryCustomer,
+  reducer as queryCustomerReducer
+} from './sagas/queryCustomer';
+
 
 function* rootSaga() {
   yield takeLatest('ADD_CUSTOMER_REQUEST', addCustomer);
@@ -22,6 +27,7 @@ function* rootSaga() {
   yield takeLatest('ADD_APPOINTMENT_REQUEST', addAppointment);
   yield takeLatest('ADD_APPOINTMENT_SUCCESSFUL', appointmentAdded);
   yield takeLatest('SEARCH_CUSTOMERS_REQUEST', searchCustomers);
+  yield takeLatest('QUERY_CUSTOMER_REQUEST', queryCustomer)
 }
 
 export const configureStore = (storeEnhancers = []) => {
@@ -31,6 +37,7 @@ export const configureStore = (storeEnhancers = []) => {
     combineReducers({
       customer: customerReducer,
       appointment: appointmentReducer,
+      queryCustomer: queryCustomerReducer
     }),
     compose(
       ...[applyMiddleware(sagaMiddleware), ...storeEnhancers]
