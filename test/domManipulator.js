@@ -20,7 +20,7 @@ export const createContainer = () => {
     return form(formId).elements[name];
   };
 
-  // generic TDD helpe that searches for a label given its attached HTML element
+  // generic TDD helper that searches for a label given its attached HTML element
   const labelFor = formElement =>
     container.querySelector(`label[for="${formElement}`);
 
