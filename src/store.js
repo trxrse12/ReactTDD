@@ -20,8 +20,8 @@ import {
   reducer as queryCustomerReducer
 } from './sagas/queryCustomer';
 
-
-function* rootSaga() {
+// the root saga
+function* rootSaga() { // here below are the watcher sagas
   yield takeLatest('ADD_CUSTOMER_REQUEST', addCustomer);
   yield takeLatest('ADD_CUSTOMER_SUCCESSFUL', customerAdded);
   yield takeLatest('ADD_APPOINTMENT_REQUEST', addAppointment);

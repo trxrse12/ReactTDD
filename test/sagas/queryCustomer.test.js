@@ -52,7 +52,7 @@ describe('reducer', () => {
   });
 });
 
-describe('queryCustomer', () => { // the saga generator function
+describe('queryCustomer worker saga', () => { // the saga generator function
   const appointments = [{startsAt: '123'}];
   const customer = {id: 123, appointments};
 
@@ -73,5 +73,38 @@ describe('queryCustomer', () => { // the saga generator function
       query,
       {id: 123},
     )
+  });
+
+  it('sets status to submitting', () => {
+    dispatchRequest();
+
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({type: 'QUERY_CUSTOMER_SUBMITTING'});
+  });
+
+  it('dispatches a SUCCESSFUL action when the call succeeds', async () => {
+    const appointmentWithConvertedTimestamps = [
+      {startsAt: 123}
+    ];
+    dispatchRequest();
+
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({
+        type: 'QUERY_CUSTOMER_SUCCESSFUL',
+        customer,
+        appointments: appointmentWithConvertedTimestamps
+      });
+  });
+
+  it('dispatches a FAILED action when the call throws an error', () => {
+    fetchQuery.mockReturnValue(Promise.reject(new Error()));
+    dispatchRequest();
+    return expectRedux(store)
+      .toDispatchAnAction()
+      .matching({
+        type: 'QUERY_CUSTOMER_FAILED',
+      })
   });
 });
