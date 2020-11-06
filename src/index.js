@@ -6,7 +6,8 @@ import {Provider} from 'react-redux';
 import {configureStore} from "./store";
 import {ConnectedApp} from "./App";
 
-import { Router, Route } from 'react-router';
+import { MemoryRouter as Router, Route } from 'react-router';
+import {appHistory} from "./history";
 
 ReactDOM.render(
   <Provider store={configureStore()}>

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --watchAll",
     "build": "webpack",
-    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --extensions js jsx"
+    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --extensions js jsx --watchman false",
+    "start_react": "node src/staticServer.js"
   },
   "author": "",
   "repository": "example.com",
