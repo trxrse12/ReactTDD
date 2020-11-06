@@ -5,6 +5,7 @@ import { AppointmentsDayViewLoader } from './AppointmentsDayViewLoader';
 import { CustomerForm } from './CustomerForm';
 import { CustomerSearch } from './CustomerSearch/CustomerSearch';
 import {CustomerSearchRoute} from "./CustomerSearchRoute";
+import {CustomerHistory} from './CustomerHistory';
 import { connect } from 'react-redux';
 
 export const MainScreen = () => (
@@ -40,10 +41,13 @@ export const App = ({history, setCustomerForAppointment}) => {
     [history]
   );
 
-  const transitionToSearchCustomers = useCallback(
+  const transitionToSearchCustomer = useCallback(
     () => setView('searchCustomers'),
     []
   );
+
+  const transitionToSearchCustomerHistory = customer =>
+    history.push(`/customer/${customer.id}`)
 
   const searchActions = (customer) => {
     return (<React.Fragment>
@@ -52,6 +56,10 @@ export const App = ({history, setCustomerForAppointment}) => {
           onClick={() => transitionToAddAppointment(customer)}>
           Create appointment
         </button>
+        <button
+          role="button"
+          onClick={() => transitionToSearchCustomerHistory(customer)}
+        >View history</button>
       </React.Fragment>
     );
   };
@@ -73,6 +81,10 @@ export const App = ({history, setCustomerForAppointment}) => {
       />
       <Route
         path="/addAppointment" component={AppointmentFormLoader}
+      />
+      <Route
+        path="/customer/:id"
+        render={({match}) => <CustomerHistory id={match.params.id}/>}
       />
       <Route component={MainScreen} />
     </Switch>
