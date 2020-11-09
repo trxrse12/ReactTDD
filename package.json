@@ -4,41 +4,59 @@
   "description": "Appointments system",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "build": "webpack --env production",
-    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --extensions js jsx --watchman false",
-    "start": "webpack-dev-server --env development"
+    "build": "webpack",
+    "test": "jest",
+    "build-server": "webpack --config webpack-server.config.js",
+    "test-server": "jest --config server/jest.json",
+    "serve": "node dist/server/bundle.js",
+    "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --watchman false"
   },
   "author": "",
   "repository": "example.com",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.10.1",
-    "@babel/preset-env": "^7.10.2",
-    "@babel/preset-react": "^7.10.1",
-    "@babel/runtime": "^7.10.2",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-cli": "^6.26.0",
     "babel-loader": "^8.1.0",
+    "@babel/runtime": "^7.10.2",
     "babel-plugin-relay": "^10.0.1",
     "chance": "^1.1.6",
     "expect-redux": "^5.0.3",
     "express": "^4.17.1",
-    "jest": "^26.0.1",
+    "jest": "^26.5.3",
+    "jest-raw-loader": "^1.0.1",
+    "raw-loader": "^4.0.2",
     "react-test-renderer": "^16.13.1",
     "relay-compiler": "^10.0.1",
     "relay-runtime": "^10.0.1",
     "supertest": "^5.0.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.3.0",
+    "webpack-cli": "^4.1.0",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "express-graphql": "^0.11.0",
+    "faker": "^5.1.0",
     "graphql": "^15.4.0",
+    "morgan": "^1.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
     "react-router-dom": "latest",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
+    "webpack-node-externals": "^2.5.2",
     "whatwg-fetch": "^3.2.0"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/node/modules",
+      "/server/"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

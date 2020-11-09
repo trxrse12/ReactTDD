@@ -29,14 +29,17 @@ export const hasError = (validationErrors, fieldName) =>
 //    for each form's field, entry that has a corresponding validator function
 //
 // Obs. It is necessary that validators has EXACT the same fields as the fields object
-export const validateMany = (validators, fields) =>
-  Object.entries(fields).reduce(
+export const validateMany = (validators, fields) => {
+  console.log('MMMMMMMMMMMMMMMMMMMM fields=', fields);
+  return Object.entries(fields).reduce(
     (result, [name, value]) => ({
-        ...result,
-        [name]: validators[name](value)
+      ...result,
+      [name]: validators[name](value)
     }),
     {}
   );
+};
+
 
 export const anyErrors = errors =>
   Object.values(errors).some(error => error !== undefined);

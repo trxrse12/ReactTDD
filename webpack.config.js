@@ -1,8 +1,8 @@
+// by default, if I specify no output, the bundle will be saved to /dist/main.js
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/index.js",
   mode: 'development',
   module: {
     rules: [{
@@ -10,17 +10,5 @@ module.exports = {
       exclude: /node-modules/,
       loader: 'babel-loader'
     }]
-  },
-  resolve: {
-    extensions: [".js"]
-  },
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js"
-  },
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 9000
   }
 };
