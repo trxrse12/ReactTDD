@@ -201,7 +201,7 @@ describe('app', () => {
     });
   });
 
-  describe('GET appointments', () => {
+  describe('GET /appointments', () => {
     let appointmentsSpy = jest.fn();
     let customersSpy = jest.fn();
 
@@ -287,7 +287,7 @@ describe('app', () => {
     });
   });
 
-  describe('POST graphql', () => {
+  describe('POST /graphql', () => {
     describe('customers query', () => {
       let searchSpy = jest.fn();
       let appointmentsSpy = jest.fn();
@@ -391,7 +391,7 @@ describe('app', () => {
         await request(app()).post('/graphql?')
           .send({"query":"\n\n{ customer(id:5) { appointments { startsAt } } }\n\n"})
           .then(response => {
-            conA(response)
+            // conA(response)
             const data = response.body.data;
             expect(data.customer.appointments).toEqual([{startsAt: '123'}])
           })
@@ -451,7 +451,7 @@ describe('app', () => {
         await request(app()).post('/graphql?')
           .send({'query':'\n\n{ appointments(from: "123", to: "234"){ startsAt } }\n\n'})
           .then(response => {
-            conA(response)
+            // conA(response)
             const data = response.body.data;
             expect(data?.appointments).toEqual([{startsAt: '123'}])
           })

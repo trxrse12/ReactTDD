@@ -6,9 +6,9 @@
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "build-server": "webpack --config webpack-server.config.js",
+    "build-server": "webpack --config webpack-server.config.js -w",
     "test-server": "jest --config server/jest.json",
-    "serve": "node dist/server/bundle.js",
+    "serve": "nodemon dist/server/bundle.js",
     "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --watchman false"
   },
   "author": "",
@@ -41,6 +41,7 @@
     "faker": "^5.1.0",
     "graphql": "^15.4.0",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",

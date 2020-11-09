@@ -1,7 +1,26 @@
 const stylists = ['Ashley', 'Jo', 'Pat', 'Sam'];
 const services = ['Cut', 'Blow-dry', 'Extensions', 'Cut & color', 'Beard trim', 'Cut & beard trim', 'Extensions'];
+const stylistServices = {
+  Ashley: ['Cut', 'Blow-dry', 'Extensions'],
+  Jo: ['Cut', 'Blow-dry', 'Cut & color'],
+  Pat: ['Cut', 'Blow-dry', 'Beard trim', 'Cut & beard trim', 'Extensions'],
+  Sam: ['Cut', 'Blow-dry', 'Beard trim', 'Cut & beard trim']
+};
 
 export const randomInt = range => Math.floor(Math.random() * range);
+
+Array.prototype.pickRandom = function(){
+  return this[randomInt(this.length)];
+};
+
+const pickMany = (items, number) =>
+  Array(number).fill(1).map(n => items.pickRandom());
+
+
+function shouldFillTimeSlot() {
+  return randomInt(3) < 2;
+};
+
 
 export function getRandomInt(min, max){
   min = Math.ceil(min);
@@ -101,20 +120,24 @@ export class Appointments {
  */
 export function buildTimeSlots() {
   const startDate = new Date();
-  const lastYearToday = startDate.setFullYear(startDate.getFullYear()-1);
-  const times = [...Array(365+30)].map(day => {
+  startDate.setFullYear(startDate.getFullYear()-1);
+  const startTime = startDate.setHours(9,0,0,0);
+  // console.log('GGGGGGGGGGGGGGGGGGGGGGGGGGGG startTime=', startTime)
+  const times = [...Array(365+30).keys()].map(day => {
     const daysToAdd = day * 24 * 60 * 60 * 1000;
     return [...Array(20).keys()].map(halfHour => {
-      const halfHourToAdd = halfHour * 30 * 60 * 1000;
-      return {startsAt: lastYearToday + daysToAdd + halfHourToAdd, stylists};
+      // console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMM halfHour=', halfHour)
+      const halfHoursToAdd = halfHour * 30 * 60 * 1000;
+      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX startTime=', startTime)
+      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX daysToAdd=', daysToAdd)
+      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX halfHoursToAdd=', halfHoursToAdd)
+
+      return {startsAt: startTime + daysToAdd + halfHoursToAdd, stylists};
     })
-  })
+  });
   return [].concat(...times);
 }
 
-Array.prototype.pickRandom = function(){
-  return this[randomInt(this.length)];
-}
 
 /*
   @function that generates an array of random appointments, of length more then the length of timeslots array:
@@ -143,13 +166,16 @@ Array.prototype.pickRandom = function(){
  */
 export function generateFakeAppointments(customers, timeslots) {
   let appointments = [];
-  appointments = [...Array(timeslots.length).keys()]
-    .slice(0, getRandomInt((timeslots.length)/2+1, timeslots.length-1))
-    .map((v,i) => ({
-      customer: customers.pickRandom().id,
-      startsAt: timeslots[i].startsAt,
-      stylist: timeslots[0].stylists.pickRandom(),
-      service: services.pickRandom(),
-    }));
+  timeslots.forEach(timeSlot => {
+    const stylist = timeSlot.stylists.pickRandom();
+    if (shouldFillTimeSlot()) {
+      appointments.push({
+        customer: customers.pickRandom().id,
+        startsAt: timeSlot.startsAt,
+        stylist,
+        service: stylistServices[stylist].pickRandom(),
+      })
+    }
+  });
   return appointments;
 }
