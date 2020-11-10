@@ -17,7 +17,7 @@ import { conR, conA, conP} from "../utilities/tools";
 
 import { GraphQLError} from "graphql";
 import { buildSchema } from 'graphql';
-import schemaText from './schema.graphql';
+import schemaText from '../src/schema.graphql';
 const schema = buildSchema(schemaText);
 
 import morgan from 'morgan';

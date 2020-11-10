@@ -14,7 +14,7 @@ export const MainScreen = () => (
       <Link to={'/addCustomer'} className="button">
         Add customer and appointment
       </Link>
-      <Link to={'/searchCustomer'} className="button">
+      <Link to={'/searchCustomers'} className="button">
         Search customers
       </Link>
     </div>
@@ -72,6 +72,7 @@ export const App = ({history, setCustomerForAppointment}) => {
       <Route
         path="/searchCustomers"
         render={props => {
+          console.log('JJJJJJJJJJJJJJJJJJJJJJJJ props=', props);
           return (
           <CustomerSearchRoute
             {...props}

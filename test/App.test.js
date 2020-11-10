@@ -27,7 +27,7 @@ describe('Main screen', () => {
     ({render, child, elementMatching} = createShallowRenderer())
   });
 
-  it('renders a button bas as the first child', () => {
+  it('renders a button bar as the first child', () => {
     render(<MainScreen />);
     expect(child(0).type).toEqual('div');
     expect(child(0).props.className).toEqual('button-bar');
@@ -59,7 +59,7 @@ describe('Main screen', () => {
       elementMatching(className('button-bar'))
     );
     expect(links[1].type).toEqual(Link);
-    expect(links[1].props.to).toEqual('/searchCustomer');
+    expect(links[1].props.to).toEqual('/searchCustomers');
     expect(links[1].props.className).toContain('button');
     expect(links[1].props.children).toEqual(
       'Search customers'

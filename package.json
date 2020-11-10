@@ -4,10 +4,10 @@
   "description": "Appointments system",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "test": "jest",
-    "build-server": "webpack --config webpack-server.config.js -w",
-    "test-server": "jest --config server/jest.json",
+    "build": "rm dist/main.js && webpack -w",
+    "test": "jest --watchAll",
+    "build-server": "rm -rf dist/server && webpack --config webpack-server.config.js -w",
+    "test-server": "jest --config server/jest.json --watchAll",
     "serve": "nodemon dist/server/bundle.js",
     "relay": "relay-compiler --src ./src --schema ./src/schema.graphql --watchman false"
   },
