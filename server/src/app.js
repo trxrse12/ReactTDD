@@ -28,6 +28,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
   const app = express();
   app.use(express.static('dist'));
   app.use(express.json()); // without this one, I cannot read JSON in my routes
+  app.use(morgan('dev'));
   const customers = new Customers(customerData);
   const appointments = new Appointments(appointmentData,timeSlots);
 
@@ -144,6 +145,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
           }
         ),
       customer: ({id}) => {
+        console.log('SSSSSSSSSSSSSSSS SERVER: id=')
         const customer = customers.all()[id];
         return { ... customer, appointments: appointments.forCustomer(customer.id)}
       },

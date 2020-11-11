@@ -93,8 +93,6 @@ export const CustomerForm = connect(
     const handleSubmit = (e) => {
       e.preventDefault();
       const validationResult = validateMany(validators, customer);
-      console.log('VVVVVVVVVVVVV customer=', customer)
-      console.log('FFFFFFFFFFFFF validators=', validators)
       if (!anyErrors(validationResult)){
         // await doSave();
         addCustomerRequest(customer);

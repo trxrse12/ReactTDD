@@ -30,7 +30,6 @@ export const hasError = (validationErrors, fieldName) =>
 //
 // Obs. It is necessary that validators has EXACT the same fields as the fields object
 export const validateMany = (validators, fields) => {
-  console.log('MMMMMMMMMMMMMMMMMMMM fields=', fields);
   return Object.entries(fields).reduce(
     (result, [name, value]) => ({
       ...result,

@@ -14,11 +14,6 @@ export function* searchCustomers({
   searchTerm,
   limit,
 }) {
-  console.log('WWWWWWWWWWWWWWWWWWWWWW searchCustomers params:', {
-    'LastRowIds': lastRowIds,
-    searchTerm,
-    limit
-  })
   let after;
   if (lastRowIds.length > 0 )
         after = lastRowIds[lastRowIds.length-1];
@@ -27,7 +22,6 @@ export function* searchCustomers({
     searchTerm,
     limit: limit === 10 ? '' : limit,
   });
-  console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEE queryString=', queryString);
   const result = yield call(fetch, `/customers${queryString}`);
   const customers = yield call([result, 'json']);
   yield put({

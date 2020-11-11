@@ -46,8 +46,10 @@ export const App = ({history, setCustomerForAppointment}) => {
     []
   );
 
-  const transitionToSearchCustomerHistory = customer =>
+  const transitionToSearchCustomerHistory = customer => {
+    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCC customer=', customer)
     history.push(`/customer/${customer.id}`)
+  }
 
   const searchActions = (customer) => {
     return (<React.Fragment>
@@ -72,7 +74,6 @@ export const App = ({history, setCustomerForAppointment}) => {
       <Route
         path="/searchCustomers"
         render={props => {
-          console.log('JJJJJJJJJJJJJJJJJJJJJJJJ props=', props);
           return (
           <CustomerSearchRoute
             {...props}

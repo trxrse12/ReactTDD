@@ -29,7 +29,7 @@ export const CustomerHistory = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(({ id, queryCustomer, customer, appointments, status}) => {
-
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
   useEffect(() => {
     queryCustomer(id) // dispatches an action when the component mounts
   }, [id, queryCustomer]);

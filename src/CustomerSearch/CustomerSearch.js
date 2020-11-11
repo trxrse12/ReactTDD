@@ -4,6 +4,7 @@ import {SearchButtons} from "./SearchButtons";
 import { connect } from 'react-redux';
 
 const CustomerRow = ({customer, renderCustomerActions}) => {
+  console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXX renderCustomerActions=', renderCustomerActions)
   return (
     <tr>
       <td>{customer.firstName}</td>
@@ -42,10 +43,9 @@ export const CustomerSearch = connect(
      searchCustomers,
      customers,
    }) => {
-    console.log('DDDDDDDDDDDDDDDDDDDDDDD customers.length=', customers.length);
-    console.log('DDDDDDDDDDDDDDDDDDDDDDD searchCustomers=', searchCustomers);
     const handleSearchTextChanged = ({target: {value}}) => {
       const params = {limit, searchTerm: value};
+      console.log('PPPPPPPPPPPPPPPPPPPPPPPPPP params=', params)
       history.push(location.pathname + objectToQueryString(params));
     };
 
