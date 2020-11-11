@@ -68,7 +68,7 @@ describe('CustomerSearch form', () => {
     ]);
   });
 
-  it('xxx dispatches SEARCH_CUSTOMERS_REQUEST when component mounts', async () => {
+  it('dispatches SEARCH_CUSTOMERS_REQUEST when component mounts', async () => {
     const lastRowIds = [123, 234, 345];
     const searchTerm = 'test';
     const limit = 10;
@@ -87,7 +87,7 @@ describe('CustomerSearch form', () => {
       })
   });
 
-  it('xxx renders all customer data in a table row', async () => {
+  it('renders all customer data in a table row', async () => {
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk(oneCustomer));

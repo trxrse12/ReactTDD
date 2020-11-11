@@ -22,6 +22,7 @@ export const MainScreen = () => (
   </React.Fragment>
 );
 
+// the main React App component
 export const App = ({history, setCustomerForAppointment}) => {
   // const [view, setView] = useState('dayView');
   // const [customer, setCustomer] = useState();
@@ -47,7 +48,6 @@ export const App = ({history, setCustomerForAppointment}) => {
   );
 
   const transitionToSearchCustomerHistory = customer => {
-    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCC customer=', customer)
     history.push(`/customer/${customer.id}`)
   }
 
@@ -82,7 +82,8 @@ export const App = ({history, setCustomerForAppointment}) => {
         )}}
       />
       <Route
-        path="/addAppointment" component={AppointmentFormLoader}
+        path="/addAppointment"
+        component={AppointmentFormLoader}
       />
       <Route
         path="/customer/:id"
@@ -100,6 +101,7 @@ const mapDispatchToProps = {
   })
 };
 
+// the main entry point
 export const ConnectedApp = connect(
   null,
   mapDispatchToProps

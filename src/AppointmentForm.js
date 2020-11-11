@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
+import { appHistory} from "./history";
 
 const Error = () => (
   <div className="error">An error occurred during the save.</div>
@@ -146,7 +147,6 @@ export const AppointmentForm = connect(
      addAppointmentRequest,
      error,
    }) => {
-    // console.log('FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF error=', error)
     const [appointment, setAppointment] = useState({
       service,
       startsAt,
@@ -183,7 +183,7 @@ export const AppointmentForm = connect(
         addAppointmentRequest({
           appointment,
           customer,
-        })
+        });
       }
     };
 
@@ -198,7 +198,7 @@ export const AppointmentForm = connect(
       : availableTimeSlots
 
     return (
-      <form id="appointment" onSubmit={handleSubmit}>
+      <form id="appointment" onSubmit={handleSubmit} className="appointment">
         { error ? <Error /> : null }
         <label htmlFor="service">Service name</label>
         <select
@@ -231,6 +231,12 @@ export const AppointmentForm = connect(
           handleChange={handleStartsAtChange}
         />
         <input type="submit" value="Add" />
+        <button id="mainPageButton" type="button" onClick={() => {
+          appHistory.push('/')
+          console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEE appHistory=', appHistory)
+        }}>
+          Back to main page
+        </button>
       </form>
     )
   }

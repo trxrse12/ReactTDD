@@ -162,6 +162,7 @@ export const CustomerForm = connect(
 
         <input type="submit" value="Add" disabled={submitting}/>
         {submitting ? <span className="submittingIndicator" /> : null}
+
       </form>
     )
   }

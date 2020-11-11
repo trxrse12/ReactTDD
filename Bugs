@@ -13,4 +13,6 @@
 004. There is no "Back to main" button in the "addAppointment" form;
     Status: open
 
-005. There is no limit
+005. The main React component, App, has a route called "/addAppointment" which doesn't pass the
+    "transitionToDayView()", so basically I cannot navigate from the "Add Appointment" form back to the
+     main page;

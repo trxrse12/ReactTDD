@@ -88,6 +88,13 @@ describe('CustomerForm', () => {
     });
   });
 
+  // describe('renders a link to /', () => {
+  //   it('has a Main page button', () => {
+  //     renderWithStore(<CustomerForm {...validCustomer}/>);
+  //     expect(mainPageButton()).not.toBeNull();
+  //   });
+  // });
+
 
   // it('calls fetch with the right properties when submitting data', async () => {
   //   renderWithStore(

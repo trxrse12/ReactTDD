@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {AppointmentForm} from "./AppointmentForm";
 
-
 export const AppointmentFormLoader = props => {
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 

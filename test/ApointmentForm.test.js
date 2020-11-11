@@ -5,9 +5,11 @@ import { createContainerWithStore, withEvent } from "./domManipulator";
 import { AppointmentForm } from '../src/AppointmentForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 import {expectRedux} from "expect-redux";
+import * as HistoryExports from "../src/history";
 
 describe('AppointmentForm', () => {
-  let renderWithStore, store, container, submit, field, form, children, change, element;
+  let renderWithStore, store, container, submit, field, form, children, change, element, click;
+  let pushSpy;
   const customer={id: 123};
   beforeEach(() => {
     ({
@@ -20,10 +22,12 @@ describe('AppointmentForm', () => {
       submit,
       change,
       element,
+      click,
     } = createContainerWithStore());
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue(fetchResponseOk({}));
+    pushSpy = jest.spyOn(HistoryExports.appHistory, 'push');
   });
   afterEach(() => {
     window.fetch.mockRestore();
@@ -55,6 +59,25 @@ describe('AppointmentForm', () => {
       'input[type="submit"]'
     );
     expect(submitButton).not.toBeNull();
+  });
+
+  it('has a "Back to Main" page', () => {
+    renderWithStore(<AppointmentForm />);
+    const backToMainPageButton = container.querySelector(
+      'button[id="mainPageButton"]'
+    );
+    expect(backToMainPageButton).not.toBeNull();
+  });
+
+  describe('Back to Main button', () => {
+    it('redirects back to Main page when ', () => {
+      renderWithStore(<AppointmentForm />);
+      const backToMainPageButton = container.querySelector(
+      'button[id="mainPageButton"]'
+      );
+      click(backToMainPageButton);
+      expect(pushSpy).toHaveBeenCalledWith('/');
+    });
   });
 
   it('dispatches ADD_APPOINTMENT_REQUEST when submitting data', () => {

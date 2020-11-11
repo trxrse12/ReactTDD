@@ -8,15 +8,14 @@ import {
 import * as AppointmentFormExports from '../src/AppointmentForm';
 
 describe('AppointmentFormLoader', () => {
-  let renderAndWait;
-
+  let render, renderAndWait, clickAndWait, elements, type, container;
   const today = new Date();
   const availableTimeSlots = [
     {startsAt: today.setHours(9, 0, 0, 0)}
   ];
 
   beforeEach(() => {
-    ({renderAndWait} = createContainer());
+    ({container, render, renderAndWait, clickAndWait, elements, type} = createContainer());
     jest
       .spyOn(window, 'fetch')
       .mockReturnValue (fetchResponseOk(availableTimeSlots));
