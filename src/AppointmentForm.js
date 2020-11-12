@@ -231,7 +231,7 @@ export const AppointmentForm = connect(
           handleChange={handleStartsAtChange}
         />
         <input type="submit" value="Add" />
-        <button id="mainPageButton" type="button" onClick={() => {
+        <button id="mainPageButton" type="button" className="button" onClick={() => {
           appHistory.push('/')
           console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEE appHistory=', appHistory)
         }}>

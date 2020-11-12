@@ -25,17 +25,20 @@ input[type="submit"] {
 }
 
 input[type="submit"], button, .button, .toggle-button {
-  background: #579;
+  background: #357aff;
   text-decoration: none;
   font-weight: bold;
   color: white;
   box-shadow: none;
   border: 0;
   outline: none;
-  padding: 5px 15px 5px 15px;
-  margin: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 15px;
+  margin: 5px 15px 5px 0px;
   -webkit-appearance: none;
-  border-radius: 2px;
+  border-radius: 1px;
+  border-style: ridge;
+  border-width: 2px;
+  border-color: black;
   cursor: pointer;
 }
 

@@ -1,18 +1,17 @@
-001. The main page is not allowing to display page "addCustomer" when pressing the "Add customer and appointment":
+S-001. The main page is not allowing to display page "addCustomer" when pressing the "Add customer and appointment":
     Status: solved;
 
-002. The main page is not allowing to display page "SearchCustomer" when pressing the "Search customers" button:
+S-002. The main page is not allowing to display page "SearchCustomer" when pressing the "Search customers" button:
     Status: solved;
     caused by: fetch() in the searchCustomers saga missing the GET option;
 
-003. After adding a customer and adding an appointment for that customer, when the user wants to check the
-    history of that customer, the app come back with "Sorry, an error occured while pulling data from server"
+O-003. After adding a customer and adding an appointment for that customer, when the user wants to check the
+    history of that customer, the app come back with "Sorry, an error occurred while pulling data from server"
     Status: open
     Caused by:
 
-004. There is no "Back to main" button in the "addAppointment" form;
-    Status: open
-
-005. The main React component, App, has a route called "/addAppointment" which doesn't pass the
+S-004. The main React component, App, has a route called "/addAppointment" which doesn't pass the
     "transitionToDayView()", so basically I cannot navigate from the "Add Appointment" form back to the
      main page;
+     Status: Solved
+     Solution: Added a button to the Appointment form

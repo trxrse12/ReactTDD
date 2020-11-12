@@ -1,6 +1,6 @@
 import express from 'express';
 import {graphqlHTTP as expressGraphql} from 'express-graphql'; // used the nickname to fit his code
-
+import graphiql from "graphql-playground-middleware-express";
 import { conR, conA, conP} from "../utilities/tools";
 // an alternative to express-graphql
 // import {join} from 'path';
@@ -33,10 +33,10 @@ export function buildApp(customerData, appointmentData, timeSlots) {
   const appointments = new Appointments(appointmentData,timeSlots);
 
   app.use(morgan('dev'));
-  app.get ('/', (req, res) => {
-    res.status(200);
-    return res.send('OK')
-  });
+  // app.get ('/', (req, res) => {
+  //   res.status(200);
+  //   return res.send('OK')
+  // });
 
   app.post('/customers', (req,res, next) => {
     const customer = req.body;
@@ -132,7 +132,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
 
   app.use('/graphql', expressGraphql({
     schema,
-    rootValue: {
+    rootValue: {      // the resolver functions
       customers: query =>
         customers.search(buildSearchParams(query))
           .map(customer => {
@@ -145,7 +145,7 @@ export function buildApp(customerData, appointmentData, timeSlots) {
           }
         ),
       customer: ({id}) => {
-        console.log('SSSSSSSSSSSSSSSS SERVER: id=')
+        console.log('SSSSSSSSSSSSSSSS SERVER: id=', id)
         const customer = customers.all()[id];
         return { ... customer, appointments: appointments.forCustomer(customer.id)}
       },
@@ -165,9 +165,11 @@ export function buildApp(customerData, appointmentData, timeSlots) {
         return customers.add(customer);
       }
     },
-    validationRules: [customerValidation, appointmentValidation],
+    //validationRules: [customerValidation, appointmentValidation],
     graphiql: true,
   }));
+
+  app.use("/playground", graphiql({endpoint: "/graphql"}))
 
   app.get('*', function(req, res){
     res.sendFile('dist/index.html', {root: process.cwd()})
