@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {anyErrors, hasError, list, match, required, validateMany} from './formValidation';
 import { connect } from 'react-redux';
+import {appHistory} from "./history";
 
 const Error = () => (
   <div className="error">An error occurred during the save.</div>
@@ -161,8 +162,11 @@ export const CustomerForm = connect(
         {renderError('phoneNumber')}
 
         <input type="submit" value="Add" disabled={submitting}/>
+        <button id="mainPageButton" type="button" className="button" onClick={() => {
+          appHistory.push('/')}}>
+          Back to main page
+        </button>
         {submitting ? <span className="submittingIndicator" /> : null}
-
       </form>
     )
   }

@@ -10,6 +10,8 @@ import { CustomerForm } from '../src/CustomerForm';
 import { fetchResponseOk, fetchResponseError, requestBodyOf } from "./spyHelpers";
 
 import {expectRedux} from "expect-redux";
+import {AppointmentForm} from "../src/AppointmentForm";
+import * as HistoryExports from "../src/history";
 
 const validCustomer = {
   firstName: 'first',
@@ -20,9 +22,8 @@ const validCustomer = {
 describe('CustomerForm', () => {
   let
     renderWithStore, store,
-    container, form, field, labelFor, element, change, submit,
-    blur;
-
+    container, form, field, labelFor, element, change, submit, blur, click;
+  let pushSpy;
   const   expectToBeInputFieldOftextType = formElement => {
     expect(formElement).not.toBeNull();
     expect(formElement.tagName).toEqual('INPUT');
@@ -44,11 +45,12 @@ describe('CustomerForm', () => {
       change,
       submit,
       blur,
+      click,
     } = createContainerWithStore());
     jest
       .spyOn(window,'fetch')
       .mockReturnValue(fetchResponseOk({}))
-
+    pushSpy = jest.spyOn(HistoryExports.appHistory, 'push');
   });
 
   afterEach(() => {
@@ -86,6 +88,25 @@ describe('CustomerForm', () => {
       renderWithStore(<CustomerForm {...validCustomer}/>);
       expect(submitButton().disabled).toBeFalsy();
     });
+  });
+
+  describe('Return to main page button', () => {
+    it('has a Return to main page button', () => {
+      renderWithStore(<CustomerForm />);
+      const backToMainPageButton = container.querySelector(
+        'button[id="mainPageButton"]'
+      );
+      expect(backToMainPageButton).not.toBeNull();
+    });
+    it('redirects back to Main page when clicked', () => {
+      renderWithStore(<AppointmentForm />);
+      const backToMainPageButton = container.querySelector(
+        'button[id="mainPageButton"]'
+      );
+      click(backToMainPageButton);
+      expect(pushSpy).toHaveBeenCalledWith('/');
+    });
+
   });
 
   // describe('renders a link to /', () => {
