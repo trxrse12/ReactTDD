@@ -145,7 +145,6 @@ export function buildApp(customerData, appointmentData, timeSlots) {
           }
         ),
       customer: ({id}) => {
-        console.log('SSSSSSSSSSSSSSSS SERVER: id=', id)
         const customer = customers.all()[id];
         return { ... customer, appointments: appointments.forCustomer(customer.id)}
       },

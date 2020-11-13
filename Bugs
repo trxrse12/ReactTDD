@@ -16,5 +16,13 @@ S-004. The main React component, App, has a route called "/addAppointment" which
      Status: Solved
      Solution: Added a button to the Appointment form
 
-O-005. The CustomerHistory form should have a button to return the main page
-    Status: open
+S-005. The CustomerHistory form should have a button to return the main page
+    Status: Solved
+
+S-006. CustomerForm should have a button to return to the main page
+    Status: Solved
+
+S-007. In the SearchCustomers form, pressing a 20/50/100 button is not displaying the corresponding number
+    of customers, instead is displaying the same 10 customers
+
+S-008. In SearchCustomers form, pressing the next button is not paginating the users
