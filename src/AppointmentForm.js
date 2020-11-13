@@ -118,8 +118,6 @@ const TimeSlotTable = ({
 const mapStateToProps = ({appointment: {customer, error}}) => ({customer, error});
 const mapDispatchToProps = {
   addAppointmentRequest: ({appointment, customer}) => {
-    // console.log('SSSSSSSSSSSSSSSSSSSSSSSS customer=', customer);
-    // console.log('DDDDDDDDDDDDDDDDDDDDDDDD error=', error);
     return ({
       type: 'ADD_APPOINTMENT_REQUEST',
       appointment,

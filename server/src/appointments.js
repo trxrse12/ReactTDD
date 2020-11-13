@@ -122,15 +122,10 @@ export function buildTimeSlots() {
   const startDate = new Date();
   startDate.setFullYear(startDate.getFullYear()-1);
   const startTime = startDate.setHours(9,0,0,0);
-  // console.log('GGGGGGGGGGGGGGGGGGGGGGGGGGGG startTime=', startTime)
   const times = [...Array(365+30).keys()].map(day => {
     const daysToAdd = day * 24 * 60 * 60 * 1000;
     return [...Array(20).keys()].map(halfHour => {
-      // console.log('MMMMMMMMMMMMMMMMMMMMMMMMMMMM halfHour=', halfHour)
       const halfHoursToAdd = halfHour * 30 * 60 * 1000;
-      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX startTime=', startTime)
-      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX daysToAdd=', daysToAdd)
-      // console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXX halfHoursToAdd=', halfHoursToAdd)
 
       return {startsAt: startTime + daysToAdd + halfHoursToAdd, stylists};
     })
