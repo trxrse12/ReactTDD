@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
+import { appHistory} from "./history";
 
 // so this function is extracting store variables (e.g. customer, or appointments (see below))
 const mapStateToProps = ({queryCustomer: {
@@ -65,6 +66,11 @@ export const CustomerHistory = connect(
             ))}
         </tbody>
       </table>
+      <button id="mainPageButton" type="button" className="button" onClick={() => {
+        appHistory.push('/');
+      }}>
+        Back to main page
+      </button>
     </div>
   );
 });

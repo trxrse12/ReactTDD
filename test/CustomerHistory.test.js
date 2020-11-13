@@ -4,6 +4,7 @@ import {expectRedux} from 'expect-redux';
 import {createContainerWithStore} from "./domManipulator";
 import {fetchQuery} from 'relay-runtime';
 import {CustomerHistory} from '../src/CustomerHistory';
+import * as HistoryExports from '../src/history';
 jest.mock('relay-runtime');
 
 const date = new Date('February 16, 2019');
@@ -31,18 +32,20 @@ const customer = {
 };
 
 describe('CustomerHistory', () => {
-  let container, renderWithStore, store;
-
+  let container, renderWithStore, store, click;
+  let pushSpy;
   describe('successful', () => {
     // to simplify the tests, the component display is done in the bfe():
     beforeEach(() => {
       ({
         container,
         renderWithStore,
-        store
+        store,
+        click,
       } = createContainerWithStore());
       fetchQuery.mockReturnValue({customer});
       renderWithStore(<CustomerHistory id={123}/>);
+      pushSpy = jest.spyOn(HistoryExports.appHistory, 'push');
     });
 
     it('dispatches queryCustomer on mount', () => {
@@ -110,6 +113,25 @@ describe('CustomerHistory', () => {
       expect(columnValues(3)).toEqual([
         'Note one', 'Note two',
       ])
+    });
+
+    it('has a Back to Main button', () => {
+      renderWithStore(<CustomerHistory/>);
+      const backToMainPageButton = container.querySelector(
+        'button[id="mainPageButton"]'
+      );
+      expect(backToMainPageButton).not.toBeNull();
+    });
+
+    describe('Back to Main button', () => {
+      it('redirects back to the Main page when clicked', () => {
+        renderWithStore(<CustomerHistory/>);
+        const backToMainPageButton = container.querySelector(
+          'button[id="mainPageButton"]'
+        );
+        click(backToMainPageButton);
+        expect(pushSpy).toHaveBeenCalledWith('/');
+      });
     });
   });
 

@@ -83,7 +83,8 @@ export const createContainerWithStore = () => {
           container.container
         )
       })
-    }
+    },
+    click: container.click,
   }
 };
 

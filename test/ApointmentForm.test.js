@@ -61,7 +61,7 @@ describe('AppointmentForm', () => {
     expect(submitButton).not.toBeNull();
   });
 
-  it('has a "Back to Main" page', () => {
+  it('has a "Back to Main" button', () => {
     renderWithStore(<AppointmentForm />);
     const backToMainPageButton = container.querySelector(
       'button[id="mainPageButton"]'
@@ -70,7 +70,7 @@ describe('AppointmentForm', () => {
   });
 
   describe('Back to Main button', () => {
-    it('redirects back to Main page when ', () => {
+    it('redirects back to Main page when clicked', () => {
       renderWithStore(<AppointmentForm />);
       const backToMainPageButton = container.querySelector(
       'button[id="mainPageButton"]'
