@@ -5,13 +5,16 @@ S-002. The main page is not allowing to display page "SearchCustomer" when press
     Status: solved;
     caused by: fetch() in the searchCustomers saga missing the GET option;
 
-O-003. After adding a customer and adding an appointment for that customer, when the user wants to check the
+S-003. After adding a customer and adding an appointment for that customer, when the user wants to check the
     history of that customer, the app come back with "Sorry, an error occurred while pulling data from server"
-    Status: open
-    Caused by:
+    Status: closed
+    Caused by: ???
 
 S-004. The main React component, App, has a route called "/addAppointment" which doesn't pass the
     "transitionToDayView()", so basically I cannot navigate from the "Add Appointment" form back to the
      main page;
      Status: Solved
      Solution: Added a button to the Appointment form
+
+O-005. The CustomerHistory form should have a button to return the main page
+    Status: open
