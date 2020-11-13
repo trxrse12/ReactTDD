@@ -6,6 +6,8 @@ import {CustomerSearch} from "../../src/CustomerSearch/CustomerSearch";
 import * as SearchButtonsExports from '../../src/CustomerSearch/SearchButtons';
 import 'whatwg-fetch';
 import {fetchResponseOk} from "../spyHelpers";
+import {AppointmentForm} from "../../src/AppointmentForm";
+import * as HistoryExports from "../../src/history";
 
 const oneCustomer = [
   {id: 1, firstName: 'A', lastName: 'B', phoneNumber: '1'}
@@ -23,8 +25,8 @@ const anotherTenCustomers = Array.from('ABCDEFGHIJ', id => ({id}));
 const lessThanTenCustomers = Array.from('0123456', (id) => ({id}))
 
 describe('CustomerSearch form', () => {
-  let renderWithStore, store, element, elements, container, clickAndWait, changeAndWait, change;
-  let historySpy, actionSpy;
+  let renderWithStore, store, element, elements, container, clickAndWait, changeAndWait, change, click;
+  let historySpy, actionSpy, pushSpy;
   beforeEach(() => {
     ({
       container,
@@ -35,6 +37,7 @@ describe('CustomerSearch form', () => {
       clickAndWait,
       changeAndWait,
       change,
+      click,
     } = createContainerWithStore());
     jest
       .spyOn(window, 'fetch')
@@ -44,6 +47,7 @@ describe('CustomerSearch form', () => {
     jest
       .spyOn(SearchButtonsExports, 'SearchButtons')
       .mockReturnValue(null);
+    pushSpy = jest.spyOn(HistoryExports.appHistory, 'push');
   });
   afterEach(() => {
     window.fetch.mockRestore();
@@ -298,6 +302,14 @@ describe('CustomerSearch form', () => {
     );
   });
 
-
+  it('has a Back to main page button', async () => {
+    await renderCustomerSearch();
+    const backToMainPageButton = container.querySelector(
+      'button[id="mainPageButton"]'
+    );
+    expect(backToMainPageButton).not.toBeNull();
+    clickAndWait(backToMainPageButton);
+    expect(pushSpy).toHaveBeenCalledWith('/');
+  });
 });
 

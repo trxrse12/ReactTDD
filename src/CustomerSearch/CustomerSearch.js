@@ -2,6 +2,7 @@ import React, {useEffect, useState, useCallback} from 'react';
 import {objectToQueryString} from "../objectToQueryString";
 import {SearchButtons} from "./SearchButtons";
 import { connect } from 'react-redux';
+import {appHistory} from "../history";
 
 const CustomerRow = ({customer, renderCustomerActions}) => {
   return (
@@ -85,6 +86,10 @@ export const CustomerSearch = connect(
           )}
           </tbody>
         </table>
+        <button id="mainPageButton" type="button" className="button" onClick={() => {
+          appHistory.push('/')}}>
+          Back to main page
+        </button>
       </React.Fragment>
     )
   }
